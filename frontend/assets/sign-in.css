@@ -47,12 +47,7 @@ h1 {
 .form {
 	display: flex;
 	flex-direction: column;
-	margin-top: 25px;
-}
-
-.name-box {
-	display: flex;
-	flex-direction: column;
+	margin-top: 30px;
 }
 
 .styled-input {
@@ -63,25 +58,6 @@ h1 {
 	border: solid 1px #cccccc;
 	color: #000;
 	border-radius: 4px;
-}
-
-.agree {
-	margin-top: 15px;
-	padding: 0 10px;
-	font-size: 13px;
-	display: flex;
-	align-items: center;
-}
-
-.agree > label {
-	margin-left: 5px;
-}
-
-.agree > label > a {
-	font-weight: 700;
-	text-decoration: none;
-	color: #000;
-	font-size: 13px;
 }
 
 .submit-button {
@@ -106,6 +82,15 @@ h1 {
 .submit-button:active {
 	position: relative;
 	top: 1px;
+}
+
+.recuperar-senha {
+	font-family: 'Montserrat', sans-serif;
+	display: block;
+	margin: 10px auto;
+	font-size: 13px;
+	text-align: center;
+	color: #000;
 }
 
 footer {
@@ -173,8 +158,9 @@ footer > p > a {
 
 	main {
 		display: flex;
-		height: calc(100vh - 154px);
+		height: calc(100vh - 150px);
 		justify-content: space-around;
+		z-index: -1;
 	}
 
 	.container-main {
