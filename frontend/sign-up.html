@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="assets/sign-up.css" />
+		<title>Cadastre-se</title>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<img src="assets/static/images/logo-placeholder.jpg" alt="Logo Placeholder" class="logo" />
+				<nav class="navbar">
+					<a href="#">Cadastro</a>
+					<a href="#">Login</a>
+				</nav>
+			</div>
+		</header>
+		<main>
+			<div class="container-main">
+				<div class="main-box">
+					<h1>Criar uma conta</h1>
+					<p class="main-text"></p>Já possui uma conta? Faça seu <a href="" class="main-text-link">login</a></p>
+
+					<form class="form" method="POST" action="/join">
+						<div class="name-box">
+							<input class="styled-input input-box" type="text" name="name" id="name" placeholder="Nome" />
+
+							<input class="styled-input input-box" type="text" name="name" id="last-name" placeholder="Sobrenome" />
+						</div>
+						<input class="styled-input" type="email" name="email" id="email" placeholder="E-mail" />
+
+						<input class="styled-input" type="password" name="password" id="password" placeholder="Crie uma senha" />
+
+						<input
+							class="styled-input"
+							type="password"
+							name="password-confirmation"
+							id="password-confirmation"
+							placeholder="Confirme sua senha"
+						/>
+
+						<div class="agree">
+							<input type="checkbox" name="agree" id="agree" />
+							<label for="agree">Eu li e concordo com os <a href="#">Termos de Uso</a></label>
+						</div>
+						<button class="submit-button" type="submit">Continuar</button>
+					</form>
+				</div>
+			</div>
+			<img src="assets/static/images/join-placeholder.jpg" class="image-join" alt="" />
+		</main>
+		<footer>
+			<p>© 2021 <strong>Nome da empresa.</strong></p>
+			<p>Todos os direitos reservados.</p>
+			<p><a href="#">Política de Privacidade</a> · <a href="#">Termos de Uso</a></p>
+		</footer>
+	</body>
+</html>

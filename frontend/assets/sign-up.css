@@ -137,6 +137,31 @@ footer > p > a {
 	header {
 		padding: 5px 10px;
 	}
+
+	.navbar {
+		display: block;
+	}
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.navbar > a {
+		background-color: #8a8a8a;
+		border-radius: 4px;
+		border: 1px solid #8a8a8a;
+		display: inline-block;
+		cursor: pointer;
+		color: #ffffff;
+		font-family: 'Montserrat', sans-serif;
+		font-size: 14px;
+		font-weight: 700;
+		padding: 6px 24px;
+		text-decoration: none;
+		margin-right: 20px;
+	}
 }
 
 @media (min-width: 1279px) {
