@@ -40,11 +40,17 @@ body {
 header {
     width: 100%;
     display: flex;
-    padding: 40px 0 40px 0;
+    padding: 40px;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: var(--blue-dark);
+    z-index: 1;
+    position: fixed;
+}
+
+header > div {
+    display: none;
 }
 
 header > button {
@@ -56,15 +62,37 @@ header > button > img {
 }
 
 header > nav {
-    width: 30%;
+    width: 50%;
     height: 100%;
     display: none;
     flex-direction: row;
     align-items: center;
+    justify-content: space-around;
+}
+
+header > nav > a {
+    text-decoration: none;
+    color: white;
+}
+
+.button-menu {
+    width: 110px;
+    height: 30px;
+    border-radius: 10px;
+    background: none;
+    border: white solid 0.5px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+
+.button-menu:hover {
+    background-color: white;
+    color: var(--blue-dark);
 }
 
 main {
-    height: 50vh;
+    height: 60vh;
 }
 
 .main-content {
@@ -74,7 +102,10 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     padding: 25px;
+    padding-top: 100px;
 }
 
 .main-content > h1 {
@@ -257,6 +288,22 @@ footer {
 
     header > button {
         display: none;
+    }
+
+    main {
+        width: 100vw;
+        height: 100vh;
+        background-image: url(https://images.idgesg.net/images/article/2017/08/thinkstockphotos-620955908-100732018-large.jpg);
+        background-size: cover;
+    }
+
+    .main-content {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+        padding-top: 80px;
+        background-color: transparent;
     }
 
     .section-prices {
