@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./assets/LandingPage.css" type="text/css">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <title>Projeto Integrador</title>
+    <link rel="shortcut icon" href="./assets/static/images/plan-symbol-free.svg" type="image/x-icon">
+    <title>elevel - Eleve o aprendizado a outro nível.</title>
 </head>
 <body>
     <header>
-        <a href="#"><img class="logo" src="./assets/static/images/plan-symbol.svg" alt="Logotipo Projeto Integrador"></a>
+        <a href="#"><img class="logo" src="./assets/static/images/plan-symbol-free.svg" alt="Logotipo Projeto Integrador"></a>
         <nav>
             <a href="#sobre">Sobre</a>
             <a href="#funcionalidades">Funcionalidades</a>
@@ -18,9 +18,7 @@
             <button class="button-menu" type="button">Cadastre-se</button>
             <button class="button-menu" type="button">Login</button>
         </nav>
-        <button type="button">
-            <img src="./assets/static/images/responsive-menu.svg" alt="Ícone de menu responsivo">
-        </button>
+        <button class="responsive-menu" type="button">Menu</button>
     </header>
     <main>
         <div class="main-content" id="sobre">
@@ -32,25 +30,20 @@
     <section class="section-slider" id="funcionalidades">
         <div class="slider-container">
             <div class="item" id="item-1">
-                <img src="./assets/static/images/plan-symbol.svg" alt="Placeholder">
+                <img src="./assets/static/images/ranking-icon.svg" alt="Ícone de uma medalha simbolizando o ranking.">
                 <p><strong>Ranking</strong></p>
                 <p>Atividades entregues geram pontos para o aluno.</p>
             </div>
             <div class="item" id="item-2">
-                <img src="./assets/static/images/plan-symbol.svg" alt="Placeholder">
+                <img src="./assets/static/images/chat-icon.svg" alt="Ícone de dois balões de conversa simbolizando o chat entre alunos.">
                 <p><strong>Chat da turma</strong></p>
                 <p>Bate-papo em tempo real entre os alunos.</p>
             </div>
             <div class="item" id="item-3">
-                <img src="./assets/static/images/plan-symbol.svg" alt="Placeholder">
+                <img src="./assets/static/images/plan-symbol-free.svg" alt="Placeholder">
                 <p><strong>Engajamento</strong></p>
                 <p>Alunos engajados ao longo de todo o curso.</p>
             </div>
-        </div>
-        <div class="link-slider">
-            <a href="#item-1"></a>
-            <a href="#item-2"></a>
-            <a href="#item-3"></a>
         </div>
     </section>
     <section class="section-prices" id="preços-planos">
@@ -58,36 +51,37 @@
             <h2>Planos e Preços</h2>
             <p>Encontre o plano ideal para sua necessidade.</p>
         </div>
-        <div class="plan-section"></div>
-        <div class="price-container">
-            <div class="plan-div">
-                <p>Plano <br><strong>Gratuito</strong></p>
-                <img src="./assets/static/images/plan-symbol.svg" alt="Placeholder">
+        <div class="orientation-prices">
+            <div class="price-container">
+                <div class="plan-div">
+                    <p>Plano <br><strong>Gratuito</strong></p>
+                    <img src="./assets/static/images/plan-symbol-free.svg" alt="Placeholder">
+                </div>
+                <ul>
+                    <li>✓ Até 2 turmas por professor.</li>
+                    <li>✓ Até 20 alunos por turma.</li>
+                </ul>
+                <div class="buy-button-div">
+                    <button type="button">Button</button>
+                    <p>Leia e aceite os <a href="#">Termos e Condições</a> de uso.</p>
+                </div>
             </div>
-            <ul>
-                <li>Até 2 turmas por professor.</li>
-                <li>Até 20 alunos por turma.</li>
-            </ul>
-            <div class="buy-button-div">
-                <button type="button">Button</button>
-                <p>Leia e aceite os <a href="#">Termos e Condições</a> de uso.</p>
-            </div>
-        </div>
-        <div class="price-container">
-            <div class="plan-div">
-                <p>Plano <br><strong>Premium</strong></p>
-                <img src="./assets/static/images/plan-symbol.svg" alt="Placeholder">
-            </div>
-            <ul>
-                <li>Turmas ilimitadas por professor.</li>
-                <li>Alunos ilimitados por turma.</li>
-                <li>Relatório de atividades.</li>
-                <li>Envio de in-mail para alunos.</li>
-                <li>Chat de alunos.</li>
-            </ul>
-            <div class="buy-button-div">
-                <button type="button">Button</button>
-                <p>Leia e aceite os <a href="#">Termos e Condições</a> de uso.</p>
+            <div class="price-container">
+                <div class="plan-div">
+                    <p>Plano <br><strong>Premium</strong></p>
+                    <img src="./assets/static/images/plan-symbol-premium.svg" alt="Placeholder">
+                </div>
+                <ul>
+                    <li>✓ Turmas ilimitadas por professor.</li>
+                    <li>✓ Alunos ilimitados por turma.</li>
+                    <li>✓ Relatório de atividades.</li>
+                    <li>✓ Envio de in-mail para alunos.</li>
+                    <li>✓ Chat de alunos.</li>
+                </ul>
+                <div class="buy-button-div">
+                    <button type="button">Button</button>
+                    <p>Leia e aceite os <a href="#">Termos e Condições</a> de uso.</p>
+                </div>
             </div>
         </div>
     </section>
