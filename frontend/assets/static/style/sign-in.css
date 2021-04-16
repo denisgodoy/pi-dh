@@ -1,0 +1,104 @@
+.container-main {
+	margin: 50px 30px 0 30px;
+}
+
+.image-join {
+	display: none;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.main-text {
+	font-family: 'Sarabun', sans-serif;
+	margin-top: 5px;
+	font-size: 14px;
+}
+
+.main-text-link {
+	font-family: 'Sarabun', sans-serif;
+	font-weight: 700;
+	text-decoration: none;
+	color: #000;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+}
+
+.styled-input {
+	margin-top: 10px;
+	padding: 5px 5px;
+	font-size: 14px;
+	border: solid 0.5px var(--grey);
+	color: #000;
+	border-radius: 10px;
+}
+
+.submit-button {
+	background-color: var(--magenta-dark);
+	border-radius: 10px;
+	border: 0.5px solid var(--magenta-dark);
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 5px 0;
+	margin-top: 20px;
+}
+
+.submit-button:hover {
+	background: var(--white);
+	color: var(--magenta-dark);
+	text-decoration: none;
+}
+
+.submit-button:active {
+	position: relative;
+	top: 1px;
+}
+
+.retrieve-password {
+	font-family: 'Sarabun', sans-serif;
+	display: block;
+	margin: 10px auto;
+	font-size: 14px;
+	text-align: center;
+	color: #000;
+}
+
+@media (min-width: 1024px) {
+	main {
+		display: flex;
+		height: calc(100vh - 150px);
+		justify-content: space-around;
+		z-index: -1;
+	}
+
+	.image-join {
+		display: block;
+		max-width: 50%;
+	}
+
+	.container-main {
+		width: 50%;
+		align-self: center;
+		margin: 0 auto;
+	}
+
+	.main-box {
+		margin: 12%;
+		border: solid 1px #ccc;
+		padding: 9%;
+	}
+
+	.input-box {
+		width: 49%;
+	}
+}

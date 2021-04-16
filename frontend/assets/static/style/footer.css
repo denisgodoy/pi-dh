@@ -1,0 +1,27 @@
+footer {
+	display: flexbox;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: 0;
+	padding: 10px;
+	width: 100%;
+	background-color: #6f8197;
+}
+
+footer > p {
+	font-size: 12px;
+	text-align: center;
+}
+
+footer > p > a {
+	color: #000000;
+}
+
+@media (min-width: 1279px) {
+	.footer {
+		height: 65px;
+		display: flex;
+	}
+}
