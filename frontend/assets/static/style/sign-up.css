@@ -93,26 +93,52 @@ h1 {
 @media (min-width: 1024px) {
 	main {
 		display: flex;
-		height: calc(100vh - 150px);
+		height: calc(100vh - 130px);
 		justify-content: space-around;
-		z-index: -1;
+		z-index: -10;
+		align-items: center;
 	}
 
 	.image-join {
 		display: block;
 		width: 50%;
+		z-index: -1;
+		align-self: stretch;
 	}
 
 	.container-main {
+		height: 100%;
 		width: 50%;
-		align-self: center;
 		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		background: rgb(255, 255, 255);
+		background: -moz-linear-gradient(
+			184deg,
+			rgba(255, 255, 255, 1) 0%,
+			rgba(241, 237, 237, 1) 0%,
+			rgba(254, 254, 254, 1) 88%,
+			rgba(255, 255, 255, 1) 99%,
+			rgba(247, 247, 247, 1) 99%,
+			rgba(246, 242, 242, 1) 100%
+		);
+		background: -webkit-linear-gradient(
+			184deg,
+			rgba(255, 255, 255, 1) 0%,
+			rgba(241, 237, 237, 1) 0%,
+			rgba(254, 254, 254, 1) 88%,
+			rgba(255, 255, 255, 1) 99%,
+			rgba(247, 247, 247, 1) 99%,
+			rgba(246, 242, 242, 1) 100%
+		);
 	}
 
 	.main-box {
-		margin: auto 12%;
 		border: solid 1px #ccc;
-		padding: 5% 8%;
+		padding: 6% 8%;
+		background-color: #ffffff;
+		align-self: center;
+		width: 65%;
 	}
 
 	.name-box {

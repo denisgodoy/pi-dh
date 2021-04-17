@@ -32,6 +32,11 @@ header {
 		display: none;
 	}
 
+	header {
+		padding: 5px;
+		background-color: var(--blue-dark);
+	}
+
 	.container {
 		margin: 20px 30px;
 	}
