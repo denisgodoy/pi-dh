@@ -50,7 +50,7 @@ header {
 }
 
 .logo {
-    width: 30%;
+    width: 35%;
 }
 
 header > nav {
@@ -303,6 +303,10 @@ footer {
 
     .responsive-menu {
         display: none;
+    }
+
+    .logo {
+    width: 10%;
     }
 
     main {
