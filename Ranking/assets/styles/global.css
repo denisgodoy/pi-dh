@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+/** RESET CSS DO PROJETO **/
+
+*{
+    margin: 0;
+	padding: 0;
+	border: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+p, table, a, text-area, input  {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Sarabun', sans-serif;
+}
+
+
+/** CORES DO PROJETO **/
+
+:root {
+    --blue-dark: #1C375B;
+    --blue-light: #6F8197;
+    --grey: #C5C5C5;
+    --magenta-dark: #E31151;
+    --magenta-light: #EC5077;
+  }
+  
+  /**
+  Exemplo de como usar variáveis de cores no CSS:
+  
+  p{
+      color: var(--grey);
+  }
+  **/
