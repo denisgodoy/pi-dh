@@ -1,0 +1,346 @@
+body{
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(184deg, rgba(255,255,255,1) 0%, rgba(241,237,237,1) 0%, rgba(254,254,254,1) 88%, rgba(255,255,255,1) 99%, rgba(247,247,247,1) 99%, rgba(246,242,242,1) 100%);
+    background: -webkit-linear-gradient(184deg, rgba(255,255,255,1) 0%, rgba(241,237,237,1) 0%, rgba(254,254,254,1) 88%, rgba(255,255,255,1) 99%, rgba(247,247,247,1) 99%, rgba(246,242,242,1) 100%);
+    /* background: linear-gradient(184deg, rgba(255,255,255,1) 0%, rgba(241,237,237,1) 0%, rgba(254,254,254,1) 88%, rgba(255,255,255,1) 99%, rgba(247,247,247,1) 99%, rgba(246,242,242,1) 100%); */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#f6f2f2",GradientType=1); 
+ 
+}
+strong{
+    padding: 0 5px;
+}
+
+aside{
+    height: 100%;
+    width: 200px; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0; 
+    left: 0;
+    background-color: var(--blue-dark); 
+    overflow-x: hidden; 
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 1px 0px 1px rgba(0,0,0,0.3);
+}
+
+aside h1{
+    width: 50px;
+    align-self: left;
+}
+
+aside nav a {
+    margin: 40px 8px;
+    padding: 15px 32px;
+    background-color: #FAFAFA;
+    font-size: 14px;
+    color: var(--blue-dark); ;
+    display: block;
+    text-align: center;
+  }
+
+aside nav a:hover:not(.active){
+    filter: brightness(70%);
+}  
+
+aside nav a.active{
+    background-color: #E31151;
+    color: #FAFAFA;
+}  
+
+.avatar{
+    height:50px;
+    position: fixed;
+    top:20px;
+    right:20px;
+    z-index: 80;
+    cursor: pointer;
+}
+
+.main{
+    margin-left: 230px;
+    padding-bottom: 100px;
+}
+
+.logo{
+    text-align: center;
+
+}
+
+.main h2{
+    margin: 18px 0px;
+    color: var(--blue-light);
+    position: absolute;
+    left: 250px;
+}
+
+.avatar{
+    height:50px;
+    position: absolute;
+    top:20px;
+    right:20px;
+    z-index: 80;
+    cursor: pointer;
+}
+
+.badge{
+    position: absolute;
+    top:10px;
+    right:20px;
+    z-index: 80;
+    cursor: pointer;
+}
+
+.badge:hover{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+  }
+
+  .version{
+    font-size: 12px;
+    color: white;
+    position: fixed;
+    bottom: 5px;
+}
+
+#pesquisa{
+    display: flexbox;   
+    margin-top: 40px;
+    box-sizing: border-box;
+}
+#pesquisa > input {
+    border-radius: 24px; 
+    border: 1px solid #dfe1e5; 
+    padding: 8px 30px;
+    outline: none;
+    font-family: montserrat;
+    font-size: auto;
+    text-align: center;
+}
+  
+#pesquisa{
+    position: relative;
+    bottom: 50px;
+    right: 20px;
+}
+    
+/** Fim da Barra de Pesquisa**/
+
+.card {
+    display:grid;
+    padding: 30px;
+    width: 275px;
+    height: 250px;
+    box-shadow: 0 0 10px 0px #d3d3d3;
+    cursor: pointer;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    }
+    #Fotoperfil{
+        display: grid;
+        position: relative;
+        left: 50px;
+        bottom: 15px;
+    }
+  
+    .card{
+position: absolute;
+left: 550px;
+    }
+    .primeirolugar{
+        display: grid;
+        margin: 5px;
+        padding: 8px 30px;
+        border-radius: 25px;
+        border: 1px solid #d3d3d3;
+        height: 30px;
+    }
+    #foto1{
+        position: relative;
+        bottom: 240px;
+        right: 35px;
+    }
+    /** Fim do Card1 **/
+    .card2 {
+        display:grid;
+        padding: 30px;
+        width: 275px;
+        height: 250px;
+        box-shadow: 0 0 10px 0px #d3d3d3;
+        cursor: pointer;
+        border-radius: 10px;
+        justify-content: center;
+        align-items: center;
+        }
+        #Fotoperfil{
+            display: grid;
+            position: relative;
+            left: 50px;
+            bottom: 15px;
+        }
+       
+        .card2{
+    position: absolute;
+    left: 250px;
+        }
+        .segundolugar{
+            display: grid;
+            margin: 5px;
+            padding: 8px 30px;
+            border-radius: 25px;
+            border: 1px solid #d3d3d3;
+            height: 30px;
+        }
+        #foto2{
+            position: relative;
+            bottom: 230px;
+            right: 40px;
+        }
+    /** fim do car 2 **/
+    .card3 {
+        display:grid;
+        padding: 30px;
+        width: 275px;
+        height: 250px;
+        box-shadow: 0 0 10px 0px #d3d3d3;
+        cursor: pointer;
+        border-radius: 10px;
+        justify-content: center;
+        align-items: center;
+        }
+        #Fotoperfil{
+            display: grid;
+            position: relative;
+            left: 50px;
+            bottom: 15px;
+        }
+      
+        .card3{
+    position: absolute;
+    left: 850px;
+        }
+        .terceirolugar{
+            display: grid;
+            margin: 5px;
+            padding: 8px 30px;
+            border-radius: 25px;
+            border: 1px solid #d3d3d3;
+            height: 30px;
+        }
+        #foto3{
+            position: relative;
+            bottom: 230px;
+            right: 40px;
+        }
+/** Fim do car3 **/
+
+.tables{
+    margin-top: 280px;
+    font-size: 12px;
+    margin-left: 120px;
+}
+
+.tables h3{
+    margin-top: 50px;
+}
+
+.tags{
+    margin: 0px 10px;
+    padding: 0px 10px;
+    border-radius: 10px;
+    background-color: #E31151;
+    color: white;
+}
+
+hr{
+    color: black;
+}
+
+#data-table{
+    width: 65%;
+    border-spacing: 0 0.5rem;
+    color: #747373;
+
+}
+
+.evaluate, .evaluated{
+    color: var(--blue-dark);
+}
+
+table th{
+    background-color: white;
+    color: #747373;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    text-align: left;
+}
+
+table td{
+    background-color: #EAEAEA;
+    padding: 1rem 2rem;
+}
+
+td img{
+    cursor: pointer;
+}
+
+table thead tr th:first-child,
+table tbody tr td:first-child{
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+table thead tr th:last-child,
+table tbody tr td:last-child{
+    border-radius: 0 0.25rem 0.25rem 0 ;
+}
+
+#trofeu{
+    margin-left: 200px;
+    margin-top: 50px;
+    background-color: rgb(255,255,255);
+}
+
+footer {
+	display: flexbox;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: 0;
+	padding: 10px;
+	width: 100%;
+	background-color: var(--dark);
+}
+
+footer > p {
+	font-size: 12px;
+	text-align: center;
+}
+
+footer > p > a {
+	color: #000000;
+}
+/**Fim do Footer**/
