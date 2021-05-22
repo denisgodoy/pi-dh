@@ -1,0 +1,152 @@
+.container-main {
+	margin: 50px 30px 0 30px;
+}
+
+.image-join {
+	display: none;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.main-text {
+	font-family: 'Sarabun', sans-serif;
+	margin-top: 5px;
+	font-size: 14px;
+}
+
+.main-text-link {
+	font-family: 'Sarabun', sans-serif;
+	font-weight: 700;
+	text-decoration: none;
+	color: #000;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	margin-top: 25px;
+}
+
+.name-box {
+	display: flex;
+	flex-direction: column;
+}
+
+.styled-input {
+	margin-top: 10px;
+	padding: 5px 5px;
+	font-size: 14px;
+	border: solid 0.5px var(--grey);
+	color: #000;
+	border-radius: 10px;
+}
+
+.agree {
+	margin-top: 15px;
+	padding: 0 10px;
+	font-size: 13px;
+	display: flex;
+	align-items: center;
+}
+
+.agree > label {
+	font-family: 'Sarabun', sans-serif;
+	margin-left: 5px;
+}
+
+.agree > label > a {
+	font-family: 'Sarabun', sans-serif;
+	font-weight: 700;
+	text-decoration: none;
+	color: #000;
+	font-size: 13px;
+}
+
+.submit-button {
+	background-color: var(--magenta-dark);
+	border-radius: 10px;
+	border: 0.5px solid var(--magenta-dark);
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 5px 0;
+	margin-top: 20px;
+}
+
+.submit-button:hover {
+	background: var(--white);
+	color: var(--magenta-dark);
+	text-decoration: none;
+}
+
+.submit-button:active {
+	position: relative;
+	top: 1px;
+}
+
+@media (min-width: 1024px) {
+	main {
+		display: flex;
+		height: calc(100vh - 130px);
+		justify-content: space-around;
+		z-index: -10;
+		align-items: center;
+	}
+
+	.image-join {
+		display: block;
+		width: 50%;
+		z-index: -1;
+		align-self: stretch;
+	}
+
+	.container-main {
+		height: 100%;
+		width: 50%;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		background: rgb(255, 255, 255);
+		background: -moz-linear-gradient(
+			184deg,
+			rgba(255, 255, 255, 1) 0%,
+			rgba(241, 237, 237, 1) 0%,
+			rgba(254, 254, 254, 1) 88%,
+			rgba(255, 255, 255, 1) 99%,
+			rgba(247, 247, 247, 1) 99%,
+			rgba(246, 242, 242, 1) 100%
+		);
+		background: -webkit-linear-gradient(
+			184deg,
+			rgba(255, 255, 255, 1) 0%,
+			rgba(241, 237, 237, 1) 0%,
+			rgba(254, 254, 254, 1) 88%,
+			rgba(255, 255, 255, 1) 99%,
+			rgba(247, 247, 247, 1) 99%,
+			rgba(246, 242, 242, 1) 100%
+		);
+	}
+
+	.main-box {
+		border: solid 1px #ccc;
+		padding: 6% 8%;
+		background-color: #ffffff;
+		align-self: center;
+		width: 65%;
+	}
+
+	.name-box {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.input-box {
+		width: 49%;
+	}
+}
