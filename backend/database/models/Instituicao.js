@@ -1,29 +1,29 @@
-module.exports = (sequelize, DataTypes) => sequelize.define("Docente", 
+module.exports = (sequelize, DataTypes) => sequelize.define("Instituicao", 
     {
-        idDocente: {
+        idInstituicao: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-        nome: {
+        razaoSocial: {
             type: DataTypes.STRING(100),
             allowNull: false
         },
-        email: {
-            type: DataTypes.STRING(50),
+        nomeFantasia: {
+            type: DataTypes.STRING(100),
             allowNull: false
         },
-        senha: {
-            type: DataTypes.STRING(15),
+        cnpj: {
+            type: DataTypes.INTEGER(18),
             allowNull: false
         },
-        avatar: {
-            type: DataTypes.STRING(250),
+        dominio: {
+            type: DataTypes.STRING(45),
             allowNull: false
         }
     },
     {
-        tableName: 'DOCENTE',
+        tableName: 'INSTITUICAO',
         timestamps: false,
     }
 );
