@@ -1,0 +1,33 @@
+main {
+    background-image: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    background-color: var(--blue-dark);
+    color: white;
+    padding: 20px;
+}
+
+main > h2, p {
+    padding: 10px;
+}
+
+main > button {
+    background-color: var(--magenta-dark);
+    border: none;
+    border-radius: 15px;
+    height: 45px;
+    width: 250px;
+    padding: 10px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 2px 3px 0px var(--magenta-light);
+    margin-top: 10px;
+}
+
+main > button:hover {
+    background-color: var(--magenta-light);
+}
