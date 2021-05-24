@@ -5,8 +5,12 @@ const HomeController = {
         return res.send('homepage');
     },
     form: async (req, res) => {
-        await HomeService.form();
-        return res.send('sucesso')
+        const { nome, email, mensagem } = req.body;
+        await HomeService.form(nome, email, mensagem);
+        return res.redirect('/sucesso');
+    },
+    redirect: (req, res) => {
+        return res.send('contato recebido')
     }
 }
 

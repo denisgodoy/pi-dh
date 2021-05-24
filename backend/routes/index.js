@@ -5,6 +5,6 @@ const controller = require('../controllers/HomeController');
 
 router.get('/', controller.index);
 router.post('/', controller.form);
-router.get('/sucesso', controller.form);
+router.get('/sucesso', controller.redirect);
 
 module.exports = router;
