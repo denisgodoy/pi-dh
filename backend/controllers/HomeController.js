@@ -1,16 +1,18 @@
-const HomeService = require('../services/HomeService');
+const SendMailService = require('../services/SendMailService');
 
 const HomeController = {
     index: (req, res) => {
-        return res.send('homepage');
+        return res.render('landing-page');
     },
-    form: async (req, res) => {
+    sendMail: (req, res) => {
         const { nome, email, mensagem } = req.body;
-        await HomeService.form(nome, email, mensagem);
-        return res.redirect('/sucesso');
-    },
-    redirect: (req, res) => {
-        return res.send('contato recebido')
+
+        let assunto = 'Nova mensagem recebida do site';
+        let para = process.env.EMAIL;
+        let corpo = 'Nova mensagem recebida de: ' + nome + ' <' + email + '>' + '\n' + mensagem;
+
+        SendMailService.sendMail(assunto, para, corpo);
+        return res.render('success');
     }
 }
 
