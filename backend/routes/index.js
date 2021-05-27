@@ -6,7 +6,6 @@ const controller = require('../controllers/HomeController');
 const contatoValidator = require('../middlewares/ContatoValidator');
 
 router.get('/', controller.index);
-router.post('/', contatoValidator, controller.form);
-router.get('/sucesso', controller.redirect);
+router.post('/', contatoValidator, controller.sendMail);
 
 module.exports = router;
