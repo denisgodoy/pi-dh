@@ -4,7 +4,8 @@ function contatoValidator(req, res, next) {
     const schema = yup.object().shape({
         nome: yup.string().required(),
         email: yup.string().required(),
-        mensagem: yup.string().required()
+        mensagem: yup.string().required(),
+        agree: yup.boolean().oneOf([true]).required()
     });
 
     if (!schema.isValidSync(req.body)) {
