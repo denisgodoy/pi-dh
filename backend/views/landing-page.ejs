@@ -4,22 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./stylesheets/landing-page/global.css" type="text/css">
-    <link rel="stylesheet" href="./stylesheets/landing-page/landing-page.css" type="text/css">
-    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/stylesheets/landing-page/global.css" type="text/css">
+    <link rel="stylesheet" href="/stylesheets/landing-page/landing-page.css" type="text/css">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
     <title>elevel - Eleve o aprendizado ao próximo nível.</title>
 </head>
 <body>
     <header>
-        <img class="logo" src="./images/landing-page/logo-600x300.png" alt="Logotipo elevel">
-        <nav>
-            <a href="#sobre">Sobre</a>
-            <a href="#funcionalidades">Funcionalidades</a>
-            <a href="#preços-planos">Preços e Planos</a>
-            <button class="button-menu" type="button">Cadastre-se</button>
-            <button class="button-menu" type="button">Login</button>
-        </nav>
-        <button class="responsive-menu" type="button">Menu</button>
+        <%- include('./partials/header.ejs') %>
     </header>
     <main>
         <div class="main-content" id="sobre">
@@ -31,17 +23,17 @@
     <section class="section-slider" id="funcionalidades">
         <div class="slider-container">
             <div class="item" id="item-1">
-                <img src="./images/landing-page/ranking-icon.svg" alt="Ícone de uma medalha simbolizando o ranking.">
+                <img src="/images/landing-page/ranking-icon.svg" alt="Ícone de uma medalha simbolizando o ranking.">
                 <p><strong>Ranking</strong></p>
                 <p>Atividades entregues geram pontos para o aluno.</p>
             </div>
             <div class="item" id="item-2">
-                <img src="./images/landing-page/chat-icon.svg" alt="Ícone de dois balões de conversa simbolizando o chat entre alunos.">
+                <img src="/images/landing-page/chat-icon.svg" alt="Ícone de dois balões de conversa simbolizando o chat entre alunos.">
                 <p><strong>Chat da turma</strong></p>
                 <p>Bate-papo em tempo real entre os alunos.</p>
             </div>
             <div class="item" id="item-3">
-                <img src="./images/landing-page/engage-icon.svg" alt="Ícone de 3 pessoas com balões de conversa simbolizando a interação entre alunos.">
+                <img src="/images/landing-page/engage-icon.svg" alt="Ícone de 3 pessoas com balões de conversa simbolizando a interação entre alunos.">
                 <p><strong>Engajamento</strong></p>
                 <p>Alunos engajados ao longo de todo o curso.</p>
             </div>
@@ -56,7 +48,7 @@
             <div class="price-container">
                 <div class="plan-div">
                     <p>Plano <br><strong>Gratuito</strong></p>
-                    <img src="./images/landing-page/plan-symbol-free.svg" alt="Ícone de um círculo com uma estrela representando o plano gratuito.">
+                    <img src="/images/landing-page/plan-symbol-free.svg" alt="Ícone de um círculo com uma estrela representando o plano gratuito.">
                 </div>
                 <ul>
                     <li>✓ Até 2 turmas por professor.</li>
@@ -70,7 +62,7 @@
             <div class="price-container">
                 <div class="plan-div">
                     <p>Plano <br><strong>Premium</strong></p>
-                    <img src="./images/landing-page/plan-symbol-premium.svg" alt="Ícone de um círculo com um diamente representando o plano premium.">
+                    <img src="/images/landing-page/plan-symbol-premium.svg" alt="Ícone de um círculo com um diamente representando o plano premium.">
                 </div>
                 <ul>
                     <li>✓ Turmas ilimitadas por professor.</li>
@@ -87,9 +79,7 @@
         </div>
     </section>
     <footer>
-        <p>© 2021 <strong>Projeto Integrador</strong>. Todos os direitos reservados.</p>
-        <a href="#">Política de Privacidade</a>
-        <a href="#">Termos de Uso</a>
+        <%- include('./partials/footer.ejs') %>
     </footer>
 </body>
 </html>

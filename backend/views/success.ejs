@@ -4,23 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./stylesheets/landing-page/global.css" type="text/css">
-    <link rel="stylesheet" href="./stylesheets/landing-page/landing-page.css" type="text/css">
-    <link rel="stylesheet" href="./stylesheets/landing-page/success.css" type="text/css">
-    <link rel="shortcut icon" href="../../frontend/assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/stylesheets/landing-page/global.css" type="text/css">
+    <link rel="stylesheet" href="/stylesheets/landing-page/landing-page.css" type="text/css">
+    <link rel="stylesheet" href="/stylesheets/landing-page/success.css" type="text/css">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
     <title>elevel - Eleve o aprendizado ao próximo nível.</title>
 </head>
 <body>
     <header>
-        <img class="logo" src="./images/landing-page/logo-600x300.png" alt="Logotipo elevel">
-        <nav>
-            <a href="#sobre">Sobre</a>
-            <a href="#funcionalidades">Funcionalidades</a>
-            <a href="#preços-planos">Preços e Planos</a>
-            <button class="button-menu" type="button">Cadastre-se</button>
-            <button class="button-menu" type="button">Login</button>
-        </nav>
-        <button class="responsive-menu" type="button">Menu</button>
+        <%- include('./partials/header.ejs') %>
     </header>
     <main>
         <h2>Agradecemos seu contato.</h2>
@@ -28,9 +20,7 @@
         <button>Continuar navegando</button>
     </main>
     <footer>
-        <p>© 2021 <strong>Projeto Integrador</strong>. Todos os direitos reservados.</p>
-        <a href="#">Política de Privacidade</a>
-        <a href="#">Termos de Uso</a>
+        <%- include('./partials/footer.ejs') %>
     </footer>
 </body>
 </html>
