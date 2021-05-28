@@ -15,7 +15,7 @@ ol, ul {
 	list-style: none;
 }
 
-p, table, a, text-area, input, li  {
+p, table, a, textarea, input, li  {
     font-family: 'Montserrat', sans-serif;
 }
 

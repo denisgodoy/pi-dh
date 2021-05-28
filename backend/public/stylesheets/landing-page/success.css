@@ -10,7 +10,7 @@ main {
     padding: 20px;
 }
 
-main > h2, p {
+main > h2, main > p {
     padding: 10px;
 }
 
