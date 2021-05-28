@@ -7,11 +7,13 @@ const HomeController = {
     sendMail: (req, res) => {
         const { nome, email, mensagem } = req.body;
 
-        let assunto = 'Nova mensagem recebida do site';
-        let para = process.env.EMAIL;
-        let corpo = 'Nova mensagem recebida de: ' + nome + ' <' + email + '>' + '\n' + mensagem;
+        let mailData = {
+            assunto: 'Nova mensagem recebida do site',
+            para: process.env.EMAIL,
+            corpo: 'Nova mensagem recebida de: ' + nome + ' <' + email + '>' + '\n' + mensagem
+        }
 
-        SendMailService.sendMail(assunto, para, corpo);
+        SendMailService.sendMail(mailData);
         return res.render('success');
     }
 }

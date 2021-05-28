@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 const SendMailService = {
-    sendMail: (assunto, para, corpo) => {
+    sendMail: (mailData) => {
         
         let transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
@@ -15,9 +15,9 @@ const SendMailService = {
     
         let mailOptions = {
             from: 'Elevel' + ' <' + process.env.EMAIL + '>', 
-            to: para,
-            subject: assunto,
-            text: corpo
+            to: mailData.para,
+            subject: mailData.assunto,
+            text: mailData.corpo
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
