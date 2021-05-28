@@ -11,7 +11,7 @@ const UserController = {
 		senha = bcryptjs.hashSync(senha, 8);
 
 		const user = await UserService.createUser(nome, sobrenome, email, senha, tipoUser);
-		return res.json(nome);
+		return res.render('sign-up-sucess');
 	},
 };
 
