@@ -4,6 +4,9 @@ const HomeController = {
     index: (req, res) => {
         return res.render('landing-page');
     },
+    contactUs: (req, res) => {
+        return res.render('contact-us');
+    },
     sendMail: (req, res) => {
         const { name, email, message } = req.body;
 

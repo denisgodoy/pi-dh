@@ -3,9 +3,10 @@ const router = express.Router();
 
 const controller = require('../controllers/HomeController');
 
-const contactFormValidator = require('../middlewares/ContactFormValidator');
+const validator = require('../middlewares/ContactFormValidator');
 
 router.get('/', controller.index);
-router.post('/contato', contactFormValidator, controller.sendMail);
+router.get('/contato', controller.contactUs);
+router.post('/contato/sucesso', validator, controller.sendMail);
 
 module.exports = router;
