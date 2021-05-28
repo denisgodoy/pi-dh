@@ -35,29 +35,29 @@
 
 					<form class="form" method="POST" action="/sign-up">
 						<div class="name-box">
-							<input class="styled-input input-box" type="text" name="name" id="name" placeholder="Nome" />
+							<input class="styled-input input-box" type="text" name="nome" id="nome" placeholder="Nome" />
 
-							<input class="styled-input input-box" type="text" name="lastName" id="last-name" placeholder="Sobrenome" />
+							<input class="styled-input input-box" type="text" name="sobrenome" id="sobrenome" placeholder="Sobrenome" />
 						</div>
 						<input class="styled-input" type="email" name="email" id="email" placeholder="E-mail" />
 
-						<input class="styled-input" type="password" name="password" id="password" placeholder="Crie uma senha" />
+						<input class="styled-input" type="password" name="senha" id="senha" placeholder="Crie uma senha" />
 
 						<input
 							class="styled-input"
 							type="password"
-							name="passwordConfirmation"
-							id="password-confirmation"
+							name="confirmacaoSenha"
+							id="confirmacaoSenha"
 							placeholder="Confirme sua senha"
 						/>
 						<span>
 							<p>Eu sou:</p>
-							<input type="radio" name="userType" value="aluno" id="aluno" checked /> <label for="aluno">Aluno</label>
-							<input type="radio" name="userType" value="professor" id="professor" /> <label for="professor">Professor</label>
+							<input type="radio" name="tipoUser" value="aluno" id="aluno" checked /> <label for="aluno">Aluno</label>
+							<input type="radio" name="tipoUser" value="professor" id="professor" /> <label for="professor">Professor</label>
 						</span>
 
 						<div class="agree">
-							<input type="checkbox" name="agree" id="agree" data-val="true" value="true" />
+							<input type="checkbox" name="termos" id="termos" data-val="true" and value="true" />
 							<label for="agree">Eu li e concordo com os <a href="#">Termos de Uso</a></label>
 						</div>
 						<button class="submit-button" type="submit">Continuar</button>

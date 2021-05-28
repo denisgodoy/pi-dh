@@ -4,9 +4,10 @@ const UserController = {
 	showSignUpPage: (req, res) => {
 		return res.render('sign-up');
 	},
-	createUser: (req, res) => {
-		const { name, lastName, email, password, userType } = req.body;
-		return res.json(name);
+	createUser: async (req, res) => {
+		const { nome, sobrenome, email, senha, tipoUser } = req.body;
+		const user = await UserService.createUser(nome, sobrenome, email, senha, tipoUser);
+		return res.json(nome);
 	},
 };
 

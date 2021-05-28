@@ -25,15 +25,15 @@ module.exports = (sequelize, DataTypes) =>
 			},
 			avatar: {
 				type: DataTypes.STRING(250),
-				allowNull: false,
+				defaultValue: 'image',
 			},
-			userType: {
+			tipoUser: {
 				type: DataTypes.STRING(10),
 				allowNull: false,
 			},
 		},
 		{
-			tableName: 'USER',
+			tableName: 'user',
 			timestamps: false,
 		}
 	);

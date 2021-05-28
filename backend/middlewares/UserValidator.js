@@ -2,13 +2,13 @@ const yup = require('yup');
 
 function userValidator(req, res, next) {
 	const schema = yup.object().shape({
-		name: yup.string().required('Este campo é obrigatório'),
-		lastName: yup.string().required('Este campo é obrigatório'),
+		nome: yup.string().required('Este campo é obrigatório'),
+		sobrenome: yup.string().required('Este campo é obrigatório'),
 		email: yup.string().email('Insira um endereço de e-mail válido').required('Este campo é obrigatório'),
-		password: yup.string().required('Este campo é obrigatório'),
-		passwordConfirmation: Yup.string().oneOf([Yup.ref('senha'), null], 'As senhas devem ser iguais'),
-		userType: yup.string().required('Este campo é obrigatório'),
-		agree: yup.boolean().oneOf([true]).required('Este campo é obrigatório'),
+		senha: yup.string().required('Este campo é obrigatório'),
+		confirmacaoSenha: yup.string().oneOf([yup.ref('senha'), null], 'As senhas devem ser iguais'),
+		tipoUser: yup.string().required('Este campo é obrigatório'),
+		termos: yup.boolean().oneOf([true]).required('Este campo é obrigatório'),
 	});
 
 	if (!schema.isValidSync(req.body)) {
