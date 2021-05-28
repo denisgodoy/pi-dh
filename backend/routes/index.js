@@ -3,9 +3,9 @@ const router = express.Router();
 
 const controller = require('../controllers/HomeController');
 
-const contatoValidator = require('../middlewares/ContatoValidator');
+const contactFormValidator = require('../middlewares/ContactFormValidator');
 
 router.get('/', controller.index);
-router.post('/contato', contatoValidator, controller.sendMail);
+router.post('/contato', contactFormValidator, controller.sendMail);
 
 module.exports = router;

@@ -15,9 +15,9 @@ const SendMailService = {
     
         let mailOptions = {
             from: 'Elevel' + ' <' + process.env.EMAIL + '>', 
-            to: mailData.para,
-            subject: mailData.assunto,
-            text: mailData.corpo
+            to: mailData.recipient,
+            subject: mailData.topic,
+            text: mailData.body
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
