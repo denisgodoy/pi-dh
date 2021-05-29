@@ -16,6 +16,9 @@ const UserController = {
 		const user = await UserService.createUser(nome, sobrenome, email, senha, tipoUser);
 		return res.render('sign-up-sucess');
 	},
+	signInUser: async (req, res) => {
+		let { email, senha } = req.body;
+	},
 };
 
 module.exports = UserController;
