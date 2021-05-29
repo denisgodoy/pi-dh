@@ -18,7 +18,17 @@ const UserController = {
 	},
 	signInUser: async (req, res) => {
 		let { email, senha } = req.body;
+		const user = await UserService.signInUser(email);
+
+		if (user == undefined) {
+			return res.status(400).send('E-mail não encontrado');
+		}
+
+		if (bcryptjs.compareSync(senha, user.senha)) {
+			res.send('Seja bem vindo!');
+		} else {
+			res.send('Senha inválida');
+		}
 	},
 };
-
 module.exports = UserController;

@@ -11,6 +11,14 @@ const UserService = {
 		});
 		return newUser;
 	},
+	signInUser: async (email) => {
+		const user = await database.User.findOne({
+			where: {
+				email: email,
+			},
+		});
+		return user;
+	},
 };
 
 module.exports = UserService;
