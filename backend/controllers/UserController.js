@@ -5,6 +5,9 @@ const UserController = {
 	showSignUpPage: (req, res) => {
 		return res.render('sign-up');
 	},
+	showSignInPage: (req, res) => {
+		return res.render('sign-in');
+	},
 	createUser: async (req, res) => {
 		let { nome, sobrenome, email, senha, tipoUser } = req.body;
 
