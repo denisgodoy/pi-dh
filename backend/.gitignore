@@ -1,3 +1,3 @@
 node_modules
 .sequelizerc
-/database/config/config.js
+.env
