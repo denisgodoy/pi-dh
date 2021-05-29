@@ -1,5 +1,4 @@
 const UserService = require('../services/UserService');
-const bcryptjs = require('bcryptjs');
 
 const UserController = {
 	showSignUpPage: (req, res) => {
@@ -11,23 +10,26 @@ const UserController = {
 	createUser: async (req, res) => {
 		let { nome, sobrenome, email, senha, tipoUser } = req.body;
 
-		senha = bcryptjs.hashSync(senha, 8);
+		senha = await UserService.hashPassword(senha);
 
 		const user = await UserService.createUser(nome, sobrenome, email, senha, tipoUser);
-		return res.render('sign-up-sucess');
+
+		return res.render('sign-up-success');
 	},
 	signInUser: async (req, res) => {
 		let { email, senha } = req.body;
-		const user = await UserService.signInUser(email);
+		const validaUser = await UserService.signInUser(email);
 
-		if (user == undefined) {
-			return res.status(400).send('E-mail não encontrado');
+		if (validaUser == undefined) {
+			return res.send('E-mail não encontrado');
 		}
 
-		if (bcryptjs.compareSync(senha, user.senha)) {
-			res.send('Seja bem vindo!');
+		const validaSenha = await UserService.checkPassword(senha, validaUser);
+
+		if (!validaSenha) {
+			return res.send('Senha inválida.');
 		} else {
-			res.send('Senha inválida');
+			return res.send('Seja bem-vindo!');
 		}
 	},
 };
