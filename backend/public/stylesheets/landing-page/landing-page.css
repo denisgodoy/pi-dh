@@ -238,7 +238,7 @@ main {
 .buy-button-div > button:hover {
     background-color: var(--magenta-light);
 }
-
+/* 
 .contact-us {
     height: 70vh;
     background: var(--blue-dark);
@@ -314,7 +314,7 @@ main {
     width: 90%;
     height: 85%;
     border-radius: 10px;
-}
+} */
 
 footer {
     width: 100%;
@@ -338,9 +338,9 @@ footer {
         max-width: 75%;
     }
 
-    .main-box {
+    /* .main-box {
         max-width: 75%;
-    }
+    } */
 }
 
 @media(min-width: 600px) {
@@ -357,9 +357,9 @@ footer {
         max-width: 60%;
     }
 
-    .main-box {
+    /* .main-box {
         max-width: 60%;
-    }
+    } */
 }
 
 @media(min-width: 800px) {
