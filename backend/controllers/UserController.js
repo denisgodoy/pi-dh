@@ -13,7 +13,7 @@ const UserController = {
 		senha = await UserService.hashPassword(senha);
 
 		const user = await UserService.createUser(nome, sobrenome, email, senha, tipoUser);
-
+		console.log(user);
 		return res.render('sign-up-success');
 	},
 	signInUser: async (req, res) => {

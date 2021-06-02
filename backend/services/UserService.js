@@ -25,7 +25,7 @@ const UserService = {
 		return hashPassword;
 	},
 	checkPassword: async (senha, validaUser) => {
-		const validaSenha = await bcryptjs.compareSync(senha, validaUser.senha);
+		const validaSenha = await bcryptjs.compare(senha, validaUser.senha);
 		return validaSenha;
 	},
 };
