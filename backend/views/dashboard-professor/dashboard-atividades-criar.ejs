@@ -5,82 +5,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/stylesheets/dashboard-professor/global.css">
-    <link rel="stylesheet" href="assets/stylesheets/dashboard-professor/dashboard.css">
-    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <link rel="stylesheet" href="/stylesheets/dashboard-professor/global.css">
+    <link rel="stylesheet" href="/stylesheets/dashboard-professor/dashboard.css">
+    <link rel="shortcut icon" href="/images/favicon.png" />
 
     <script defer src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"></script>
     <script defer src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"></script>
     <script defer src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"></script>
 
     <title>elevel - Dashboard Professor</title>
-
+    
 </head>
 
 <body>
-    <a href="#menu-toggle" class="burger btn-default menu-toggle"><i class="fas fa-bars"></i></a>
-    <aside>
-        <a href="#menu-toggle" class="close btn-default menu-toggle"><i class="fas fa-times"></i></a>
-        <div class="logo"><img src="assets/images/logo.png" alt="logo" height="25px"></div>
-        <nav>
-            <a href="dashboard-alunos.html" class="active"><i class="fas fa-graduation-cap"></i> Alunos</a>
-            <a href="dashboard-atividades.html"><i class="fas fa-file-alt"></i> Atividades</a>
-            <a href="dashboard-avaliacoes.html"><i class="fas fa-spell-check"></i> Avaliações</a>
-            <a href="dashboard-turmas.html"><i class="fas fa-users"></i> Turmas</a>
-            <a href="#"><i class="fas fa-chart-bar"></i> Ranking</a>
-        </nav>
-        <footer>
-            <p>© 2021 <strong>Nome da empresa.</strong></p>
-            <p>Todos os direitos reservados.</p>
-        </footer>
-    </aside>
 
+    <%- include('partials/aside'); %>
 
     <div class="main">
 
         <div class="notification">
-            <img src="assets/images/avatar.png" class="avatar" alt="avatar">
+            <img src="/images/avatar.png" class="avatar" alt="avatar">
             <span class="badge">🔔</span>
         </div>
 
-        <h2>Dashboard / Alunos</h2>
+        <h2>Dashboard / Atividades / Cadastrar</h2>
         <hr />
-        <div class="billboard">
+        <div class="billboard" style="display:none;">
             <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
             <h3>Olá, Gustavo! 😀</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia repudiandae nemo, enim assumenda
                 placeat rem optio earum quod a, voluptates illo laudantium perferendis ea doloremque explicabo quam
                 reiciendis totam!</p>
         </div>
-        <div class="tables">
-            <table id="data-table">
-                <thead>
-                    <tr>
-                        <th>Matrícula</th>
-                        <th>Nome</th>
-                        <th>Curso</th>
-                        <th>Turma</th>
-                        <th>Pontos</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>0593DV</td>
-                        <td>Leandro Dias</td>
-                        <td>Fullstack Web 2021</td>
-                        <td>252159546</td>
-                        <td>33.756</td>
-                        <td><a href=""><i class="fas fa-edit btn-gray"></i></a>
-                            <a href=""><i class="fas fa-trash btn-red"></i></a>
-                        </td>
-                    </tr>
 
-                </tbody>
-            </table>
-        </div>
+            <form action="">
+                <div>
+                    <span>
+                        <input type="text" placeholder="Titulo da Atividade">
+                    </span>
+                    <span>
+                        <input type="number" step="100" min="500" placeholder="Pontuação">
+                    </span>
+                    <span>
+                        <input placeholder="Data da Entrega" class="textbox-n" type="text" onfocus="(this.type='date')">
+                    </span>
 
-        <a href="#" class="btn new">Novo Aluno</a>
+                    <span>
+                        <textarea name="textarea" placeholder="Descrição da atividade" rows="10" cols="77" style="max-width: 95%;"></textarea>
+                    </span>
+                </div>
+
+                <div>
+                    <input type="text" placeholder="Tags Separadas por ;">
+                </div>
+                <a href="#" class="btn new" style="margin-left:0px !important;">Cadastrar Atividade</a>
+            </form>
+
+
 
         <div id="live-chat">
 
