@@ -29,11 +29,15 @@ const UserService = {
     return validaSenha;
   },
   getUserList: async () => {
-    const results = await database.User.findAll();
+    const results = await database.User.findAll({
+      attributes: ['idUser', 'nome', 'sobrenome', 'email', 'tipoUser'],
+    });
     return results;
   },
   getById: async (idUser) => {
-    return await database.User.findByPk(idUser);
+    return await database.User.findByPk(idUser, {
+      attributes: ['idUser', 'nome', 'sobrenome', 'email', 'tipoUser'],
+    });
   },
   updateUser: async (idUser, nome, sobrenome, email, senha, tipoUser) => {
     const updatedUser = await database.User.update(
