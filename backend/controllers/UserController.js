@@ -23,22 +23,25 @@ const UserController = {
     return res.render('sign-up-success');
   },
   signInUser: async (req, res) => {
-    let { email, senha } = req.body;
-    const validaUser = await UserService.signInUser(email);
+    const { email, senha } = req.body;
+    const user = await UserService.findUser(email);
 
-    if (validaUser == undefined) {
-      return res.send('E-mail não encontrado');
+    if (user == undefined) {
+      res.status(401).json({ err: 'E-mail não encontrado' });
     }
 
-    const validaSenha = await UserService.checkPassword(senha, validaUser);
+    const verifyPassword = await UserService.checkPassword(senha, user);
 
-    if (!validaSenha) {
-      return res.send('Senha inválida.');
+    if (!verifyPassword) {
+      res.status(401).json({ err: 'Senha inválida' });
     }
 
-    req.session.user = validaUser;
+    const userToken = await UserService.createWebToken(user);
 
-    switch (validaUser.tipoUser) {
+    console.log(userToken);
+    req.session.userToken = userToken;
+
+    switch (user.tipoUser) {
       case 'professor':
         return res.redirect('/professor');
       case 'aluno':

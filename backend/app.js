@@ -13,9 +13,10 @@ const alunoRouter = require('./routes/alunoRouter');
 
 var app = express();
 
+// session setup
 app.use(
   session({
-    secret: 'ba6bdc92acfea5eb91a71946d272c649',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   })
@@ -31,6 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// routes setup
 app.use('/', indexRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/sign-in', signInRouter);
