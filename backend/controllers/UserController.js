@@ -39,6 +39,7 @@ const UserController = {
     const userToken = await UserService.createWebToken(user);
 
     console.log(userToken);
+
     req.session.userToken = userToken;
 
     switch (user.tipoUser) {

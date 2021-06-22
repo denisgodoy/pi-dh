@@ -1,6 +1,6 @@
 const AlunoController = {
   showDashboardAluno: (req, res) => {
-    return res.send(req.session.user);
+    return res.send('Seja bem vindo, aluno!');
   },
 };
 
