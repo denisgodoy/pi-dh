@@ -1,8 +1,18 @@
+const jwt = require('jsonwebtoken');
+const jwtSecret = process.env.JWT_SECRET;
+
 function auth(req, res, next) {
-  if (typeof req.session.userToken != 'undefined') {
-    return next();
-  } else {
-    return res.send('Você precisa estar logado para ter acesso');
+  const token = req.session.userToken;
+  if (!token) {
+    console.log('No token');
+    return res.redirect('/sign-in');
+  }
+  try {
+    const decoded = jwt.verify(token, jwtSecret);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    return res.redirect('/sign-in');
   }
 }
 

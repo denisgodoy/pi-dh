@@ -27,18 +27,16 @@ const UserController = {
     const user = await UserService.findUser(email);
 
     if (user == undefined) {
-      res.status(401).json({ err: 'E-mail não encontrado' });
+      return res.status(401).json({ err: 'E-mail não encontrado' });
     }
 
     const verifyPassword = await UserService.checkPassword(senha, user);
 
     if (!verifyPassword) {
-      res.status(401).json({ err: 'Senha inválida' });
+      return res.status(401).json({ err: 'Senha inválida' });
     }
 
     const userToken = await UserService.createWebToken(user);
-
-    console.log(userToken);
 
     req.session.userToken = userToken;
 
