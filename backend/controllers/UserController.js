@@ -23,6 +23,7 @@ const UserController = {
     return res.render('sign-up-success');
   },
   signInUser: async (req, res) => {
+
     const { email, senha } = req.body;
     const user = await UserService.findUser(email);
 
@@ -46,6 +47,42 @@ const UserController = {
       case 'aluno':
         return res.redirect('/aluno');
     }
+  },
+  indexAll: async (req, res) => {
+    const list = await UserService.getUserList();
+    return res.json(list);
+  },
+  indexById: async (req, res) => {
+    const { idUser } = req.params;
+    const user = await UserService.getById(idUser);
+
+    if (!user) {
+      return res.status(404).json({ error: `User ${idUser} not found` });
+    }
+    return res.json(user);
+  },
+
+  updateUser: async (req, res) => {
+    let { idUser } = req.params;
+    let { nome, sobrenome, email, senha, tipoUser } = req.body;
+
+    senha = await UserService.hashPassword(senha);
+
+    let updatedUser = await UserService.updateUser(
+      idUser,
+      nome,
+      sobrenome,
+      email,
+      senha,
+      tipoUser
+    );
+
+    res.json(updatedUser);
+  },
+  destroy: async (req, res) => {
+    let { idUser } = req.params;
+    let destroyedUser = await UserService.destroy(idUser);
+    return res.json(destroyedUser);
   },
 };
 module.exports = UserController;

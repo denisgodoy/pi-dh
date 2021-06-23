@@ -9,8 +9,10 @@ const session = require('express-session');
 var indexRouter = require('./routes/index');
 const signUpRouter = require('./routes/signUpRouter');
 const signInRouter = require('./routes/signInRouter');
+
 const alunoRouter = require('./routes/alunoRouter');
 const professorRouter = require('./routes/professorRouter');
+const userRouter = require('./routes/user');
 
 var app = express();
 
@@ -35,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routes setup
 app.use('/', indexRouter);
+app.use('/', userRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/sign-in', signInRouter);
 app.use('/aluno', alunoRouter);
