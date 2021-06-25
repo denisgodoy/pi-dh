@@ -5,8 +5,13 @@ module.exports = (sequelize, DataTypes) => sequelize.define("Turma",
             autoIncrement: true,
             primaryKey: true
         },
+        titulo: {
+            type: DataTypes.STRING(50),
+            allowNull: false
+        },
         codigo: {
-            type: DataTypes.STRING(45),
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             allowNull: false
         }
     },

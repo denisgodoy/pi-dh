@@ -14,15 +14,15 @@ module.exports = (sequelize, DataTypes) => sequelize.define("Atividade",
             allowNull: false
         },
         pontuacao: {
-            type: DataTypes.INTEGER(),
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         dataInicio: {
-            type: DataTypes.DATE(),
+            type: DataTypes.DATEONLY,
             allowNull: false
         },
         dataTermino: {
-            type: DataTypes.DATE(),
+            type: DataTypes.DATEONLY,
             allowNull: false
         }
     },
