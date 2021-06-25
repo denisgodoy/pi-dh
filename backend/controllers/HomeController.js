@@ -7,7 +7,7 @@ const HomeController = {
     contactUs: (req, res) => {
         return res.render('contact-us');
     },
-    sendMail: (req, res) => {
+    sendMail: async (req, res) => {
         const { name, email, message } = req.body;
 
         let mailData = {
@@ -16,7 +16,7 @@ const HomeController = {
             body: 'Nova mensagem recebida de: ' + name + ' <' + email + '>' + '\n' + message
         }
 
-        SendMailService.sendMail(mailData);
+        await SendMailService.sendMail(mailData);
         return res.render('success');
     }
 }
