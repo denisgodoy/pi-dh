@@ -7,18 +7,35 @@ const AlunoAtividadeController = {
     getAllAtividades: async (req, res) => {
         const { idUser } = req.params;
         const atividades = await AlunoAtividadeService.getAtividades(idUser);
-        return res.send(atividades);
+        return res.json(atividades);
     },
     getAtividadeById: async (req, res) => {
-        const { idAtividade } = req.body;
+        const { idAtividade } = req.params;
         const atividadeById = await AlunoAtividadeService.getAtividadeById(idAtividade);
-        return res.send(atividadeById);
+        return res.json(atividadeById);
     },
     sendAtividade: async (req, res) => {    
-        const { idAtividade } = req.params;
-        const { textArea } = req.body;
-        await AlunoAtividadeService.sendAtividade(idAtividade, textArea);
-        return res.send('Atividade enviada com sucesso.');
+        const { id } = req.params;
+        const { textField } = req.body;
+        const atividade = await AlunoAtividadeService.sendAtividade(id, textField);
+        return res.json(atividade);
+    },
+    create: async (req, res) => {
+        const { titulo, descricao, pontuacao, dataInicio, dataTermino } = req.body;
+        
+        const newAtividade = await AlunoAtividadeService.createAtividade(
+          titulo,
+          descricao,
+          pontuacao,
+          dataInicio,
+          dataTermino
+        );
+        return res.json(newAtividade);
+    },
+    createAssociation: async (req, res) => {
+        const { idUser, idAtividade } = req.params;
+        const atividade = await AlunoAtividadeService.createAssociation(idUser, idAtividade);
+        return res.json(atividade);
     }
 };
 
