@@ -8,10 +8,6 @@ module.exports = (sequelize, DataTypes) => {
             },
             textField: {
                 type: DataTypes.STRING(1000),
-                allowNull: false
-            },
-            status: {
-                type: DataTypes.BOOLEAN,
                 allowNull: true
             }
         },
@@ -20,14 +16,12 @@ module.exports = (sequelize, DataTypes) => {
             timestamps: false,
         }
     );
-    // RELACIONAR O PROFESSOR PARA QUE ELE POSSA RECEBER E CORRIGIR A ATIVIDADE??
+
     AtividadeAluno.associate = function(models) {
         AtividadeAluno.belongsTo(models.User, {
-            as: 'aluno',
             foreignKey: 'idUser'
         });
         AtividadeAluno.belongsTo(models.Atividade, {
-            as: 'atividade',
             foreignKey: 'idAtividade'
         });
     }
