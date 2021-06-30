@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="assets/styles/global.css">
     <link rel="stylesheet" href="assets/styles/dashboard.css">
     <link rel="shortcut icon" href="assets/img/favicon.png" />
+
     <link rel="stylesheet" href="css/estiloa2.css">
+
 
     <script defer src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"></script>
     <script defer src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"></script>
@@ -22,11 +24,10 @@
     <aside>
         <div class="logo"><img src="assets/img/logo.png" alt="logo" height="25px"></div>
         <nav>
-           <!-- <a href="dashboard-alunos.html" class="active"><i class="fas fa-graduation-cap"></i> Alunos</a>-->
-
-            <a href="dashboard-atividades.html" class="active"><i class="fas fa-file-alt"></i> Atividades</a>
+            
+            <a href="dashboard-atividades.html"><i class="fas fa-file-alt"></i> Atividades</a>
             <a href="dashboard-avaliacoes.html"><i class="fas fa-spell-check"></i> Avaliações</a>
-            <a href="#"><i class="fas fa-users"></i> Turmas</a>
+            <a href="dashboard-turmas.html" class="active"><i class="fas fa-file-alt"></i>Cursos</a>
             <a href="#"><i class="fas fa-chart-bar"></i> Ranking</a>
         </nav>
         <footer>
@@ -36,53 +37,48 @@
     </aside>
 
     <div class="main">
-        <h2>Dashboard / Atividades</h2>
+        <h2>Dashboard / Cursos</h2>
         <hr />
         <div class="billboard">
             <h3>Olá, Gustavo! 😀</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia repudiandae nemo, enim assumenda
-                placeat rem optio earum quod a, voluptates illo laudantium perferendis ea doloremque explicabo quam
-                reiciendis totam!</p>
+            <p>Aqui voce pode conferir todos cursos/turmas que participa!</p>
         </div>
         <div class="tables">
             <table id="data-table">
                 <thead>
                     <tr>
-                        <th>Diciplina</th>
-                        <th>Atividades</th>
+                        <th>Curso</th>
+                        <th>Área</th>
                         <th>Tag</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Página Legendaries</td>
-                        <td>Criar página com EJS</td>
+                        <td>java Script</td>
+                        <td>Conceitos de JS/Node</td>
                         <td><span class="tags">JS</span><span class="tags">HTML</span></td>
-                        <td class="evaluate">21/04/2021 ✅</td>
+                        <td class="evaluate">Inscrito Ativo</td>
                     </tr>
                     <tr>
+                        <td>css</td>
+                        <td>Dashboards</td>
+                        <td><span class="tags">CSS</span><span class="tags">CSS</span></td>
+                         <td class="evaluate">Inscrito Ativo</td>
+                    </tr>
+                    <tr>
+                        <td>Git Hub</td>
                         <td>Upload de Arquivos</td>
-                        <td>Utilizar Multer para upload de arquivos</td>
-                        <td><span class="tags">Node</span><span class="tags">Multer</span></td>
-                        <td class="evaluated">21/04/2021 ✅</td>
-                    </tr>
-                    <tr>
-                        <td>Sequelize</td>
-                        <td>Manipulando Dados</td>
-                        <td><span class="tags">Dados</span><span class="tags">Sequelize</span></td>
-                        <td class="evaluated">Pendente</td>
+                        <td><span class="tags">GIT</span></td>
+                         <td class="evaluate">Inscrito Ativo</td>
                     </tr>
                 </tbody>
             </table>
-            <a href="" class="btn">Enviar Nova Atividade</a>
         </div>
         <div class="notification">
             <img src="assets/img/avatar.png" class="avatar" alt="avatar">
             <span class="badge">🔔</span>
         </div>
-
-        <!--Chat-->
 
         <div id="live-chat">
 
