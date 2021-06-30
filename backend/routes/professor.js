@@ -3,12 +3,14 @@ const router = express.Router();
 
 const controller = require('../controllers/ProfessorController');
 
-router.get('/', controller.index);
-router.get('/alunos', controller.aluno);
-router.get('/atividades', controller.atividade);
-router.get('/atividades/criar', controller.criarAtividade);
-router.get('/turmas', controller.turma);
-router.get('/ranking', controller.ranking);
+// CRUD Turmas
+router.get('/turmas', controller.indexAllTurmas);
+router.post('/turmas', controller.createTurma);
+router.put('/turmas/:id', controller.updateTurma);
+router.delete('turmas/:id', controller.destroy);
 
+// Get Detalhado (fazer mais tarde)
+// router.get('/turmas/:id', controller.indexTurmaById);
+// router.get('/turmas/:id/:attribute', controller.indexByIdAndAttribute);
 
 module.exports = router;

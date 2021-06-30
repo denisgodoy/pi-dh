@@ -1,8 +1,9 @@
-module.exports = (sequelize, DataTypes) => {
-	const User = sequelize.define(
-		'User',
-		{
-			idUser: {
+'use strict';
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('user', {
+      idUser: {
 				type: DataTypes.INTEGER,
 				autoIncrement: true,
 				primaryKey: true,
@@ -31,19 +32,10 @@ module.exports = (sequelize, DataTypes) => {
 				type: DataTypes.STRING(10),
 				allowNull: false,
 			},
-		},
-		{
-			tableName: 'user',
-			timestamps: false,
-		}
-	);
+    });
+  },
 
-	User.associate = function(models) {
-		User.belongsToMany(models.Atividade, {
-			through: models.AtividadeAluno,
-			foreignKey: 'idUser',
-			otherKey: 'idAtividade'				
-		});
-	}
-	return User;
+  down: async (queryInterface, Sequelize) => {
+     await queryInterface.dropTable('user');
+  }
 };

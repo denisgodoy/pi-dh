@@ -1,9 +1,15 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const userController = require('../controllers/UserController');
+const userValidator = require('../middlewares/UserValidator');
+const userApiValidator = require('../middlewares/UserApiValidator');
+/* API REST */
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/users', userController.indexAll);
+router.post('/users', userValidator, userController.createUser);
+router.put('/users/:idUser', userApiValidator, userController.updateUser);
+router.delete('/users/:idUser', userController.destroy);
+
+router.get('/users/:idUser', userController.indexById);
 
 module.exports = router;

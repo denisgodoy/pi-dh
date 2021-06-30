@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => sequelize.define("Aluno",
         }
     },
     {
-        tableName: 'ALUNO',
+        tableName: 'aluno',
         timestamps: false,
     }
 );
