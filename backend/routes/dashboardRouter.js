@@ -9,6 +9,7 @@ const userController = require('../controllers/UserController');
 router.post('/criar', alunoTurmaController.create);
 router.get('/criar/:codigo/qrcode', alunoTurmaController.createQrCode);
 
+
 //ROTAS ALUNO
 router.get('/aluno', userController.indexByType, dashboardController.indexAluno);
 router.get('/aluno/turmas', alunoTurmaController.getAllTurmas);

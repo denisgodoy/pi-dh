@@ -1,32 +1,27 @@
 const ProfessorService = require('../services/ProfessorService');
-const database = require('../database/models');
 
 const ProfessorController = {
-    
-    // index: (req, res) => {
-    //     return res.render('dashboard-professor/dashboard-avaliacoes');
-    // },
- 
-    indexAllTurmas: (req, res)=>{
-        return res.render('dashboard-professor/dashboard-turmas');
-    },
-    createTurma: async (req, res) => {
-        const { 
-            codigo, 
-            titulo, 
-        } = req.body;
+    indexProfessorById: async (req, res) => {
+        const { id } = req.params;
+        const professor = await ProfessorService.getProfessorById(id);
 
-        const turma = await ProfessorService.createTurma(
-            codigo, 
-            titulo, 
-        );
-        
-        return res.json(turma);
+        if (!professor) {
+            return res.status(404).json({error: `Professor ${id} não encontrado`})
+        }
+
+        return res.json(professor);
     },
-    updateTurma: (req, res)=>{
+    indexAllProfessores: async (req, res)=>{
+        const listaProfessores = await ProfessorService.getProfessorLista();
+        return res.json(listaProfessores);
+    },
+    createProfessor: async (req, res) => {
+        return res.json("Ainda não implementado");
+    },
+    updateProfessor: (req, res)=>{
         return res.send('Ainda não implementado');
     },
-    destroy: (req, res)=>{
+    destroyProfessor: (req, res)=>{
         return res.send('Ainda não implementado');
     }
 

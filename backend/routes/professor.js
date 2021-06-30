@@ -4,10 +4,8 @@ const router = express.Router();
 const controller = require('../controllers/ProfessorController');
 
 // CRUD Turmas
-router.get('/turmas', controller.indexAllTurmas);
-router.post('/turmas', controller.createTurma);
-router.put('/turmas/:id', controller.updateTurma);
-router.delete('turmas/:id', controller.destroy);
+router.get('/', controller.indexAllProfessores);
+router.get('/:id', controller.indexProfessorById);
 
 // Get Detalhado (fazer mais tarde)
 // router.get('/turmas/:id', controller.indexTurmaById);

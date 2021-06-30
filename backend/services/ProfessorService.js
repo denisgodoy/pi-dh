@@ -1,12 +1,18 @@
 const database = require("../database/models");
 
 const ProfessorService = {
-  createTurma: async (codigo, titulo) => {
-    const newTurma = await database.Turma.create({
-      codigo,
-      titulo,
-    });
-    return newTurma;
+  getProfessorLista: async()=>{
+    const resultados = await database.User.findAll({
+      where: {
+        tipoUser: "professor"
+      }
+    }); 
+    return resultados;
+  },
+  getProfessorById: async (id) => {
+    return await database.User.findByPk(id, {where: {
+      tipoUser: "professor"
+    }});
   },
 };
 
