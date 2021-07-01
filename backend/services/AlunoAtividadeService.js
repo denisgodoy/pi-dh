@@ -43,6 +43,10 @@ const AlunoAtividadeService = {
       idAtividade
     });
     return associate;
+  },
+  destroy: async (id) => {
+    const destroyed = await database.AtividadeAluno.destroy({ where: { id } });
+    return destroyed;
   }
 };
 
