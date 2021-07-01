@@ -12,7 +12,7 @@ const AlunoTurmaController = {
     },
     getTurmaById: async (req, res) => {
         const { idTurma } = req.params;
-        const turmaById = await AlunoTurmaService.getAtividadeById(idTurma);
+        const turmaById = await AlunoTurmaService.getTurmaById(idTurma);
         return res.send(turmaById);
     },
     create: async (req, res) => {
@@ -26,6 +26,16 @@ const AlunoTurmaController = {
         const qrcode = QrCodeService.qrCode(data);
         res.type('svg');
         return qrcode.pipe(res);
+    },
+    createAssociation: async (req, res) => {
+        const { idUser, idTurma } = req.params;
+        const association = await AlunoTurmaService.createAssociation(idUser, idTurma);
+        return res.json(association)
+    },
+    destroyAssociation: (req, res) => {
+        const { id } = req.params;
+        const destroyed = await AlunoTurmaService.destroy(id);
+        return res.json(destroyed);
     }
 };
 

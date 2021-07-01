@@ -36,6 +36,11 @@ const AlunoAtividadeController = {
         const { idUser, idAtividade } = req.params;
         const atividade = await AlunoAtividadeService.createAssociation(idUser, idAtividade);
         return res.json(atividade);
+    },
+    destroyAssociation: async (req, res) => {
+        const { id } = req.params;
+        const destroyed = await AlunoAtividadeService.destroy(id);
+        return res.json(destroyed);
     }
 };
 
