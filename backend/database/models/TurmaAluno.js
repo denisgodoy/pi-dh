@@ -6,7 +6,6 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             primaryKey: true
         }
-        // CRIAR COLUNA QUE VAI RECEBER OS PONTOS DO ALUNO DA TURMA??
     },
     {
         tableName: 'TURMA_ALUNO',
@@ -16,11 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     
     TurmaAluno.associate = function(models) {
         TurmaAluno.belongsTo(models.User, {
-            as: 'aluno',
             foreignKey: 'idUser'
         });
         TurmaAluno.belongsTo(models.Turma, {
-            as: 'turma',
             foreignKey: 'idTurma'
         });
     }
