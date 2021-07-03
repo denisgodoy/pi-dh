@@ -2,10 +2,10 @@ const UserService = require('../services/UserService');
 
 const UserController = {
   showSignUpPage: (req, res) => {
-    return res.render('sign-up');
+    return res.render('user/sign-up');
   },
   showSignInPage: (req, res) => {
-    return res.render('sign-in');
+    return res.render('user/sign-in');
   },
   createUser: async (req, res) => {
     let { nome, sobrenome, email, senha, tipoUser } = req.body;
@@ -20,10 +20,9 @@ const UserController = {
       tipoUser
     );
     console.log(user);
-    return res.render('sign-up-success');
+    return res.render('user/sign-up-success');
   },
   signInUser: async (req, res) => {
-
     const { email, senha } = req.body;
     const user = await UserService.findUser(email);
 
