@@ -7,4 +7,8 @@ router.get('/', Auth, ProfessorValidator, (req, res) => {
   res.send('Seja bem vindo, professor!');
 });
 
+router.get('/profile', (req, res) => {
+  res.render('user/profile');
+});
+
 module.exports = router;

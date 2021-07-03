@@ -12,7 +12,7 @@ const signInRouter = require('./routes/signInRouter');
 
 const alunoRouter = require('./routes/alunoRouter');
 const professorRouter = require('./routes/professorRouter');
-const userRouter = require('./routes/user');
+const userRouter = require('./routes/userRouter');
 
 var app = express();
 
