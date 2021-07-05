@@ -78,12 +78,12 @@ const UserController = {
     const { idUser } = req.params;
     const userType = await UserService.getById(idUser);
 
-    switch (userType.tipoUser) {
-      case "aluno":
-        return res.redirect('/dashboard/aluno');
-      case "professor":
-        return res.redirect('/dashboard/professor');
+    if (userType.tipoUser == "aluno") {
+        return res.redirect(`/dashboard/aluno/:${idUser}`);
+    } else {
+        return res.send(`/dashboard/professor/:${idUser}`);
     };
   }
 };
+
 module.exports = UserController;
