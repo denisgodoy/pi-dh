@@ -1,52 +1,32 @@
 const database = require('../database/models/index');
 
 const AlunoAtividadeService = {
-  getAtividades: async (idUser) => {
-    const atividade = await database.AtividadeAluno.findAll({
-      where: { idUser },
-      include: [{ model: database.Atividade }]
-    });
-    return atividade;
+  getSentActivity: async (id) => {
+    const activityByPk = await database.AtividadeAluno.findByPk(id, {
+      attributes: ['textField']
+    })
+    return activityByPk; 
   },
-  getAtividadeById: async (idAtividade) => {
-    const atividadeId = await database.AtividadeAluno.findOne({
-      where: { idAtividade },
-      include: [{ model: database.Atividade }]
-    });
-    return atividadeId;
-  },
-  sendAtividade: async (id, textField) => {
+  sendActivity: async (id, textField) => {
     await database.AtividadeAluno.update({
       textField
     },
     {
       where: { id },
     });
-    const sendAtividade = await database.AtividadeAluno.findByPk(id, {
-      attributes: ['textField']
-    })
-    return sendAtividade;
-  },
-  createAtividade: async (titulo, descricao, pontuacao, dataInicio, dataTermino) => {
-    const newAtividade = await database.Atividade.create({
-      titulo,
-      descricao,
-      pontuacao,
-      dataInicio,
-      dataTermino
-    });
-    return newAtividade;
+    const sentActivity = await this.getSentActivity(id);
+    return sentActivity;
   },
   createAssociation: async (idUser, idAtividade) => {
-    const associate = await database.AtividadeAluno.create({
+    const associateToActivity = await database.AtividadeAluno.create({
       idUser,
       idAtividade
     });
-    return associate;
+    return associateToActivity;
   },
-  destroy: async (id) => {
-    const destroyed = await database.AtividadeAluno.destroy({ where: { id } });
-    return destroyed;
+  destroyAssociation: async (id) => {
+    const destroyedAssociation = await database.AtividadeAluno.destroy({ where: { id } });
+    return destroyedAssociation;
   }
 };
 
