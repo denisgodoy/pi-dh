@@ -27,15 +27,15 @@ h1 {
 .form {
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
-.form > span > p,
-.form > span > label {
+.user-type > p,
+.user-type > label {
   font-size: 13px;
   display: inline-block;
   margin-right: 10px;
-  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .name-box {
@@ -44,7 +44,7 @@ h1 {
 }
 
 .styled-input {
-  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 5px 5px;
   font-size: 13px;
   border: solid 0.5px var(--grey);
@@ -53,7 +53,6 @@ h1 {
 }
 
 .agree {
-  margin-top: 15px;
   padding: 0 10px;
   font-size: 13px;
   display: flex;
@@ -84,7 +83,7 @@ h1 {
   font-size: 14px;
   font-weight: 700;
   padding: 5px 0;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .submit-button:hover {
@@ -96,6 +95,19 @@ h1 {
 .submit-button:active {
   position: relative;
   top: 1px;
+}
+
+form > span,
+form > div > span {
+  display: none;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 11px;
+  color: var(--magenta-dark);
+  padding-left: 5px;
+}
+
+.show {
+  display: block;
 }
 
 @media (min-width: 1024px) {

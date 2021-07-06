@@ -66,6 +66,8 @@ function onClickSubmit(event) {
   if (!onValidatePassword(event) || !onValidateUser(event)) {
     return;
   }
+
+  //Fazer a chamada do backend
   console.log('backend');
 }
 

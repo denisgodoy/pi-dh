@@ -28,6 +28,7 @@
 
           <form class="form" method="POST" action="/sign-up" autocomplete="off">
             <div class="name-box">
+              <span id="nameError"></span>
               <input
                 class="styled-input input-box"
                 type="text"
@@ -35,7 +36,7 @@
                 id="nome"
                 placeholder="Nome"
               />
-
+              <span id="lastNameError"></span>
               <input
                 class="styled-input input-box"
                 type="text"
@@ -44,6 +45,7 @@
                 placeholder="Sobrenome"
               />
             </div>
+            <span id="emailError"></span>
             <input
               class="styled-input"
               type="email"
@@ -51,7 +53,7 @@
               id="email"
               placeholder="E-mail"
             />
-
+            <span id="passwordError"></span>
             <input
               class="styled-input"
               type="password"
@@ -59,7 +61,7 @@
               id="senha"
               placeholder="Crie uma senha"
             />
-
+            <span id="passwordConfirmationError"></span>
             <input
               class="styled-input"
               type="password"
@@ -67,7 +69,7 @@
               id="confirmacaoSenha"
               placeholder="Confirme sua senha"
             />
-            <span>
+            <div class="user-type">
               <p>Eu sou:</p>
               <input
                 type="radio"
@@ -84,15 +86,14 @@
                 id="professor"
               />
               <label for="professor">Professor</label>
-            </span>
-
+            </div>
+            <span id="agreeError"></span>
             <div class="agree">
               <input
                 type="checkbox"
                 name="termos"
                 id="termos"
                 data-val="true"
-                and
                 value="true"
               />
               <label for="agree"
@@ -118,5 +119,6 @@
         <a href="#">Política de Privacidade</a> · <a href="#">Termos de Uso</a>
       </p>
     </footer>
+    <script src="js/user/sign-up.js"></script>
   </body>
 </html>
