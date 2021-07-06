@@ -1,6 +1,5 @@
 function onValidateUserNameInput() {
-  const inputNameUser = document.getElementById('nome');
-  const userName = inputNameUser.value;
+  const userName = document.getElementById('nome').value;
   const userNameError = document.getElementById('nameError');
   userNameError.classList.remove('show');
   const errors = [];
@@ -37,8 +36,7 @@ function onValidateUserNameInput() {
 }
 
 function onValidateUserLastNameInput() {
-  const inputLastNameUser = document.getElementById('sobrenome');
-  const userLastName = inputLastNameUser.value;
+  const userLastName = document.getElementById('sobrenome').value;
   const userLastNameError = document.getElementById('lastNameError');
   userLastNameError.classList.remove('show');
   const errors = [];
@@ -75,8 +73,7 @@ function onValidateUserLastNameInput() {
 }
 
 function onValidateUserEmailInput() {
-  const inputUserEmail = document.getElementById('email');
-  const userEmail = inputUserEmail.value;
+  const userEmail = document.getElementById('email').value;
   const userEmailError = document.getElementById('emailError');
   userEmailError.classList.remove('show');
   const errors = [];
@@ -113,71 +110,70 @@ function onValidateUserEmailInput() {
 }
 
 function onValidatePasswordInput() {
-  const inputUserPassword = document.getElementById('senha');
-  const userPassword = inputUserPassword.value;
+  const userPassword = document.getElementById('senha').value;
   const userPasswordError = document.getElementById('passwordError');
 
   userPasswordError.classList.remove('show');
-  const passwordErrors = [];
+  const errors = [];
 
   if (!userPassword) {
-    passwordErrors.push({
+    errors.push({
       element: userPasswordError,
       message: 'Insira a sua senha',
     });
   }
 
   if (userPassword.length <= 4) {
-    passwordErrors.push({
+    errors.push({
       element: userPasswordError,
       message: 'A senha deve possuir pelo menos 5 caracteres',
     });
   }
 
-  if (passwordErrors.length > 0) {
-    passwordErrors.forEach((error) => {
+  if (errors.length > 0) {
+    errors.forEach((error) => {
       error.element.innerText = error.message;
       error.element.classList.add('show');
     });
   }
+  return errors.length == 0;
 }
 
 function onValidatePasswordConfirmationInput() {
-  const inputUserPassword = document.getElementById('senha');
-  const userPassword = inputUserPassword.value;
-  const inputUserPasswordConfirmation =
-    document.getElementById('confirmacaoSenha');
-  const userPasswordConfirmation = inputUserPasswordConfirmation.value;
+  const userPassword = document.getElementById('senha').value;
+  const userPasswordConfirmation =
+    document.getElementById('confirmacaoSenha').value;
   const userPasswordConfirmationError = document.getElementById(
     'passwordConfirmationError'
   );
 
   userPasswordConfirmationError.classList.remove('show');
-  const passwordConfirmationErrors = [];
+  const errors = [];
 
   if (!userPasswordConfirmation) {
-    passwordConfirmationErrors.push({
+    errors.push({
       element: userPasswordConfirmationError,
       message: 'Confirme a sua senha',
     });
   }
 
   if (userPassword != userPasswordConfirmation) {
-    passwordConfirmationErrors.push({
+    errors.push({
       element: userPasswordConfirmationError,
       message: 'As senhas devem ser iguais',
     });
   }
 
-  if (passwordConfirmationErrors.length > 0) {
-    passwordConfirmationErrors.forEach((error) => {
+  if (errors.length > 0) {
+    errors.forEach((error) => {
       error.element.innerText = error.message;
       error.element.classList.add('show');
     });
   }
+  return errors.length == 0;
 }
 
-function onClickSubmit(event) {
+async function onSubmitSignUp(event) {
   event.preventDefault();
 
   const userAgreeInput = document.getElementById('termos');
@@ -210,14 +206,40 @@ function onClickSubmit(event) {
   ) {
     return;
   }
+  try {
+    const userName = document.getElementById('nome').value;
+    const userLastName = document.getElementById('sobrenome').value;
+    const userEmail = document.getElementById('email').value;
+    const userPassword = document.getElementById('senha').value;
+    const userType = document.querySelector(
+      'input[name="tipoUser"]:checked'
+    ).value;
+    const image = 'image';
 
-  //Fazer a chamada do backend
-  console.log('backend');
+    const response = await fetch('http://localhost:3000/users', {
+      method: 'POST',
+      body: JSON.stringify({
+        nome: userName,
+        sobrenome: userLastName,
+        email: userEmail,
+        senha: userPassword,
+        avatar: image,
+        termos: userAgree,
+        tipoUser: userType,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    window.location.href = '/sign-up/sucesso';
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 window.onload = function () {
   const form = document.querySelector('form');
-  form.addEventListener('submit', onClickSubmit);
+  form.addEventListener('submit', onSubmitSignUp);
 
   const userNameInput = document.getElementById('nome');
   userNameInput.addEventListener('blur', onValidateUserNameInput);
