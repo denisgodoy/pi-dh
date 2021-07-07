@@ -67,8 +67,8 @@ function onClickSubmit(event) {
     return;
   }
 
-  //Fazer a chamada do backend
-  console.log('backend');
+  try {
+  } catch (err) {}
 }
 
 window.onload = function () {

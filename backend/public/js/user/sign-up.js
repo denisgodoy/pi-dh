@@ -206,34 +206,38 @@ async function onSubmitSignUp(event) {
   ) {
     return;
   }
-  try {
-    const userName = document.getElementById('nome').value;
-    const userLastName = document.getElementById('sobrenome').value;
-    const userEmail = document.getElementById('email').value;
-    const userPassword = document.getElementById('senha').value;
-    const userType = document.querySelector(
-      'input[name="tipoUser"]:checked'
-    ).value;
-    const image = 'image';
+  const userName = document.getElementById('nome').value;
+  const userLastName = document.getElementById('sobrenome').value;
+  const userEmail = document.getElementById('email').value;
+  const userPassword = document.getElementById('senha').value;
+  const userType = document.querySelector(
+    'input[name="tipoUser"]:checked'
+  ).value;
+  const image = 'image';
 
-    const response = await fetch('http://localhost:3000/users', {
-      method: 'POST',
-      body: JSON.stringify({
-        nome: userName,
-        sobrenome: userLastName,
-        email: userEmail,
-        senha: userPassword,
-        avatar: image,
-        termos: userAgree,
-        tipoUser: userType,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  const response = await fetch('http://localhost:3000/users', {
+    method: 'POST',
+    body: JSON.stringify({
+      nome: userName,
+      sobrenome: userLastName,
+      email: userEmail,
+      senha: userPassword,
+      avatar: image,
+      termos: userAgree,
+      tipoUser: userType,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  if (response.status != 200) {
+    const data = await response.json();
+    console.log(data.err);
+    const signUpError = document.getElementById('signUpError');
+    signUpError.classList.add('show');
+    signUpError.innerText = data.err;
+  } else {
     window.location.href = '/sign-up/sucesso';
-  } catch (error) {
-    console.log(error);
   }
 }
 

@@ -27,25 +27,30 @@
           </p>
 
           <form class="form" method="POST" action="/sign-up" autocomplete="off">
+            <span id="signUpError" class="error"></span>
             <div class="name-box">
-              <span id="nameError"></span>
-              <input
-                class="styled-input input-box"
-                type="text"
-                name="nome"
-                id="nome"
-                placeholder="Nome"
-              />
-              <span id="lastNameError"></span>
-              <input
-                class="styled-input input-box"
-                type="text"
-                name="sobrenome"
-                id="sobrenome"
-                placeholder="Sobrenome"
-              />
+              <div class="group-box">
+                <span id="nameError" class="error"></span>
+                <input
+                  class="styled-input input-box"
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  placeholder="Nome"
+                />
+              </div>
+              <div class="group-box">
+                <span id="lastNameError" class="error"></span>
+                <input
+                  class="styled-input input-box"
+                  type="text"
+                  name="sobrenome"
+                  id="sobrenome"
+                  placeholder="Sobrenome"
+                />
+              </div>
             </div>
-            <span id="emailError"></span>
+            <span id="emailError" class="error"></span>
             <input
               class="styled-input"
               type="email"
@@ -53,7 +58,7 @@
               id="email"
               placeholder="E-mail"
             />
-            <span id="passwordError"></span>
+            <span id="passwordError" class="error"></span>
             <input
               class="styled-input"
               type="password"
@@ -61,7 +66,7 @@
               id="senha"
               placeholder="Crie uma senha"
             />
-            <span id="passwordConfirmationError"></span>
+            <span id="passwordConfirmationError" class="error"></span>
             <input
               class="styled-input"
               type="password"
@@ -87,7 +92,7 @@
               />
               <label for="professor">Professor</label>
             </div>
-            <span id="agreeError"></span>
+            <span id="agreeError" class="error"></span>
             <div class="agree">
               <input
                 type="checkbox"

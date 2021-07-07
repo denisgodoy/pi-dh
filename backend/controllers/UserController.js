@@ -13,6 +13,15 @@ const UserController = {
   createUser: async (req, res) => {
     let { nome, sobrenome, email, senha, tipoUser } = req.body;
 
+    const verifyUser = await UserService.findUser(email);
+    if (verifyUser) {
+      return res
+        .status(400)
+        .json({
+          err: 'Usuário já cadastrado. Insira outro endereço de e-mail',
+        });
+    }
+
     senha = await UserService.hashPassword(senha);
 
     const user = await UserService.createUser(
