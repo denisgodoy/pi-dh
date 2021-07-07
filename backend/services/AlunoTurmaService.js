@@ -2,8 +2,9 @@ const database = require('../database/models/index');
 
 const AlunoTurmaService = {
   getClasses: async (idUser) => {
-    const classes = await database.Turma.findAll({
-      where: { idUser }
+    const classes = await database.TurmaAluno.findAll({
+      where: { idUser },
+      include: [{ model: database.Turma }]
     });
     return classes;
   },
