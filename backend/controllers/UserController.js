@@ -38,14 +38,13 @@ const UserController = {
     }
 
     const userToken = await UserService.createWebToken(user);
-
     req.session.userToken = userToken;
 
     switch (user.tipoUser) {
       case 'professor':
-        return res.redirect('/professor');
+        return res.redirect(`/dashboard/professor/${user.idUser}`);
       case 'aluno':
-        return res.redirect('/aluno');
+        return res.redirect(`/dashboard/aluno/${user.idUser}`);
     }
   },
   indexAll: async (req, res) => {
@@ -83,16 +82,6 @@ const UserController = {
     let { idUser } = req.params;
     let destroyedUser = await UserService.destroy(idUser);
     return res.json(destroyedUser);
-  },
-  indexByType: async (req, res) => {
-    const { idUser } = req.params;
-    const userType = await UserService.getById(idUser);
-
-    if (userType.tipoUser == "aluno") {
-        return res.redirect(`/dashboard/aluno/:${idUser}`);
-    } else {
-        return res.send(`/dashboard/professor/:${idUser}`);
-    };
   }
 };
 

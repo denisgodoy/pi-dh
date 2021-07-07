@@ -6,12 +6,12 @@ const AlunoTurmaController = {
     },
     getAllClasses: async (req, res) => {
         const { idUser } = req.params;
-        const classes = await AlunoTurmaService.getTurmas(idUser);
+        const classes = await AlunoTurmaService.getClasses(idUser);
         return res.send(classes);
     },
     getClassById: async (req, res) => {
         const { idTurma } = req.params;
-        const classById = await AlunoTurmaService.getTurmaById(idTurma);
+        const classById = await AlunoTurmaService.getClassById(idTurma);
         return res.send(classById);
     },
     createAssociation: async (req, res) => {
