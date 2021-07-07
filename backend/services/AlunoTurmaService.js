@@ -4,7 +4,7 @@ const AlunoTurmaService = {
   getClasses: async (idUser) => {
     const classes = await database.TurmaAluno.findAll({
       where: { idUser },
-      include: [{ model: database.Turma }]
+      include: [{ model: database.Turma, attributes: ['titulo', 'codigo'] }]
     });
     return classes;
   },
