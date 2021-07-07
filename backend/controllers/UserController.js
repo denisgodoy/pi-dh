@@ -15,11 +15,9 @@ const UserController = {
 
     const verifyUser = await UserService.findUser(email);
     if (verifyUser) {
-      return res
-        .status(400)
-        .json({
-          err: 'Usuário já cadastrado. Insira outro endereço de e-mail',
-        });
+      return res.status(400).json({
+        err: 'Usuário já cadastrado. Insira outro endereço de e-mail',
+      });
     }
 
     senha = await UserService.hashPassword(senha);
@@ -39,25 +37,20 @@ const UserController = {
     const user = await UserService.findUser(email);
 
     if (user == undefined) {
-      return res.status(401).json({ err: 'E-mail não encontrado' });
+      return res.status(400).json({ err: 'E-mail não encontrado' });
     }
 
     const verifyPassword = await UserService.checkPassword(senha, user);
 
     if (!verifyPassword) {
-      return res.status(401).json({ err: 'Senha inválida' });
+      return res.status(400).json({ err: 'Senha inválida' });
     }
 
     const userToken = await UserService.createWebToken(user);
 
     req.session.userToken = userToken;
 
-    switch (user.tipoUser) {
-      case 'professor':
-        return res.redirect('/professor');
-      case 'aluno':
-        return res.redirect('/aluno');
-    }
+    return res.json(user);
   },
   indexAll: async (req, res) => {
     const list = await UserService.getUserList();

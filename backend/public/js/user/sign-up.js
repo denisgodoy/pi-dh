@@ -232,7 +232,6 @@ async function onSubmitSignUp(event) {
   });
   if (response.status != 200) {
     const data = await response.json();
-    console.log(data.err);
     const signUpError = document.getElementById('signUpError');
     signUpError.classList.add('show');
     signUpError.innerText = data.err;

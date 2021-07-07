@@ -1,6 +1,5 @@
 function onValidateUser() {
-  const inputUser = document.getElementById('email');
-  const user = inputUser.value;
+  const user = document.getElementById('email').value;
   const userError = document.getElementById('userError');
   userError.classList.remove('show');
   const errors = [];
@@ -37,10 +36,9 @@ function onValidateUser() {
 }
 
 function onValidatePassword() {
-  const inputPassword = document.getElementById('senha');
+  const password = document.getElementById('senha').value;
   const passwordError = document.getElementById('passwordError');
   passwordError.classList.remove('show');
-  const password = inputPassword.value;
   const errors = [];
 
   if (!password) {
@@ -60,15 +58,45 @@ function onValidatePassword() {
   return errors.length == 0;
 }
 
-function onClickSubmit(event) {
+async function onClickSubmit(event) {
   event.preventDefault();
 
   if (!onValidatePassword(event) || !onValidateUser(event)) {
     return;
   }
 
-  try {
-  } catch (err) {}
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('senha').value;
+
+  const response = await fetch('http://localhost:3000/sign-in', {
+    method: 'POST',
+    body: JSON.stringify({
+      email: email,
+      senha: password,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  console.log(response);
+
+  if (response.status != 200) {
+    const data = await response.json();
+    console.log(data.err);
+    const signInError = document.getElementById('signInError');
+    signInError.classList.add('show');
+    signInError.innerText = data.err;
+  } else {
+    const data = await response.json();
+    console.log(data);
+    switch (data.tipoUser) {
+      case 'professor':
+        window.location.href = '/professor';
+      case 'aluno':
+        window.location.href = '/aluno';
+    }
+  }
 }
 
 window.onload = function () {
