@@ -31,12 +31,10 @@
         </footer>
     </aside>
     <div class="main">
-
         <div class="notification">
             <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
             <span class="badge">🔔</span>
         </div>
-
         <h2>Dashboard / Área do Aluno</h2>
         <hr />
         <div class="billboard">
@@ -48,8 +46,7 @@
             <table id="data-table">
                 <thead>
                     <tr>
-                        <th>Matrícula</th>
-                        <th>Nome</th>
+                        <th>ID</th>
                         <th>Curso</th>
                         <th>Turma</th>
                         <th>Pontos</th>
@@ -57,17 +54,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                <% data.forEach(function(content){ %>
                     <tr>
-                        <td>0593DV</td>
-                        <td><%= student.nome %></td>
-                        <td><%= classes.titulo %></td>
-                        <td><%= classes.idTurma %></td>
+                        <td><%= content.id %></td>
+                        <td><%= content.Turma.titulo %></td>
+                        <td><%= content.Turma.codigo %></td>
                         <td>33.756</td>
                         <td><a href=""><i class="fas fa-edit btn-gray"></i></a>
                             <a href=""><i class="fas fa-trash btn-red"></i></a>
                         </td>
                     </tr>
-
+                <% }) %>
                 </tbody>
             </table>
         </div>
