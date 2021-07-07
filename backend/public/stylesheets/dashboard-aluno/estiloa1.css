@@ -157,6 +157,11 @@ table td {
     padding: 1rem 2rem;
 }
 
+table tbody tr:hover td {
+    background-color: #d8d6d6;
+    cursor: pointer;
+    color: var(--blue-dark);
+}
 
 td img {
     cursor: pointer;
