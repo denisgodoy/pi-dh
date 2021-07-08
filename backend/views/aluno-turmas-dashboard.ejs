@@ -8,20 +8,21 @@
     <link rel="shortcut icon" href="assets/img/favicon.png" />
     <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
     <link rel="stylesheet" href="/stylesheets/landing-page/contact-us.css">
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"></script>
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"></script>
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"></script>
+    <script defer src="/fa/brands.js"></script>
+    <script defer src="/fa/solid.js"></script>
+    <script defer src="/fa/fontawesome.js"></script>
     <title>elevel - Dashboard Aluno</title>
 </head>
 <body>
-        <%- include('./partials/aside-top.ejs') %>
+    <%- include('./partials/aside-top.ejs') %>
             <a href="/dashboard/aluno/10"><i class="fas fa-graduation-cap"></i> Aluno</a>
             <a href="/dashboard/aluno/10/turmas" class="active"><i class="fas fa-users"></i> Turmas</a>
-        <%- include('./partials/aside-bottom.ejs') %>
+    <%- include('./partials/aside-bottom.ejs') %>
     <div class="main">
         <h2>Dashboard / Turmas</h2>
         <hr />
         <div class="billboard">
+            <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
             <h3><%= student.nome %>,</h3>
             <p>Aqui você pode conferir e gerenciar todos cursos e turmas que participa! Selecione para visualizar todos os detalhes.</p>
         </div>
@@ -46,8 +47,8 @@
                         <td><%= row.Turma.codigo.slice(0,6) %></td>
                         <td>Ivens</td>
                         <td>33.756</td>
-                        <td><a href=""><i class="fas fa-edit btn-gray"></i></a>
-                            <a href=""><i class="fas fa-trash btn-red"></i></a>
+                        <td>
+                            <i class="fas fa-trash"></i>
                         </td>
                     </tr>
                 <% }) %>

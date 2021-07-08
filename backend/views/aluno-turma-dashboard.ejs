@@ -7,22 +7,23 @@
     <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="shortcut icon" href="assets/img/favicon.png" />
     <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"></script>
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"></script>
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"></script>
+    <script defer src="/fa/brands.js"></script>
+    <script defer src="/fa/solid.js"></script>
+    <script defer src="/fa/fontawesome.js"></script>
     <title>elevel - Dashboard Aluno</title>
 </head>
 <body>
-        <%- include('./partials/aside-top.ejs') %>
+    <%- include('./partials/aside-top.ejs') %>
             <a href="/dashboard/aluno/10"><i class="fas fa-graduation-cap"></i> Aluno</a>
             <a href="/dashboard/aluno/10/turmas" class="active"><i class="fas fa-users"></i> Turmas</a>
             <a href="dashboard-atividades.html"><i class="fas fa-file-alt"></i> Atividades</a>
             <a href="#"><i class="fas fa-chart-bar"></i> Ranking</a>
-        <%- include('./partials/aside-bottom.ejs') %>
+    <%- include('./partials/aside-bottom.ejs') %>
     <div class="main">
         <h2>Dashboard / Turmas / <%= data.titulo %></h2>
         <hr />
         <div class="billboard">
+            <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
             <h3><%= data.titulo %></h3>
             <p>Este é o seu curso de <%= data.titulo %>. Aqui você pode ver seus colegas de turma, ranking e atividades pendentes.</p>
         </div>
@@ -43,8 +44,8 @@
                         <td><%= data.titulo %></td>
                         <td><%= data.codigo.slice(0,6) %></td>
                         <td>33.756</td>
-                        <td><a href=""><i class="fas fa-edit btn-gray"></i></a>
-                            <a href=""><i class="fas fa-trash btn-red"></i></a>
+                        <td>
+                            <a href=""><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 </tbody>
