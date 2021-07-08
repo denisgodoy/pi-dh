@@ -2,33 +2,28 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" row="IE=edge">
-    <meta name="viewport" row="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/global.css">
-    <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
+    <link rel="shortcut icon" href="assets/img/favicon.png" />
     <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
+    <link rel="stylesheet" href="/stylesheets/landing-page/contact-us.css">
     <script defer src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"></script>
     <script defer src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"></script>
     <script defer src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"></script>
     <title>elevel - Dashboard Aluno</title>
 </head>
 <body>
-    <a href="#menu-toggle" class="burger btn-default menu-toggle"><i class="fas fa-bars"></i></a>
         <%- include('./partials/aside-top.ejs') %>
-            <a href="dashboard-alunos.html" class="active"><i class="fas fa-graduation-cap"></i> Aluno</a>
-            <a href="/dashboard/aluno/10/turmas"><i class="fas fa-users"></i> Turmas</a>
+            <a href="/dashboard/aluno/10"><i class="fas fa-graduation-cap"></i> Aluno</a>
+            <a href="/dashboard/aluno/10/turmas" class="active"><i class="fas fa-users"></i> Turmas</a>
         <%- include('./partials/aside-bottom.ejs') %>
     <div class="main">
-        <div class="notification">
-            <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
-            <span class="badge">🔔</span>
-        </div>
-        <h2>Dashboard / Área do Aluno</h2>
+        <h2>Dashboard / Turmas</h2>
         <hr />
         <div class="billboard">
-            <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
-            <h3>Olá, <%= student.nome %>! 😀</h3>
-            <p>Esta é a sua área de aluno no Dashboard Elevel. Aqui você pode encontrar as turmas das quais faz parte, gerenciar atividades pendentes e verificar quantos pontos você possui em comparação com outras pessoas da mesma turma.</p>
+            <h3><%= student.nome %>,</h3>
+            <p>Aqui você pode conferir e gerenciar todos cursos e turmas que participa! Selecione para visualizar todos os detalhes.</p>
         </div>
         <h4>Turmas que faço parte</h4>
         <div class="tables">
@@ -40,7 +35,7 @@
                         <th>Turma</th>
                         <th>Professor</th>
                         <th>Pontos</th>
-                        <th>Alunos</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,21 +46,26 @@
                         <td><%= row.Turma.codigo.slice(0,6) %></td>
                         <td>Ivens</td>
                         <td>33.756</td>
-                        <td>27</td>
+                        <td><a href=""><i class="fas fa-edit btn-gray"></i></a>
+                            <a href=""><i class="fas fa-trash btn-red"></i></a>
+                        </td>
                     </tr>
                 <% }) %>
                 </tbody>
             </table>
         </div>
-        <h4>Ações rápidas</h4>
+        <h4>Entrar em uma nova turma</h4>
         <div class="more-actions">
-            <a href="/participar/<%= student.idUser %>"><button>Entrar em uma nova turma</button></a>
-            <a href="dashboard-atividades.html"><button>Atividades pendentes</button></a>
-            <a href="dashboard-atividades.html"><button>Atividades entregues</button></a>
-            <a href="dashboard-atividades.html"><button>Editar meu perfil</button></a>
+            <form class="form" method="POST" action="/dashboard/aluno/<%= student.idUser %>/turmas">
+                <input class="styled-input" type="text" name="idTurma" placeholder="ID da turma" />
+                <button class="submit-button" type="submit">Participar</button>
+            </form>
+        </div>
+        <div class="notification">
+            <img src="assets/img/avatar.png" class="avatar" alt="avatar">
+            <span class="badge">🔔</span>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="assets/scritps/dashboard.js"></script>
 </body>
 </html>
