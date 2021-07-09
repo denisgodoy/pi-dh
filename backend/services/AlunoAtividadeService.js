@@ -1,6 +1,26 @@
 const database = require('../database/models/index');
 
 const AlunoAtividadeService = {
+  getSubscribed: async (idUser) => {
+    const subscribed = await database.AtividadeAluno.findAll({
+      where: { idUser },
+      include: [{ model: database.Atividade }]
+    });
+    return subscribed;
+  },
+  getActivities: async (idTurma) => {
+    const activities = await database.AtividadeTurma.findAll({
+      where: { idTurma },
+      include: [{ model: database.Atividade }]
+    });
+    return activities;
+  },
+  getActivityById: async (id) => {
+    const activityById = await database.AtividadeAluno.findByPk(id, {
+      include: [{ model: database.Atividade }]
+    });
+    return activityById;
+  },
   getSentActivity: async (id) => {
     const activityByPk = await database.AtividadeAluno.findByPk(id, {
       attributes: ['textField']
@@ -14,8 +34,6 @@ const AlunoAtividadeService = {
     {
       where: { id },
     });
-    const sentActivity = await this.getSentActivity(id);
-    return sentActivity;
   },
   createAssociation: async (idUser, idAtividade) => {
     const associateToActivity = await database.AtividadeAluno.create({
