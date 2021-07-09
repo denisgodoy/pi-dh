@@ -1,24 +1,45 @@
 const AlunoAtividadeService = require('../services/AlunoAtividadeService');
+const UserService = require('../services/UserService');
+const AlunoTurmaService = require('../services/AlunoTurmaService');
 
 const AlunoAtividadeController = {
     index: (req, res) => {
-        return res.render('atividades');
+        return res.render('aluno-atividades-dashboard');
     },
-    getAllAtividades: async (req, res) => {
-        const { idUser } = req.params;
-        const atividades = await AlunoAtividadeService.getAtividades(idUser);
-        return res.json(atividades);
+    getAllActivities: async (req, res) => {
+        const { idUser, idTurma } = req.params;
+        const data = await AlunoAtividadeService.getActivities(idTurma);
+        const subscribed = await AlunoAtividadeService.getSubscribed(idUser);
+        const student = await UserService.getById(idUser);
+        const classes = await AlunoTurmaService.getClassById(idTurma);
+
+        return res.render('aluno-atividades-dashboard', 
+        { 
+            data,
+            subscribed,
+            student,
+            classes
+        });
     },
-    getAtividadeById: async (req, res) => {
-        const { idAtividade } = req.params;
-        const atividadeById = await AlunoAtividadeService.getAtividadeById(idAtividade);
-        return res.json(atividadeById);
+    getActivityById: async (req, res) => {
+        const { id, idTurma, idUser } = req.params;
+        const data = await AlunoAtividadeService.getActivityById(id);
+        const student = await UserService.getById(idUser);
+        const classes = await AlunoTurmaService.getClassById(idTurma);
+
+        return res.render('aluno-atividade-dashboard', 
+        {
+            data,
+            student,
+            classes
+        });
     },
-    sendAtividade: async (req, res) => {    
-        const { id } = req.params;
+    sendActivity: async (req, res) => {    
+        const { id, idUser, idTurma } = req.params;
         const { textField } = req.body;
-        const atividade = await AlunoAtividadeService.sendAtividade(id, textField);
-        return res.json(atividade);
+        await AlunoAtividadeService.sendActivity(id, textField);
+        
+        return res.redirect(`/dashboard/aluno/${idUser}/turmas/${idTurma}/atividades`);
     },
     createAssociation: async (req, res) => {
         const { idUser, idAtividade } = req.params;
