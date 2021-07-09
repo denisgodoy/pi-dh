@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/global.css">
-    <link rel="shortcut icon" href="assets/img/favicon.png" />
+    <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
     <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
     <script defer src="/fa/brands.js"></script>
     <script defer src="/fa/solid.js"></script>
@@ -20,16 +20,14 @@
             <a href="#"><i class="fas fa-chart-bar"></i> Ranking</a>
     <%- include('./partials/aside-bottom.ejs') %>
     <div class="main">
-        <h2>Dashboard / Turmas /  / Atividades</h2>
+        <h2>Dashboard / Turmas / <%= classes.titulo %> / Atividades</h2>
         <hr />
         <div class="billboard">
             <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
-            <h3>Olá, Gustavo! 😀</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia repudiandae nemo, enim assumenda
-                placeat rem optio earum quod a, voluptates illo laudantium perferendis ea doloremque explicabo quam
-                reiciendis totam!</p>
+            <h3><%= student.nome %>,</h3>
+            <p>Aqui você tem acesso às atividades que já se registrou e outras atividades que estão disponíveis para a turma de <%= classes.titulo %>, praticando todos os conceitos das aulas.</p>
         </div>
-        <h4>Atividades que estou inscrito</h4>
+        <h4>Atividades que estou registrado</h4>
         <div class="tables">
             <table id="data-table">
                 <thead>
@@ -42,18 +40,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% data.forEach(row => { %>
-                    <tr>
-                        <td>row.Atividade.titulo</td>
-                        <td>row.Atividade.descricao</td>
-                        <td>row.Atividade.pontuacao</td>
-                        <td>row.Atividade.dataTermino</td>
+                    <% subscribed.forEach(subRow => { %>
+                    <tr onclick="window.location='/dashboard/aluno/<%= student.idUser %>/turmas/<%= classes.idTurma %>/atividade/<%= subRow.id %>'">
+                        <td><%= subRow.Atividade.titulo %></td>
+                        <td><%= subRow.Atividade.descricao %></td>
+                        <td><%= subRow.Atividade.pontuacao %></td>
+                        <td><%= subRow.Atividade.dataTermino %></td>
+                    <% if(subRow.textField != null && subRow.textField != '') { %>
+                        <td>Enviado</td>
+                    <% } else { %>
                         <td>Pendente</td>
+                    <% } %>
                     </tr>
-                    <% }) %>
                 </tbody>
             </table>
-            <h4>Disponíveis para a turma</h4>
+            <h4>Novas atividades para a turma</h4>
             <table id="data-table">
                 <thead>
                     <tr>
@@ -65,22 +66,23 @@
                     </tr>
                 </thead>
                 <tbody>
+                <% data.forEach(row => { %>
+                    <% if(!(row.Atividade.idAtividade == subRow.Atividade.idAtividade)) { %>
                     <tr>
-                        <td>Upload de Arquivos</td>
-                        <td>Utilizar Multer para upload de arquivos</td>
-                        <td> 3000</td>
-                        <td >21/04/2021</td>
+                        <td><%= row.Atividade.titulo %></td>
+                        <td><%= row.Atividade.descricao %></td>
+                        <td><%= row.Atividade.pontuacao %></td>
+                        <td><%= row.Atividade.dataTermino %></td>
                         <td>Registrar</td>
                     </tr>
+                <% } }) })%>
                 </tbody>
             </table>
         </div>
         <div class="notification">
-            <img src="assets/img/avatar.png" class="avatar" alt="avatar">
+            <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
             <span class="badge">🔔</span>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 </body>
-
 </html>

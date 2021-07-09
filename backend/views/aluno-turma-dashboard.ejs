@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/global.css">
-    <link rel="shortcut icon" href="assets/img/favicon.png" />
+    <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
     <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
     <script defer src="/fa/brands.js"></script>
     <script defer src="/fa/solid.js"></script>
@@ -16,7 +16,7 @@
     <%- include('./partials/aside-top.ejs') %>
             <a href="/dashboard/aluno/10"><i class="fas fa-graduation-cap"></i> Aluno</a>
             <a href="/dashboard/aluno/10/turmas" class="active"><i class="fas fa-users"></i> Turmas</a>
-            <a href="dashboard-atividades.html"><i class="fas fa-file-alt"></i> Atividades</a>
+            <a href="/dashboard/aluno/10/turmas/5/atividades"><i class="fas fa-file-alt"></i> Atividades</a>
             <a href="#"><i class="fas fa-chart-bar"></i> Ranking</a>
     <%- include('./partials/aside-bottom.ejs') %>
     <div class="main">
@@ -52,10 +52,9 @@
             </table>
         </div>
         <div class="notification">
-            <img src="assets/img/avatar.png" class="avatar" alt="avatar">
+            <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
             <span class="badge">🔔</span>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 </body>
 </html>

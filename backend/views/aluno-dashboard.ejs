@@ -7,17 +7,16 @@
     <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
     <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"></script>
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"></script>
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"></script>
+    <script defer src="/fa/brands.js"></script>
+    <script defer src="/fa/solid.js"></script>
+    <script defer src="/fa/fontawesome.js"></script>
     <title>elevel - Dashboard Aluno</title>
 </head>
 <body>
-    <a href="#menu-toggle" class="burger btn-default menu-toggle"><i class="fas fa-bars"></i></a>
-        <%- include('./partials/aside-top.ejs') %>
+    <%- include('./partials/aside-top.ejs') %>
             <a href="dashboard-alunos.html" class="active"><i class="fas fa-graduation-cap"></i> Aluno</a>
             <a href="/dashboard/aluno/10/turmas"><i class="fas fa-users"></i> Turmas</a>
-        <%- include('./partials/aside-bottom.ejs') %>
+    <%- include('./partials/aside-bottom.ejs') %>
     <div class="main">
         <div class="notification">
             <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
@@ -65,7 +64,6 @@
             <a href="dashboard-atividades.html"><button>Editar meu perfil</button></a>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="assets/scritps/dashboard.js"></script>
 </body>
 </html>
