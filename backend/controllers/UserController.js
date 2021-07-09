@@ -1,4 +1,6 @@
 const UserService = require('../services/UserService');
+const jwt = require('jsonwebtoken');
+const jwtSecret = process.env.JWT_SECRET;
 
 const UserController = {
   showSignUpPage: (req, res) => {
@@ -87,6 +89,13 @@ const UserController = {
     let { idUser } = req.params;
     let destroyedUser = await UserService.destroy(idUser);
     return res.json(destroyedUser);
+  },
+
+  showUserProfile: async (req, res) => {
+    let userInfo = req.user;
+    let user = await UserService.getById(userInfo.id);
+
+    return res.render('user/profile', { user: user });
   },
 };
 module.exports = UserController;

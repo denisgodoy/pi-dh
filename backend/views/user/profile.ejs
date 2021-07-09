@@ -37,16 +37,29 @@
 
       <form action="" id="profileForm">
         <label for="nome">Nome * </label>
-        <input type="text" name="nome" id="nome" placeholder="Nome" />
+        <input
+          type="text"
+          name="nome"
+          id="nome"
+          placeholder="Nome"
+          value="<%= user.nome %>"
+        />
         <label for="sobrenome">Sobrenome *</label>
         <input
           type="text"
           name="sobrenome"
           id="sobrenome"
           placeholder="Sobrenome"
+          value="<%= user.sobrenome %>"
         />
         <label for="email">E-mail *</label>
-        <input type="email" name="email" id="email" placeholder="E-mail" />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="E-mail"
+          value="<%= user.email %>"
+        />
         <label for="profile-image">Imagem de perfil *</label>
         <input type="file" id="profile-image" name="profile-image" />
         <button class="btn" type="submit">Atualizar perfil</button>

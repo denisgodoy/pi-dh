@@ -2,13 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Auth = require('../middlewares/Auth');
 const ProfessorValidator = require('../middlewares/ProfessorRouteValidator');
+const UserController = require('../controllers/UserController');
 
-router.get('/', Auth, ProfessorValidator, (req, res) => {
-  res.send('Seja bem vindo, professor!');
-});
-
-router.get('/profile', (req, res) => {
-  res.render('user/profile');
-});
+router.get('/', Auth, ProfessorValidator, UserController.showUserProfile);
 
 module.exports = router;
