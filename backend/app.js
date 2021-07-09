@@ -13,6 +13,8 @@ const signInRouter = require('./routes/signInRouter');
 const userRouter = require('./routes/user');
 const dashboardRouter = require('./routes/dashboardRouter');
 
+const Auth = require('./middlewares/Auth');
+
 var app = express();
 
 // session setup
@@ -40,6 +42,8 @@ app.use('/', indexRouter);
 app.use('/', userRouter);
 app.use('/sign-up', signUpRouter);
 app.use('/sign-in', signInRouter);
+
+app.use(Auth);
 app.use('/dashboard', dashboardRouter);
 
 // catch 404 and forward to error handler
