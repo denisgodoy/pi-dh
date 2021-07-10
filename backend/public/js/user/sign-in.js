@@ -92,9 +92,9 @@ async function onClickSubmit(event) {
     console.log(data);
     switch (data.tipoUser) {
       case 'professor':
-        window.location.href = '/professor';
+        window.location.href = '/dashboard/professor/profile';
       case 'aluno':
-        window.location.href = '/aluno';
+        window.location.href = '/dashboard/aluno/profile';
     }
   }
 }

@@ -8,11 +8,10 @@ function userValidator(req, res, next) {
       .string()
       .email('Insira um endereço de e-mail válido')
       .required('Este campo é obrigatório'),
-    senha: yup.string().required('Este campo é obrigatório'),
+    senha: yup.string(),
     confirmacaoSenha: yup
       .string()
       .oneOf([yup.ref('senha'), null], 'As senhas devem ser iguais'),
-    tipoUser: yup.string().required('Este campo é obrigatório'),
   });
 
   if (!schema.isValidSync(req.body)) {

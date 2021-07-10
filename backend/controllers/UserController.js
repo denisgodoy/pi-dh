@@ -69,10 +69,13 @@ const UserController = {
   },
 
   updateUser: async (req, res) => {
-    let { idUser } = req.params;
-    let { nome, sobrenome, email, senha, tipoUser } = req.body;
+    let { idUser, nome, sobrenome, email, senha, tipoUser } = req.body;
 
-    senha = await UserService.hashPassword(senha);
+    if (senha == undefined) {
+      senha = await UserService.getUserPassword(idUser);
+    } else {
+      senha = await UserService.hashPassword(senha);
+    }
 
     let updatedUser = await UserService.updateUser(
       idUser,
@@ -93,9 +96,12 @@ const UserController = {
 
   showUserProfile: async (req, res) => {
     let userInfo = req.user;
-    let user = await UserService.getById(userInfo.id);
+    let user = await UserService.getById(userInfo.idUser);
 
     return res.render('user/profile', { user: user });
+  },
+  showUserProfileSuccess: async (req, res) => {
+    return res.render('user/profile-success');
   },
 };
 module.exports = UserController;

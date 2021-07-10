@@ -36,7 +36,23 @@
       <h2>Dashboard / Perfil</h2>
 
       <form action="" id="profileForm">
+        <span id="updateError" class="error"></span>
+        <input
+          type="text"
+          name="idUser"
+          id="idUser"
+          value="<%= user.idUser %>"
+          class="error"
+        />
+        <input
+          type="text"
+          name="userType"
+          id="userType"
+          value="<%= user.tipoUser %>"
+          class="error"
+        />
         <label for="nome">Nome * </label>
+        <span id="nameError" class="error"></span>
         <input
           type="text"
           name="nome"
@@ -45,6 +61,7 @@
           value="<%= user.nome %>"
         />
         <label for="sobrenome">Sobrenome *</label>
+        <span id="lastNameError" class="error"></span>
         <input
           type="text"
           name="sobrenome"
@@ -53,6 +70,8 @@
           value="<%= user.sobrenome %>"
         />
         <label for="email">E-mail *</label>
+        <span id="emailError" class="error"></span>
+
         <input
           type="email"
           name="email"
@@ -60,100 +79,34 @@
           placeholder="E-mail"
           value="<%= user.email %>"
         />
-        <label for="profile-image">Imagem de perfil *</label>
+        <label for="profile-image">Imagem de perfil</label>
         <input type="file" id="profile-image" name="profile-image" />
+
+        <div class="password-group">
+          <label for="password">Alterar senha </label>
+          <span id="passwordError" class="error"></span>
+          <input
+            class="styled-input"
+            type="password"
+            name="senha"
+            id="senha"
+            placeholder="Crie uma senha"
+          />
+          <label for="password">Confirme a nova senha </label>
+          <span id="passwordConfirmationError" class="error"></span>
+          <input
+            class="styled-input"
+            type="password"
+            name="confirmacaoSenha"
+            id="confirmacaoSenha"
+            placeholder="Confirme sua senha"
+          />
+        </div>
         <button class="btn" type="submit">Atualizar perfil</button>
       </form>
-
-      <div id="live-chat">
-        <header class="clearfix">
-          <a href="#" class="chat-close">x</a>
-
-          <h4>Turma Fullstack 2021 - DH</h4>
-
-          <span class="chat-message-counter">3</span>
-        </header>
-
-        <div class="chat">
-          <div class="chat-history">
-            <div class="chat-message clearfix">
-              <img
-                src="http://0.gravatar.com/userimage/5/ff5263e8c30557b57e64423ee8496e41?size=400"
-                alt=""
-                width="32"
-                height="32"
-              />
-
-              <div class="chat-message-content clearfix">
-                <span class="chat-time">13:35</span>
-
-                <h5>José</h5>
-
-                <p>Olá galera!</p>
-              </div>
-              <!-- end chat-message-content -->
-            </div>
-            <!-- end chat-message -->
-
-            <hr />
-
-            <div class="chat-message clearfix">
-              <img
-                src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32"
-                alt=""
-                width="32"
-                height="32"
-              />
-
-              <div class="chat-message-content clearfix">
-                <span class="chat-time">13:37</span>
-
-                <h5>Marco Biedermann</h5>
-
-                <p>Eae men kkk</p>
-              </div>
-              <!-- end chat-message-content -->
-            </div>
-            <!-- end chat-message -->
-
-            <hr />
-
-            <div class="chat-message clearfix">
-              <img
-                src="http://0.gravatar.com/userimage/5/ff5263e8c30557b57e64423ee8496e41?size=400"
-                alt=""
-                width="32"
-                height="32"
-              />
-
-              <div class="chat-message-content clearfix">
-                <span class="chat-time">13:38</span>
-
-                <h5>José</h5>
-
-                <p>Alguém fez o exercício de Multer??? Tô desesperado!!! 😭</p>
-              </div>
-              <!-- end chat-message-content -->
-            </div>
-            <!-- end chat-message -->
-
-            <hr />
-          </div>
-          <!-- end chat-history -->
-
-          <form action="#" method="post">
-            <fieldset>
-              <input type="text" placeholder="José" autofocus />
-              <input type="hidden" />
-            </fieldset>
-          </form>
-        </div>
-        <!-- end chat -->
-      </div>
-      <!-- end live-chat -->
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    <script src="assets/scritps/dashboard-professor/dashboard.js"></script>
+    <script src="../js/user/profile.js"></script>
   </body>
 </html>

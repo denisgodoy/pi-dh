@@ -438,6 +438,27 @@ label {
   margin: 10px 0 0 0;
 }
 
+.password-group {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+.error {
+  display: none;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 11px;
+  color: var(--magenta-dark);
+  padding-left: 5px;
+}
+
+.show {
+  display: block;
+}
+
 /* FIM FORMS */
 
 @media (min-width: 601px) {
