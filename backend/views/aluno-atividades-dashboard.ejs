@@ -27,33 +27,67 @@
             <h3><%= student.nome %>,</h3>
             <p>Aqui você tem acesso às atividades que já se registrou e outras atividades que estão disponíveis para a turma de <%= classes.titulo %>, praticando todos os conceitos das aulas.</p>
         </div>
-        <h4>Atividades que estou registrado</h4>
-        <div class="tables">
+        <h4>Atividades para entregar</h4>
+            <div class="tables">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>Atividade</th>
+                            <th>Descrição</th>
+                            <th>Pontos</th>
+                            <th>Prazo</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    <% for (let atividade of subscribed) { %>
+                        <% if (atividade.evaluation == null) { %>
+                    <tr onclick="window.location='/dashboard/aluno/<%= student.idUser %>/turmas/<%= classes.idTurma %>/atividade/<%= atividade.id %>'">
+                        <td><%= atividade.Atividade.titulo %></td>
+                        <td><%= atividade.Atividade.descricao %></td>
+                        <td><%= atividade.Atividade.pontuacao %></td>
+                        <td><%= atividade.Atividade.dataTermino %></td>
+                    <% if(atividade.textField != null && atividade.textField != '') { %>
+                        <td>Enviado</td>
+                    <% } else { %>
+                        <td>Pendente</td>
+                    <% } %>
+                    </tr>
+                <% }} %>
+                </tbody>
+            </table>
+            <% for (let atividade of subscribed) { %>
+                <% if (atividade.evaluation != null) { %>
+            <h4>Atividades corrigidas</h4>
             <table id="data-table">
                 <thead>
                     <tr>
                         <th>Atividade</th>
                         <th>Descrição</th>
                         <th>Pontos</th>
-                        <th>Prazo</th>
                         <th>Status</th>
+                        <th>Atribuídos</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% subscribed.forEach(subRow => { %>
-                    <tr onclick="window.location='/dashboard/aluno/<%= student.idUser %>/turmas/<%= classes.idTurma %>/atividade/<%= subRow.id %>'">
-                        <td><%= subRow.Atividade.titulo %></td>
-                        <td><%= subRow.Atividade.descricao %></td>
-                        <td><%= subRow.Atividade.pontuacao %></td>
-                        <td><%= subRow.Atividade.dataTermino %></td>
-                    <% if(subRow.textField != null && subRow.textField != '') { %>
-                        <td>Enviado</td>
-                    <% } else { %>
-                        <td>Pendente</td>
-                    <% } %>
+                    <tr>
+                        <td><%= atividade.Atividade.titulo %></td>
+                        <td><%= atividade.Atividade.descricao %></td>
+                        <td><%= atividade.Atividade.pontuacao %></td>
+                        <% if (atividade.evaluation == 0) { %>
+                        <td>❌</td>
+                        <% } %>
+                        <% if (atividade.evaluation >= (atividade.Atividade.pontuacao / 2)) { %>
+                        <td>✔️</td>
+                        <% } %>
+                        <% if (atividade.evaluation > 0 && atividade.evaluation < (atividade.Atividade.pontuacao / 2)) { %>
+                        <td>🟡</td>
+                        <% } %>
+                        <td><%= atividade.evaluation %></td>
                     </tr>
                 </tbody>
             </table>
+            <% } } %>
             <h4>Novas atividades para a turma</h4>
             <table id="data-table">
                 <thead>
@@ -66,16 +100,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                <% data.forEach(row => { %>
-                    <% if(!(row.Atividade.idAtividade == subRow.Atividade.idAtividade)) { %>
+                    <% for (let i = 0; i < data.length; i++) { 
+                        let id = subscribed.includes(subscribed.idAtividade == i) %>
+                        <% if (data[i].Atividade.idAtividade != id) { %>
                     <tr>
-                        <td><%= row.Atividade.titulo %></td>
-                        <td><%= row.Atividade.descricao %></td>
-                        <td><%= row.Atividade.pontuacao %></td>
-                        <td><%= row.Atividade.dataTermino %></td>
-                        <td>Registrar</td>
+                        <td><%= data[i].Atividade.titulo %></td>
+                        <td><%= data[i].Atividade.descricao %></td>
+                        <td><%= data[i].Atividade.pontuacao %></td>
+                        <td><%= data[i].Atividade.dataTermino %></td>
+                        <td>Aceitar</td>
                     </tr>
-                <% } }) })%>
+                <% } } %>
                 </tbody>
             </table>
         </div>

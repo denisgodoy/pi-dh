@@ -2,8 +2,8 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" row="IE=edge">
-    <meta name="viewport" row="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" turma="IE=edge">
+    <meta name="viewport" turma="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
     <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
@@ -43,16 +43,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                <% data.forEach(row => { %>
-                    <tr onclick="window.location='/dashboard/aluno/<%= student.idUser %>/turmas/<%= row.Turma.idTurma %>'">
-                        <td><%= row.id %></td>
-                        <td><%= row.Turma.titulo %></td>
-                        <td><%= row.Turma.codigo.slice(0,6) %></td>
+                    <% for (let turma of data) { %>
+                        <tr onclick="window.location='/dashboard/aluno/<%= student.idUser %>/turmas/<%= turma.Turma.idTurma %>'">
+                        <td><%= turma.id %></td>
+                        <td><%= turma.Turma.titulo %></td>
+                        <td><%= turma.Turma.codigo.slice(0,6) %></td>
                         <td>Ivens</td>
                         <td>33.756</td>
                         <td>27</td>
                     </tr>
-                <% }) %>
+                <% } %>
                 </tbody>
             </table>
         </div>

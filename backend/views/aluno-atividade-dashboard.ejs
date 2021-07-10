@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
     <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
-    <link rel="stylesheet" href="/stylesheets/landing-page/contact-us.css">
     <script defer src="/fa/brands.js"></script>
     <script defer src="/fa/solid.js"></script>
     <script defer src="/fa/fontawesome.js"></script>
@@ -40,8 +39,8 @@
                         <td><%= data.Atividade.descricao %></td>
                         <td><%= data.Atividade.pontuacao %></td>
                         <td><%= data.Atividade.dataTermino %></td>
-                    <% if(data.status != null) { %>
-                        <td>Corrigido</td>
+                    <% if(data.textField != null && data.textField != '') { %>
+                        <td>Enviado</td>
                     <% } else { %>
                         <td>Pendente</td>
                     <% } %>
@@ -51,12 +50,11 @@
         </div>
         <h4>Resolução da atividade</h4>
         <form class="form" method="POST" action="/dashboard/aluno/<%= student.idUser %>/turmas/<%= classes.idTurma %>/atividade/<%= data.id %>">
-            <div>
-                <span>
-                    <textarea name="textField" placeholder="Digite aqui sua resposta para a atividade" rows="10" cols="77" style="max-width: 95%;"></textarea>
-                </span>
+            <textarea name="textField" placeholder="Digite ou cole aqui sua resposta" rows="10" cols="77"><%= data.textField %></textarea>
+            <div class="action-btn">
+                <button class="submit-send" type="submit" value="submit">Enviar Atividade</button>
+                <button class="submit-giveup" type="submit" value="delete">Desistir da Atividade</button>
             </div>
-            <button class="submit" type="submit">Enviar Atividade</button>
         </form>
         <div class="notification">
             <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">

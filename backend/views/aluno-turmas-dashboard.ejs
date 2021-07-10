@@ -40,18 +40,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                <% data.forEach(row => { %>
-                    <tr onclick="window.location='/dashboard/aluno/<%= student.idUser %>/turmas/<%= row.Turma.idTurma %>'">
-                        <td><%= row.id %></td>
-                        <td><%= row.Turma.titulo %></td>
-                        <td><%= row.Turma.codigo.slice(0,6) %></td>
+                <% for (let turma of data) { %>
+                    <tr onclick="window.location='/dashboard/aluno/<%= student.idUser %>/turmas/<%= turma.Turma.idTurma %>'">
+                        <td><%= turma.id %></td>
+                        <td><%= turma.Turma.titulo %></td>
+                        <td><%= turma.Turma.codigo.slice(0,6) %></td>
                         <td>Ivens</td>
                         <td>33.756</td>
                         <td>
                             <i class="fas fa-trash"></i>
                         </td>
                     </tr>
-                <% }) %>
+                <% } %>
                 </tbody>
             </table>
         </div>
@@ -59,7 +59,7 @@
         <div class="more-actions">
             <form class="form" method="POST" action="/dashboard/aluno/<%= student.idUser %>/turmas">
                 <input class="styled-input" type="text" name="idTurma" placeholder="ID da turma" />
-                <button class="submit-button" type="submit">Participar</button>
+                <button class="submit-send" type="submit">Entrar na Turma</button>
             </form>
         </div>
         <div class="notification">
