@@ -20,22 +20,15 @@ const AlunoAtividadeController = {
         const atividade = await AlunoAtividadeService.sendAtividade(id, textField);
         return res.json(atividade);
     },
-    create: async (req, res) => {
-        const { titulo, descricao, pontuacao, dataInicio, dataTermino } = req.body;
-        
-        const newAtividade = await AlunoAtividadeService.createAtividade(
-          titulo,
-          descricao,
-          pontuacao,
-          dataInicio,
-          dataTermino
-        );
-        return res.json(newAtividade);
-    },
     createAssociation: async (req, res) => {
         const { idUser, idAtividade } = req.params;
         const atividade = await AlunoAtividadeService.createAssociation(idUser, idAtividade);
         return res.json(atividade);
+    },
+    destroyAssociation: async (req, res) => {
+        const { id } = req.params;
+        const destroyed = await AlunoAtividadeService.destroy(id);
+        return res.json(destroyed);
     }
 };
 

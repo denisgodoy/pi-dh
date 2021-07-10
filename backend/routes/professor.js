@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const controller = require('../controllers/ProfessorController');
+const controllerProfessor = require('../controllers/ProfessorController');
 
-// CRUD Turmas
-router.get('/', controller.indexAllProfessores);
-router.get('/:id', controller.indexProfessorById);
+// CRUD Professor
+router.get('/', controllerProfessor.indexAllProfessores);
+router.get('/:id', controllerProfessor.indexProfessorById);
+router.post('/professores', controllerProfessor.createProfessor);
+router.put('/professores/:id', controllerProfessor.updateProfessor);
+router.delete('/professores/:id', controllerProfessor.destroyProfessor);
 
-// Get Detalhado (fazer mais tarde)
-// router.get('/turmas/:id', controller.indexTurmaById);
-// router.get('/turmas/:id/:attribute', controller.indexByIdAndAttribute);
 
 module.exports = router;

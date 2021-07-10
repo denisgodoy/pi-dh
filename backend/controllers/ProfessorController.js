@@ -1,4 +1,6 @@
 const ProfessorService = require('../services/ProfessorService');
+const userService = require('../services/userService');
+
 
 const ProfessorController = {
     indexProfessorById: async (req, res) => {
@@ -16,7 +18,20 @@ const ProfessorController = {
         return res.json(listaProfessores);
     },
     createProfessor: async (req, res) => {
-        return res.json("Ainda não implementado");
+        let { nome, sobrenome, email, senha, tipoUser = "professor" } = req.body;
+    
+        senha = await UserService.hashPassword(senha);
+    
+        const professor = await ProfessorService.createProfessor(
+          nome,
+          sobrenome,
+          email,
+          senha,
+          tipoUser
+        );
+      
+        return res.json(professor);
+
     },
     updateProfessor: (req, res)=>{
         return res.send('Ainda não implementado');

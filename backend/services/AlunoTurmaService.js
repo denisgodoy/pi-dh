@@ -1,19 +1,40 @@
 const database = require('../database/models/index');
 
 const AlunoTurmaService = {
-  getTurmas: async (id) => {
-    const turma = await database.Turma.findAll({
-      where: idUser == id
+  getClasses: async (idUser) => {
+    const classes = await database.Turma.findAll({
+      where: { idUser }
     });
-    return turma;
+    return classes;
   },
-  getTurmaById: async (idTurma) => {
-    const turmaId = await database.Turma.findByPk(idTurma);
-    return turmaId;
+  getClassById: async (idTurma) => {
+    const classId = await database.Turma.findByPk(idTurma);
+    return classId;
   },
-  createTurma: async (codigo, titulo) => {
-    const novaTurma = await database.Turma.create({ codigo, titulo });
-    return novaTurma;
+  getAllActivities: async (idTurma) => {
+    const activity = await database.Turma.findAll({
+      where: { idTurma },
+      include: [{ model: database.Atividade }]
+    });
+    return activity;
+  },
+  getActivityById: async (idAtividade) => {
+    const activityById = await database.Turma.findOne({
+      where: { idAtividade },
+      include: [{ model: database.Atividade }]
+    });
+    return activityById;
+  },
+  createAssociation: async (idUser, idTurma) => {
+    const associate = await database.TurmaAluno.create({
+      idUser,
+      idTurma
+    });
+    return associate;
+  },
+  destroyAssociation: async (id) => {
+    const destroyed = await database.TurmaAluno.destroy({ where: { id } });
+    return destroyed;
   }
 };
 

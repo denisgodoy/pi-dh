@@ -6,10 +6,9 @@ const userApiValidator = require('../middlewares/UserApiValidator');
 /* API REST */
 
 router.get('/users', userController.indexAll);
+router.get('/users/:idUser', userController.indexById);
 router.post('/users', userValidator, userController.createUser);
 router.put('/users/:idUser', userApiValidator, userController.updateUser);
 router.delete('/users/:idUser', userController.destroy);
-
-router.get('/users/:idUser', userController.indexById);
 
 module.exports = router;

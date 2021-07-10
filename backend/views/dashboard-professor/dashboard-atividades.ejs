@@ -50,19 +50,21 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% for(var i=0; i < atividades.length; i++){ %>
                     <tr>
-                        <td>Página Legendaries</td>
-                        <td>Criar página com EJS</td>
+                        <td><%= atividades[i].titulo %></td>
+                        <td><%= atividades[i].descricao %></td>
                         <td><span class="tags">JS</span><span class="tags">HTML</span></td>
-                        <td class="evaluate">21/04/2021</td>
+                        <td class="evaluate"><%= atividades[i].dataTermino %></td>
                         <td><a href=""><i class="fas fa-edit btn-gray"></i></a>
                             <a href=""><i class="fas fa-trash btn-red"></i></a></td>
                     </tr>
+                    <% } %>
                 </tbody>
             </table>
         </div>
 
-        <a href="/professor/atividades/criar" class="btn new">Nova Atividade</a>
+        <a href="/atividades/criar/" class="btn new">Nova Atividade</a>
 
         <div id="live-chat">
 

@@ -23,19 +23,29 @@ const UserController = {
     return res.render('sign-up-success');
   },
   signInUser: async (req, res) => {
-    let { email, senha } = req.body;
-    const validaUser = await UserService.signInUser(email);
 
-    if (validaUser == undefined) {
-      return res.send('E-mail não encontrado');
+    const { email, senha } = req.body;
+    const user = await UserService.findUser(email);
+
+    if (user == undefined) {
+      return res.status(401).json({ err: 'E-mail não encontrado' });
     }
 
-    const validaSenha = await UserService.checkPassword(senha, validaUser);
+    const verifyPassword = await UserService.checkPassword(senha, user);
 
-    if (!validaSenha) {
-      return res.send('Senha inválida.');
-    } else {
-      return res.send('Seja bem-vindo!');
+    if (!verifyPassword) {
+      return res.status(401).json({ err: 'Senha inválida' });
+    }
+
+    const userToken = await UserService.createWebToken(user);
+
+    req.session.userToken = userToken;
+
+    switch (user.tipoUser) {
+      case 'professor':
+        return res.redirect('/professor');
+      case 'aluno':
+        return res.redirect('/aluno');
     }
   },
   indexAll: async (req, res) => {
@@ -78,12 +88,12 @@ const UserController = {
     const { idUser } = req.params;
     const userType = await UserService.getById(idUser);
 
-    switch (userType.tipoUser) {
-      case "aluno":
-        return res.redirect('/dashboard/aluno');
-      case "professor":
-        return res.redirect('/dashboard/professor');
+    if (userType.tipoUser == "aluno") {
+        return res.redirect(`/dashboard/aluno/:${idUser}`);
+    } else {
+        return res.send(`/dashboard/professor/:${idUser}`);
     };
   }
 };
+
 module.exports = UserController;
