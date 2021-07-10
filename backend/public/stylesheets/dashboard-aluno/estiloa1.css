@@ -213,10 +213,26 @@ table tbody tr td:last-child {
     border-radius: 0 0.25rem 0.25rem 0;
 }
 
-.submit {
-	background-color: var(--magenta-dark);
-	border-radius: 10px;
-	border: 0.5px solid var(--magenta-dark);
+.form {
+    width: 65%;
+	display: flex;
+	flex-direction: column;
+}
+
+.form > textarea {
+    max-width: 100%;
+    padding: 10px;
+}
+
+.action-btn {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly
+}
+
+.submit-send, .submit-giveup {
+    border-radius: 10px;
 	display: inline-block;
 	cursor: pointer;
 	color: #ffffff;
@@ -228,13 +244,30 @@ table tbody tr td:last-child {
     width: 200px;
 }
 
-.submit:hover {
+.submit-send {
+    background-color: rgb(27, 134, 27);
+    border: 0.5px solid rgb(27, 134, 27);
+}
+
+.submit-giveup {
+	background-color: var(--magenta-dark);
+	border: 0.5px solid var(--magenta-dark);
+}
+
+.submit-send:hover, .submit-giveup:hover {
 	background: var(--white);
-	color: var(--magenta-dark);
 	text-decoration: none;
 }
 
-.submit:active {
+.submit-giveup:hover {
+    color: var(--magenta-dark);
+}
+
+.submit-send:hover {
+	color: rgb(27, 134, 27);
+}
+
+.submit-send:active, .submit-giveup:active {
 	position: relative;
 	top: 1px;
 }
