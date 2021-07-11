@@ -34,7 +34,7 @@ const UserService = {
   createWebToken: async (user) => {
     const token = await jwt.sign(
       {
-        id: user.idUser,
+        idUser: user.idUser,
         nome: user.nome,
         tipoUser: user.tipoUser,
       },
@@ -74,6 +74,11 @@ const UserService = {
   destroy: async (idUser) => {
     const destroyedUser = await database.User.destroy({ where: { idUser } });
     return destroyedUser;
+  },
+  getUserPassword: async (idUser) => {
+    return (password = await database.User.findByPk(idUser, {
+      attributes: ['senha'],
+    }));
   },
 };
 

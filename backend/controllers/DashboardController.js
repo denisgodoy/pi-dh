@@ -3,7 +3,7 @@ const AlunoTurmaService = require('../services/AlunoTurmaService');
 
 const DashboardController = {
     indexStudent: async (req, res) => {
-        const { idUser } = req.params;
+        const { idUser } = req.user;
         const student = await UserService.getById(idUser);
         const data = await AlunoTurmaService.getClasses(idUser);
 

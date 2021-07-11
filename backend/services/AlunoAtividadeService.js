@@ -28,12 +28,13 @@ const AlunoAtividadeService = {
     return activityByPk; 
   },
   sendActivity: async (id, textField) => {
-    await database.AtividadeAluno.update({
+    const sent = await database.AtividadeAluno.update({
       textField
     },
     {
       where: { id },
     });
+    return sent;
   },
   createAssociation: async (idUser, idAtividade) => {
     const associateToActivity = await database.AtividadeAluno.create({

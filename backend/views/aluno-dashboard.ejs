@@ -14,8 +14,9 @@
 </head>
 <body>
     <%- include('./partials/aside-top.ejs') %>
-            <a href="dashboard-alunos.html" class="active"><i class="fas fa-graduation-cap"></i> Aluno</a>
-            <a href="/dashboard/aluno/10/turmas"><i class="fas fa-users"></i> Turmas</a>
+    <a href="#" class="active"><i class="fas fa-graduation-cap"></i> Aluno</a>
+    <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
+    <a href="/dashboard/aluno/turmas"><i class="fas fa-users"></i> Turmas</a>
     <%- include('./partials/aside-bottom.ejs') %>
     <div class="main">
         <div class="notification">
@@ -44,7 +45,7 @@
                 </thead>
                 <tbody>
                     <% for (let turma of data) { %>
-                        <tr onclick="window.location='/dashboard/aluno/<%= student.idUser %>/turmas/<%= turma.Turma.idTurma %>'">
+                        <tr onclick="window.location='/dashboard/aluno/turmas/<%= turma.Turma.idTurma %>'">
                         <td><%= turma.id %></td>
                         <td><%= turma.Turma.titulo %></td>
                         <td><%= turma.Turma.codigo.slice(0,6) %></td>
@@ -58,12 +59,11 @@
         </div>
         <h4>Ações rápidas</h4>
         <div class="more-actions">
-            <a href="/participar/<%= student.idUser %>"><button>Entrar em uma nova turma</button></a>
-            <a href="dashboard-atividades.html"><button>Atividades pendentes</button></a>
-            <a href="dashboard-atividades.html"><button>Atividades entregues</button></a>
-            <a href="dashboard-atividades.html"><button>Editar meu perfil</button></a>
+            <a href="#"><button>Entrar em uma nova turma</button></a>
+            <a href="#"><button>Atividades pendentes</button></a>
+            <a href="#"><button>Atividades entregues</button></a>
+            <a href="/dashboard/aluno/profile"><button>Editar meu perfil</button></a>
         </div>
     </div>
-    <script src="assets/scritps/dashboard.js"></script>
 </body>
 </html>

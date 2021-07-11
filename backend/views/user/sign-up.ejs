@@ -13,33 +13,10 @@
     <link rel="stylesheet" href="../stylesheets/signup-signin/header.css" />
     <link rel="stylesheet" href="../stylesheets/signup-signin/sign-up.css" />
     <link rel="stylesheet" href="../stylesheets/signup-signin/footer.css" />
-    <title>elevel - Cadastre-se</title>
+    <title>elevel - Faça o seu login</title>
   </head>
   <body>
-    <header>
-      <div class="container">
-        <img
-          src="../images/signup-signin/logo.png"
-          alt="Logo Placeholder"
-          class="logo"
-        />
-        <a href="/">
-          <img
-            class="hamburger-menu"
-            src="../images/signup-signin/hamburguer.svg"
-            alt="Botão do menu"
-          />
-        </a>
-        <nav class="navbar">
-          <a href="/#sobre" class="menu-item">Sobre</a>
-          <a href="/#funcionalidades" class="menu-item">Funcionalidades</a>
-          <a href="/#preços-planos" class="menu-item">Preços e planos</a>
-          <a href="/contato" class="menu-item">Contato</a>
-          <a href="/sign-up" class="menu-item sign-in">Cadastre-se</a>
-          <a href="/sign-in" class="menu-item sign-up">Login</a>
-        </nav>
-      </div>
-    </header>
+    <%- include('partials/header'); %>
     <main>
       <div class="container-main">
         <div class="main-box">
@@ -50,23 +27,30 @@
           </p>
 
           <form class="form" method="POST" action="/sign-up" autocomplete="off">
+            <span id="signUpError" class="error"></span>
             <div class="name-box">
-              <input
-                class="styled-input input-box"
-                type="text"
-                name="nome"
-                id="nome"
-                placeholder="Nome"
-              />
-
-              <input
-                class="styled-input input-box"
-                type="text"
-                name="sobrenome"
-                id="sobrenome"
-                placeholder="Sobrenome"
-              />
+              <div class="group-box">
+                <span id="nameError" class="error"></span>
+                <input
+                  class="styled-input input-box"
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  placeholder="Nome"
+                />
+              </div>
+              <div class="group-box">
+                <span id="lastNameError" class="error"></span>
+                <input
+                  class="styled-input input-box"
+                  type="text"
+                  name="sobrenome"
+                  id="sobrenome"
+                  placeholder="Sobrenome"
+                />
+              </div>
             </div>
+            <span id="emailError" class="error"></span>
             <input
               class="styled-input"
               type="email"
@@ -74,7 +58,7 @@
               id="email"
               placeholder="E-mail"
             />
-
+            <span id="passwordError" class="error"></span>
             <input
               class="styled-input"
               type="password"
@@ -82,7 +66,7 @@
               id="senha"
               placeholder="Crie uma senha"
             />
-
+            <span id="passwordConfirmationError" class="error"></span>
             <input
               class="styled-input"
               type="password"
@@ -90,7 +74,7 @@
               id="confirmacaoSenha"
               placeholder="Confirme sua senha"
             />
-            <span>
+            <div class="user-type">
               <p>Eu sou:</p>
               <input
                 type="radio"
@@ -107,15 +91,14 @@
                 id="professor"
               />
               <label for="professor">Professor</label>
-            </span>
-
+            </div>
+            <span id="agreeError" class="error"></span>
             <div class="agree">
               <input
                 type="checkbox"
                 name="termos"
                 id="termos"
                 data-val="true"
-                and
                 value="true"
               />
               <label for="agree"
@@ -141,5 +124,6 @@
         <a href="#">Política de Privacidade</a> · <a href="#">Termos de Uso</a>
       </p>
     </footer>
+    <script src="../js/user/sign-up.js"></script>
   </body>
 </html>

@@ -10,7 +10,7 @@ var indexRouter = require('./routes/index');
 const signUpRouter = require('./routes/signUpRouter');
 const signInRouter = require('./routes/signInRouter');
 
-const userRouter = require('./routes/user');
+const userRouter = require('./routes/userRouter');
 const dashboardRouter = require('./routes/dashboardRouter');
 
 const Auth = require('./middlewares/Auth');

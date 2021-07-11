@@ -6,7 +6,7 @@ const AlunoTurmaController = {
         return res.render('aluno-turmas-dashboard');
     },
     getAllClasses: async (req, res) => {
-        const { idUser } = req.params;
+        const { idUser } = req.user;
         const student = await UserService.getById(idUser);
         const data = await AlunoTurmaService.getClasses(idUser);
 
@@ -17,7 +17,8 @@ const AlunoTurmaController = {
         });
     },
     getClassById: async (req, res) => {
-        const { idUser, idTurma } = req.params;
+        const { idTurma } = req.params;
+        const { idUser } = req.user;
         const student = await UserService.getById(idUser);
         const data = await AlunoTurmaService.getClassById(idTurma);
 
@@ -28,7 +29,7 @@ const AlunoTurmaController = {
         });
     },
     createAssociation: async (req, res) => {
-        const { idUser } = req.params;
+        const { idUser } = req.user;
         const { idTurma } = req.body;
         const student = await UserService.getById(idUser);
         await AlunoTurmaService.createAssociation(idUser, idTurma);
