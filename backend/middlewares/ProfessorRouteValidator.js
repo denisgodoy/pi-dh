@@ -1,9 +1,9 @@
-function alunoValidator(req, res, next) {
+function professorValidator(req, res, next) {
   if (req.user.tipoUser == 'professor') {
     next();
   } else {
-    res.redirect('/aluno');
+    res.redirect('/dashboard/aluno');
   }
 }
 
-module.exports = alunoValidator;
+module.exports = professorValidator;
