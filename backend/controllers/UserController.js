@@ -1,6 +1,4 @@
 const UserService = require('../services/UserService');
-const jwt = require('jsonwebtoken');
-const jwtSecret = process.env.JWT_SECRET;
 
 const UserController = {
   showSignUpPage: (req, res) => {
@@ -49,7 +47,6 @@ const UserController = {
     }
 
     const userToken = await UserService.createWebToken(user);
-
     req.session.userToken = userToken;
 
     return res.json(user);
@@ -104,4 +101,5 @@ const UserController = {
     return res.render('user/profile-success');
   },
 };
+
 module.exports = UserController;

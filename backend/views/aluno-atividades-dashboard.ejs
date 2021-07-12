@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/global.css">
+    <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
+    <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
+    <script defer src="/fa/brands.js"></script>
+    <script defer src="/fa/solid.js"></script>
+    <script defer src="/fa/fontawesome.js"></script>
+    <title>elevel - Dashboard Aluno</title>
+</head>
+<body>
+    <%- include('./partials/aside-top.ejs') %>
+            <a href="/dashboard/aluno"><i class="fas fa-graduation-cap"></i> Aluno</a>
+            <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
+            <a href="/dashboard/aluno/turmas" ><i class="fas fa-users"></i> Turmas</a>
+            <a href="#" class="active"><i class="fas fa-file-alt"></i> Atividades</a>
+            <a href="#"><i class="fas fa-chart-bar"></i> Ranking</a>
+    <%- include('./partials/aside-bottom.ejs') %>
+    <div class="main">
+        <h2>Dashboard / Turmas / <%= classes.titulo %> / Atividades</h2>
+        <hr />
+        <div class="billboard">
+            <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
+            <h3><%= student.nome %>,</h3>
+            <p>Aqui você tem acesso às atividades que já se registrou e outras atividades que estão disponíveis para a turma de <%= classes.titulo %>, praticando todos os conceitos das aulas.</p>
+        </div>
+        <h4>Atividades para entregar</h4>
+            <div class="tables">
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>Atividade</th>
+                            <th>Descrição</th>
+                            <th>Pontos</th>
+                            <th>Prazo</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    <% for (let atividade of subscribed) { %>
+                        <% if (atividade.evaluation == null) { %>
+                    <tr onclick="window.location='/dashboard/aluno/turmas/<%= classes.idTurma %>/atividade/<%= atividade.id %>'">
+                        <td><%= atividade.Atividade.titulo %></td>
+                        <td><%= atividade.Atividade.descricao %></td>
+                        <td><%= atividade.Atividade.pontuacao %></td>
+                        <td><%= atividade.Atividade.dataTermino %></td>
+                    <% if(atividade.textField != null && atividade.textField != '') { %>
+                        <td>Enviado</td>
+                    <% } else { %>
+                        <td>Pendente</td>
+                    <% } %>
+                    </tr>
+                <% }} %>
+                </tbody>
+            </table>
+            <% for (let atividade of subscribed) { %>
+                <% if (atividade.evaluation != null) { %>
+            <h4>Atividades corrigidas</h4>
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Atividade</th>
+                        <th>Descrição</th>
+                        <th>Pontos</th>
+                        <th>Status</th>
+                        <th>Atribuídos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%= atividade.Atividade.titulo %></td>
+                        <td><%= atividade.Atividade.descricao %></td>
+                        <td><%= atividade.Atividade.pontuacao %></td>
+                        <% if (atividade.evaluation == 0) { %>
+                        <td>❌</td>
+                        <% } %>
+                        <% if (atividade.evaluation >= (atividade.Atividade.pontuacao / 2)) { %>
+                        <td>✔️</td>
+                        <% } %>
+                        <% if (atividade.evaluation > 0 && atividade.evaluation < (atividade.Atividade.pontuacao / 2)) { %>
+                        <td>🟡</td>
+                        <% } %>
+                        <td><%= atividade.evaluation %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <% } } %>
+            <h4>Novas atividades para a turma</h4>
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Atividade</th>
+                        <th>Descrição</th>
+                        <th>Pontos</th>
+                        <th>Prazo</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < data.length; i++) { 
+                        let id = 0 %>
+                        <% if (data[i].Atividade.idAtividade != id) { %>
+                    <tr>
+                        <td><%= data[i].Atividade.titulo %></td>
+                        <td><%= data[i].Atividade.descricao %></td>
+                        <td><%= data[i].Atividade.pontuacao %></td>
+                        <td><%= data[i].Atividade.dataTermino %></td>
+                        <td>Aceitar</td>
+                    </tr>
+                <% } } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="notification">
+            <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
+            <span class="badge">🔔</span>
+        </div>
+    </div>
+</body>
+</html>

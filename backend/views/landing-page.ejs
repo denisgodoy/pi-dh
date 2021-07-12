@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/stylesheets/global.css" type="text/css">
     <link rel="stylesheet" href="/stylesheets/landing-page/landing-page.css" type="text/css">
+    <link rel="stylesheet" href="/stylesheets/landing-page/contact-us.css" type="text/css">
     <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon">
     <title>elevel - Eleve o aprendizado ao próximo nível.</title>
 </head>
@@ -17,7 +18,7 @@
         <div class="main-content" id="sobre">
             <h1>Gamificação de aulas simples e fácil.</h1>
             <p>Torne suas aulas mais divertidas em uma plataforma completa para aumentar o engajamento de seus alunos.</p>
-            <button>Cadastre-se gratuitamente</button>
+            <button><a href="/sign-up">Cadastre-se gratuitamente</a></button>
         </div>
     </main>
     <section class="section-slider" id="funcionalidades">
@@ -39,43 +40,20 @@
             </div>
         </div>
     </section>
-    <section class="section-prices" id="preços-planos">
-        <div class="prices-description">
-            <h2>Planos e Preços</h2>
-            <p>Encontre o plano ideal para sua escola.</p>
-        </div>
-        <div class="orientation-prices">
-            <div class="price-container">
-                <div class="plan-div">
-                    <p>Plano <br><strong>Gratuito</strong></p>
-                    <img src="/images/landing-page/plan-symbol-free.svg" alt="Ícone de um círculo com uma estrela representando o plano gratuito.">
+    <section class="contact-us" id="form-contact">
+        <div class="main-box">
+            <h2>Contate-nos</h2>
+            <p>Envie sua dúvida, sugestão ou outros assuntos através do formulário.</p>
+            <form class="form" method="POST" action="/contato/sucesso">
+                <input class="styled-input" type="text" name="name" placeholder="Nome" />
+                <input class="styled-input" type="email" name="email" placeholder="E-mail" />
+                <textarea class="styled-input" rows="5" type="text" name="message" placeholder="Mensagem" /></textarea>
+                <div class="agree">
+                    <input type="checkbox" name="terms" id="terms" data-val="true" and value="true" />
+                    <label for="terms"><p>Eu li e concordo com os <a href="#">Termos de Uso</a>.</p></label>
                 </div>
-                <ul>
-                    <li>✓ Até 2 turmas por professor.</li>
-                    <li>✓ Até 20 alunos por turma.</li>
-                </ul>
-                <div class="buy-button-div">
-                    <button type="button">Assinar</button>
-                    <p>Leia e aceite os <a href="#">Termos e Condições</a> de uso.</p>
-                </div>
-            </div>
-            <div class="price-container">
-                <div class="plan-div">
-                    <p>Plano <br><strong>Premium</strong></p>
-                    <img src="/images/landing-page/plan-symbol-premium.svg" alt="Ícone de um círculo com um diamente representando o plano premium.">
-                </div>
-                <ul>
-                    <li>✓ Turmas ilimitadas por professor.</li>
-                    <li>✓ Alunos ilimitados por turma.</li>
-                    <li>✓ Relatório de atividades.</li>
-                    <li>✓ Envio de in-mail para alunos.</li>
-                    <li>✓ Chat de alunos.</li>
-                </ul>
-                <div class="buy-button-div">
-                    <button type="button">Assinar</button>
-                    <p>Leia e aceite os <a href="#">Termos e Condições</a> de uso.</p>
-                </div>
-            </div>
+                <button class="submit-button" type="submit">Enviar Mensagem</button>
+            </form>
         </div>
     </section>
     <footer>
