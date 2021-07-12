@@ -38,8 +38,8 @@ const AlunoTurmaService = {
     );
     return associate;
   },
-  destroyAssociation: async (id) => {
-    const destroyed = await database.TurmaAluno.destroy({ where: { id } });
+  destroyAssociation: async (idTurma) => {
+    const destroyed = await database.TurmaAluno.destroy({ where: { idTurma }});
     return destroyed;
   }
 };

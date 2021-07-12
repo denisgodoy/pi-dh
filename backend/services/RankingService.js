@@ -4,12 +4,12 @@ const { QueryTypes } = require('sequelize');
 const RankingService = {
     getRanking: async (idUser) => {
         const rankPoints = await database.sequelize.query(
-            `SELECT SUM(evaluation)
+            `SELECT SUM(evaluation) sumEvaluation
             FROM atividade_aluno
-            WHERE idUser = ${idUser}
-            AND evaluation IS NOT NULL`,
+            WHERE idUser = ${idUser}`,
             { type: QueryTypes.SELECT }
         );
+
         return rankPoints;
     }
 };

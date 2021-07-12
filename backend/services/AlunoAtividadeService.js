@@ -1,4 +1,5 @@
 const database = require('../database/models/index');
+const { Op } = require('Sequelize')
 
 const AlunoAtividadeService = {
   getSubscribed: async (idUser) => {
@@ -46,6 +47,10 @@ const AlunoAtividadeService = {
   destroyAssociation: async (id) => {
     const destroyedAssociation = await database.AtividadeAluno.destroy({ where: { id } });
     return destroyedAssociation;
+  },
+  getActivity: async (idAtividade) => {
+    const activity = await database.Atividade.findOne({ where: { idAtividade }});
+    return activity;
   }
 };
 
