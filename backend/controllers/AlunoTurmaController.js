@@ -1,4 +1,5 @@
 const AlunoTurmaService = require("../services/AlunoTurmaService");
+const RankingService = require("../services/RankingService");
 const UserService = require('../services/UserService');
 
 const AlunoTurmaController = {
@@ -9,11 +10,13 @@ const AlunoTurmaController = {
         const { idUser } = req.user;
         const student = await UserService.getById(idUser);
         const data = await AlunoTurmaService.getClasses(idUser);
+        const sum = await RankingService.getRanking(idUser);
 
         return res.render('aluno-turmas-dashboard', 
         { 
             student,
-            data 
+            data,
+            sum
         });
     },
     getClassById: async (req, res) => {
@@ -21,11 +24,13 @@ const AlunoTurmaController = {
         const { idUser } = req.user;
         const student = await UserService.getById(idUser);
         const data = await AlunoTurmaService.getClassById(idTurma);
-
+        const sum = await RankingService.getRanking(idUser);
+        
         return res.render('aluno-turma-dashboard', 
         { 
             student,
-            data 
+            data,
+            sum
         });
     },
     createAssociation: async (req, res) => {
@@ -42,9 +47,10 @@ const AlunoTurmaController = {
         });
     },
     destroyAssociation: async (req, res) => {
-        const { id } = req.params;
-        const destroyed = await AlunoTurmaService.destroy(id);
-        return res.json(destroyed);
+        const { idTurma } = req.params;
+        const { idUser } = req.user;
+        await AlunoTurmaService.destroyAssociation(idTurma, idUser);
+        return res.redirect('/dashboard/aluno/turmas');
     }
 };
 

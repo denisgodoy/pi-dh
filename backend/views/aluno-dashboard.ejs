@@ -38,9 +38,9 @@
                         <th>Código</th>
                         <th>Curso</th>
                         <th>Turma</th>
+                        <th>ID</th>
                         <th>Professor</th>
                         <th>Pontos</th>
-                        <th>Alunos</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,9 +49,9 @@
                         <td><%= turma.id %></td>
                         <td><%= turma.Turma.titulo %></td>
                         <td><%= turma.Turma.codigo.slice(0,6) %></td>
-                        <td>Ivens</td>
-                        <td>33.756</td>
-                        <td>27</td>
+                        <td><%= turma.Turma.idTurma %></td>
+                        <td>Ivens Müller</td>
+                        <td><%= sum[0].sumEvaluation %></td>
                     </tr>
                 <% } %>
                 </tbody>

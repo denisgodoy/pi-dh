@@ -43,16 +43,30 @@ const AlunoAtividadeController = {
         
         return res.redirect(`/dashboard/aluno/turmas/${idTurma}/atividades`);
     },
-    createAssociation: async (req, res) => {
-        const { idAtividade } = req.params;
+    enrollActivity: async (req, res) => {
+        const { idAtividade, idTurma } = req.params;
         const { idUser } = req.user;
-        const atividade = await AlunoAtividadeService.createAssociation(idUser, idAtividade);
-        return res.json(atividade);
+        const data = await AlunoAtividadeService.getActivity(idAtividade);
+        const student = await UserService.getById(idUser);
+        const classes = await AlunoTurmaService.getClassById(idTurma);
+        return res.render('aluno-aceitar-dashboard',
+        {
+            data,
+            classes,
+            student
+        });
+    },
+    createAssociation: async (req, res) => {
+        const { idAtividade, idTurma } = req.params;
+        const { idUser } = req.user;
+        await AlunoAtividadeService.createAssociation(idUser, idAtividade);
+        return res.redirect(`/dashboard/aluno/turmas/${idTurma}/atividades`);
     },
     destroyAssociation: async (req, res) => {
+        const { idTurma } = req.params;
         const { id } = req.params;
-        const destroyed = await AlunoAtividadeService.destroy(id);
-        return res.json(destroyed);
+        await AlunoAtividadeService.destroyAssociation(id);
+        return res.redirect(`/dashboard/aluno/turmas/${idTurma}/atividades`);
     }
 };
 
