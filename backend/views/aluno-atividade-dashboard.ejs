@@ -54,8 +54,10 @@
             <textarea name="textField" placeholder="Digite ou cole aqui sua resposta" rows="10" cols="77"><%= data.textField %></textarea>
             <div class="action-btn">
                 <button class="submit-send" type="submit" value="submit">Enviar Atividade</button>
-                <button class="submit-giveup" type="submit" value="delete">Desistir da Atividade</button>
             </div>
+        </form>
+        <form class="form" method="POST" action="/dashboard/aluno/turmas/<%= classes.idTurma %>/atividade/<%= data.id %>/desistir">
+            <button class="submit-giveup" type="submit" value="delete">Desistir da Atividade</button>
         </form>
         <div class="notification">
             <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
