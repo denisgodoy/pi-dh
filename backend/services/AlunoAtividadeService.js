@@ -2,11 +2,24 @@ const database = require('../database/models/index');
 const { QueryTypes } = require('sequelize');
 
 const AlunoAtividadeService = {
-  getSubscribed: async (idUser) => {
-    const subscribed = await database.AtividadeAluno.findAll({
-      where: { idUser },
-      include: [{ model: database.Atividade }]
-    });
+  getSubscribed: async (idUser, idTurma) => {
+    const subscribed = await database.sequelize.query(
+      `SELECT * FROM atividade
+      JOIN 
+      (
+        SELECT * FROM atividade_aluno
+        WHERE idUser = ${idUser} AND idAtividade IN
+      (
+        SELECT atividade_turma.idAtividade
+        FROM atividade_turma
+        WHERE idTurma = ${idTurma}
+      )
+      ) AS AtividadeTurma 
+      ON atividade.idAtividade = AtividadeTurma.idAtividade
+      `,
+      { type: QueryTypes.SELECT }
+    );
+
     return subscribed;
   },
   getActivities: async (idTurma) => {
@@ -52,20 +65,22 @@ const AlunoAtividadeService = {
     const activity = await database.Atividade.findOne({ where: { idAtividade }});
     return activity;
   },
-  getUniqueActivity: async () => {
+  getUniqueActivity: async (idTurma) => {
     const uniqueActivity = await database.sequelize.query(
-      `SELECT idAtividade
-      FROM (
-      SELECT idAtividade FROM atividade_aluno
-      UNION ALL
-      SELECT idAtividade FROM atividade_turma
-      ) tbl
-      GROUP BY idAtividade
-      HAVING count(*) = 1
-      ORDER BY idAtividade`,
+      `SELECT * FROM atividade
+      WHERE atividade.idAtividade IN
+      (
+        SELECT atividade_turma.idAtividade
+        FROM atividade_turma
+        WHERE idTurma = ${idTurma} AND idAtividade NOT IN 
+      (
+        SELECT atividade_aluno.idAtividade
+        FROM atividade_aluno
+      )
+      )`,
       { type: QueryTypes.SELECT }
     );
-    console.log(uniqueActivity);
+
     return uniqueActivity;
   }
 };
