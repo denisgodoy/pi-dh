@@ -1,34 +1,72 @@
 const AlunoAtividadeService = require('../services/AlunoAtividadeService');
+const UserService = require('../services/UserService');
+const AlunoTurmaService = require('../services/AlunoTurmaService');
 
 const AlunoAtividadeController = {
     index: (req, res) => {
-        return res.render('atividades');
+        return res.render('aluno-atividades-dashboard');
     },
-    getAllAtividades: async (req, res) => {
-        const { idUser } = req.params;
-        const atividades = await AlunoAtividadeService.getAtividades(idUser);
-        return res.json(atividades);
+    getAllActivities: async (req, res) => {
+        const { idTurma } = req.params;
+        const { idUser } = req.user;
+        const data = await AlunoAtividadeService.getActivities(idTurma);
+        const subscribed = await AlunoAtividadeService.getSubscribed(idUser);
+        const student = await UserService.getById(idUser);
+        const classes = await AlunoTurmaService.getClassById(idTurma);
+
+        return res.render('aluno-atividades-dashboard', 
+        { 
+            data,
+            subscribed,
+            student,
+            classes
+        });
     },
-    getAtividadeById: async (req, res) => {
-        const { idAtividade } = req.params;
-        const atividadeById = await AlunoAtividadeService.getAtividadeById(idAtividade);
-        return res.json(atividadeById);
+    getActivityById: async (req, res) => {
+        const { id, idTurma } = req.params;
+        const { idUser } = req.user;
+        const data = await AlunoAtividadeService.getActivityById(id);
+        const student = await UserService.getById(idUser);
+        const classes = await AlunoTurmaService.getClassById(idTurma);
+
+        return res.render('aluno-atividade-dashboard', 
+        {
+            data,
+            student,
+            classes
+        });
     },
-    sendAtividade: async (req, res) => {    
-        const { id } = req.params;
+    sendActivity: async (req, res) => {    
+        const { id, idTurma } = req.params;
         const { textField } = req.body;
-        const atividade = await AlunoAtividadeService.sendAtividade(id, textField);
-        return res.json(atividade);
+        await AlunoAtividadeService.sendActivity(id, textField);
+        
+        return res.redirect(`/dashboard/aluno/turmas/${idTurma}/atividades`);
+    },
+    enrollActivity: async (req, res) => {
+        const { idAtividade, idTurma } = req.params;
+        const { idUser } = req.user;
+        const data = await AlunoAtividadeService.getActivity(idAtividade);
+        const student = await UserService.getById(idUser);
+        const classes = await AlunoTurmaService.getClassById(idTurma);
+        return res.render('aluno-aceitar-dashboard',
+        {
+            data,
+            classes,
+            student
+        });
     },
     createAssociation: async (req, res) => {
-        const { idUser, idAtividade } = req.params;
-        const atividade = await AlunoAtividadeService.createAssociation(idUser, idAtividade);
-        return res.json(atividade);
+        const { idAtividade, idTurma } = req.params;
+        const { idUser } = req.user;
+        await AlunoAtividadeService.createAssociation(idUser, idAtividade);
+        return res.redirect(`/dashboard/aluno/turmas/${idTurma}/atividades`);
     },
     destroyAssociation: async (req, res) => {
+        const { idTurma } = req.params;
         const { id } = req.params;
-        const destroyed = await AlunoAtividadeService.destroy(id);
-        return res.json(destroyed);
+        await AlunoAtividadeService.destroyAssociation(id);
+        return res.redirect(`/dashboard/aluno/turmas/${idTurma}/atividades`);
     }
 };
 

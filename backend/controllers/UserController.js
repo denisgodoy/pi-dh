@@ -2,13 +2,23 @@ const UserService = require('../services/UserService');
 
 const UserController = {
   showSignUpPage: (req, res) => {
-    return res.render('sign-up');
+    return res.render('user/sign-up');
   },
   showSignInPage: (req, res) => {
-    return res.render('sign-in');
+    return res.render('user/sign-in');
+  },
+  showSuccessPage: (req, res) => {
+    return res.render('user/sign-up-success');
   },
   createUser: async (req, res) => {
     let { nome, sobrenome, email, senha, tipoUser } = req.body;
+
+    const verifyUser = await UserService.findUser(email);
+    if (verifyUser) {
+      return res.status(400).json({
+        err: 'Usuário já cadastrado. Insira outro endereço de e-mail',
+      });
+    }
 
     senha = await UserService.hashPassword(senha);
 
@@ -19,34 +29,27 @@ const UserController = {
       senha,
       tipoUser
     );
-    console.log(user);
-    return res.render('sign-up-success');
+
+    return res.json(user);
   },
   signInUser: async (req, res) => {
-
     const { email, senha } = req.body;
     const user = await UserService.findUser(email);
 
     if (user == undefined) {
-      return res.status(401).json({ err: 'E-mail não encontrado' });
+      return res.status(400).json({ err: 'E-mail não encontrado' });
     }
 
     const verifyPassword = await UserService.checkPassword(senha, user);
 
     if (!verifyPassword) {
-      return res.status(401).json({ err: 'Senha inválida' });
+      return res.status(400).json({ err: 'Senha inválida' });
     }
 
     const userToken = await UserService.createWebToken(user);
-
     req.session.userToken = userToken;
 
-    switch (user.tipoUser) {
-      case 'professor':
-        return res.redirect('/professor');
-      case 'aluno':
-        return res.redirect('/aluno');
-    }
+    return res.json(user);
   },
   indexAll: async (req, res) => {
     const list = await UserService.getUserList();
@@ -63,10 +66,13 @@ const UserController = {
   },
 
   updateUser: async (req, res) => {
-    let { idUser } = req.params;
-    let { nome, sobrenome, email, senha, tipoUser } = req.body;
+    let { idUser, nome, sobrenome, email, senha, tipoUser } = req.body;
 
-    senha = await UserService.hashPassword(senha);
+    if (senha == undefined) {
+      senha = await UserService.getUserPassword(idUser);
+    } else {
+      senha = await UserService.hashPassword(senha);
+    }
 
     let updatedUser = await UserService.updateUser(
       idUser,
@@ -84,16 +90,16 @@ const UserController = {
     let destroyedUser = await UserService.destroy(idUser);
     return res.json(destroyedUser);
   },
-  indexByType: async (req, res) => {
-    const { idUser } = req.params;
-    const userType = await UserService.getById(idUser);
 
-    if (userType.tipoUser == "aluno") {
-        return res.redirect(`/dashboard/aluno/:${idUser}`);
-    } else {
-        return res.send(`/dashboard/professor/:${idUser}`);
-    };
-  }
+  showUserProfile: async (req, res) => {
+    let userInfo = req.user;
+    let user = await UserService.getById(userInfo.idUser);
+
+    return res.render('user/profile', { user: user });
+  },
+  showUserProfileSuccess: async (req, res) => {
+    return res.render('user/profile-success');
+  },
 };
 
 module.exports = UserController;

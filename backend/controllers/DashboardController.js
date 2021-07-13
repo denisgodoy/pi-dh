@@ -1,26 +1,23 @@
-const ProfessorAtividadeService = require('../services/ProfessorAtividadeService');
+const UserService = require('../services/UserService');
+const AlunoTurmaService = require('../services/AlunoTurmaService');
+const RankingService = require('../services/RankingService');
 
 const DashboardController = {
-    indexAluno: (req, res) => {
-        return res.render('aluno-dashboard');
+    indexStudent: async (req, res) => {
+        const { idUser } = req.user;
+        const student = await UserService.getById(idUser);
+        const data = await AlunoTurmaService.getClasses(idUser);
+        const sum = await RankingService.getRanking(idUser);
+
+        return res.render('aluno-dashboard', 
+        { 
+            student,
+            data,
+            sum
+        });
     },
     indexProfessor: (req, res) => {
-        return res.render('aluno-dashboard');
-    },
-    indexAtividades: async (req, res)=>{
-        const atividades = await ProfessorAtividadeService.getAtividades();
-        return res.render('dashboard-professor/dashboard-atividades', {atividades});
-    },
-    criarAtividade: async (req,res)=>{
-        const {titulo, descricao, pontuacao, dataInicio, dataTermino} = req.body;
-        const atividade = await ProfessorAtividadeService.createAtividade(titulo, descricao, pontuacao, dataInicio, dataTermino);
-        return res.json(atividade);
-        // return res.render('dashboard-professor/dashboard-atividades-criar');
-    },
-    deletarAtividade: async (req, res) => {
-        const { id } = req.params;
-        const destroyedAtividade = await ProfessorAtividadeService.destroyAtividade(id);
-        return res.json(destroyedAtividade);
+        return res.render('professor-dashboard');
     }
 };
 
