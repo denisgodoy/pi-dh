@@ -10,7 +10,7 @@ const AlunoTurmaController = {
         const data = await AlunoTurmaService.getClasses(idUser);
         const sum = await RankingService.getRanking(idUser);
 
-        return res.render('aluno-turmas-dashboard', 
+        return res.render('dashboard-aluno/aluno-turmas-dashboard', 
         { 
             nome,
             data,
@@ -23,7 +23,7 @@ const AlunoTurmaController = {
         const data = await AlunoTurmaService.getClassById(idTurma);
         const sum = await RankingService.getRanking(idUser);
         
-        return res.render('aluno-turma-dashboard', 
+        return res.render('dashboard-aluno/aluno-turma-dashboard', 
         { 
             nome,
             data,
@@ -36,7 +36,7 @@ const AlunoTurmaController = {
         await AlunoTurmaService.createAssociation(idUser, idTurma);
         const data = await AlunoTurmaService.getClasses(idUser);
 
-        return res.render('aluno-turmas-dashboard', 
+        return res.render('dashboard-aluno/aluno-turmas-dashboard', 
         {
             nome,
             data

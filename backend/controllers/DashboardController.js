@@ -7,7 +7,7 @@ const DashboardController = {
         const data = await AlunoTurmaService.getClasses(idUser);
         const sum = await RankingService.getRanking(idUser);
 
-        return res.render('aluno-dashboard', 
+        return res.render('dashboard-aluno/aluno-dashboard', 
         { 
             nome,
             data,

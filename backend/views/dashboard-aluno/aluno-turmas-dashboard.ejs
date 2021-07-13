@@ -7,56 +7,60 @@
     <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
     <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
+    <link rel="stylesheet" href="/stylesheets/landing-page/contact-us.css">
     <script defer src="/fa/brands.js"></script>
     <script defer src="/fa/solid.js"></script>
     <script defer src="/fa/fontawesome.js"></script>
     <title>elevel - Dashboard Aluno</title>
 </head>
 <body>
-    <%- include('./partials/aside-top.ejs') %>
+    <%- include('../partials/aside-top.ejs') %>
             <a href="/dashboard/aluno"><i class="fas fa-graduation-cap"></i> Aluno</a>
             <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
-            <a href="/dashboard/aluno/turmas" class="active"><i class="fas fa-users"></i> Turmas</a>
-            <a href="/dashboard/aluno/turmas/<%= data.idTurma %>/atividades"><i class="fas fa-file-alt"></i> Atividades</a>
-            <a href="#"><i class="fas fa-chart-bar"></i> Ranking</a>
-    <%- include('./partials/aside-bottom.ejs') %>
+            <a href="#" class="active"><i class="fas fa-users"></i> Turmas</a>
+    <%- include('../partials/aside-bottom.ejs') %>
     <div class="main">
-        <h2>Dashboard / Turmas / <%= data.titulo %></h2>
+        <h2>Dashboard / Turmas</h2>
         <hr />
         <div id="billboard">
             <button id="close-billboard"><i class="fas fa-times"></i></button>
-            <h3><%= data.titulo %></h3>
-            <p>Este é o seu curso de <%= data.titulo %>. Aqui você pode ver seus colegas de turma, ranking e atividades pendentes.</p>
+            <h3><%= nome %>,</h3>
+            <p>Aqui você pode conferir e gerenciar todos cursos e turmas que participa! Selecione para visualizar todos os detalhes.</p>
         </div>
+        <h4>Turmas que faço parte</h4>
         <div class="tables">
             <table id="data-table">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Código</th>
                         <th>Curso</th>
                         <th>Turma</th>
+                        <th>Professor</th>
                         <th>Pontos</th>
-                        <th>Alunos</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><%= data.idTurma %></td>
-                        <td><%= data.titulo %></td>
-                        <td><%= data.codigo.slice(0,8) %></td>
-                        <td><%= sum[0].sumEvaluation %></td>
-                        <td>10</td>
+                <% for (let turma of data) { %>
+                    <tr onclick="window.location='/dashboard/aluno/turmas/<%= turma.Turma.idTurma %>'">
+                        <td><%= turma.id %></td>
+                        <td><%= turma.Turma.titulo %></td>
+                        <td><%= turma.Turma.codigo.slice(0,8) %></td>
+                        <td>Ivens Müller</td>
+                        <td></td>
                         <td>
-                            <a href=""><i class="fas fa-trash"></i></a>
+                            <i class="fas fa-trash"></i>
                         </td>
                     </tr>
+                <% } %>
                 </tbody>
             </table>
         </div>
-        <div class="action-btn">
-            <form method="POST" action="/dashboard/aluno/turmas/<%= data.idTurma %>">
-                <button class="submit-giveup" type="submit">Sair da Turma</button>
+        <h4>Entrar em uma nova turma</h4>
+        <div class="more-actions">
+            <form class="form" method="POST" action="/dashboard/aluno/turmas">
+                <input class="styled-input" type="text" name="idTurma" placeholder="ID da turma" />
+                <button class="submit-send" type="submit">Entrar na Turma</button>
             </form>
         </div>
         <div class="notification">

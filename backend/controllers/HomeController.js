@@ -2,7 +2,7 @@ const SendMailService = require('../services/SendMailService');
 
 const HomeController = {
     index: (req, res) => {
-        return res.render('landing-page');
+        return res.render('landing-page/landing-page');
     },
     contactUs: (req, res) => {
         return res.render('contact-us');
@@ -17,7 +17,7 @@ const HomeController = {
         }
 
         await SendMailService.sendMail(mailData);
-        return res.render('success');
+        return res.render('landing-page/success');
     }
 }
 

@@ -3,7 +3,7 @@ const AlunoTurmaService = require('../services/AlunoTurmaService');
 
 const AlunoAtividadeController = {
     index: (req, res) => {
-        return res.render('aluno-atividades-dashboard');
+        return res.render('dashboard-aluno/aluno-atividades-dashboard');
     },
     getAllActivities: async (req, res) => {
         const { idTurma } = req.params;
@@ -12,7 +12,7 @@ const AlunoAtividadeController = {
         const subscribed = await AlunoAtividadeService.getSubscribed(idUser);
         const classes = await AlunoTurmaService.getClassById(idTurma);
 
-        return res.render('aluno-atividades-dashboard', 
+        return res.render('dashboard-aluno/aluno-atividades-dashboard', 
         { 
             data,
             subscribed,
@@ -26,7 +26,7 @@ const AlunoAtividadeController = {
         const data = await AlunoAtividadeService.getActivityById(id);
         const classes = await AlunoTurmaService.getClassById(idTurma);
 
-        return res.render('aluno-atividade-dashboard', 
+        return res.render('dashboard-aluno/aluno-atividade-dashboard', 
         {
             data,
             nome,
@@ -45,7 +45,7 @@ const AlunoAtividadeController = {
         const { idUser, nome } = req.user;
         const data = await AlunoAtividadeService.getActivity(idAtividade);
         const classes = await AlunoTurmaService.getClassById(idTurma);
-        return res.render('aluno-aceitar-dashboard',
+        return res.render('dashboard-aluno/aluno-aceitar-dashboard',
         {
             data,
             classes,
