@@ -1,5 +1,4 @@
 const AlunoAtividadeService = require('../services/AlunoAtividadeService');
-const UserService = require('../services/UserService');
 const AlunoTurmaService = require('../services/AlunoTurmaService');
 
 const AlunoAtividadeController = {
@@ -8,31 +7,29 @@ const AlunoAtividadeController = {
     },
     getAllActivities: async (req, res) => {
         const { idTurma } = req.params;
-        const { idUser } = req.user;
+        const { idUser, nome } = req.user;
         const data = await AlunoAtividadeService.getActivities(idTurma);
         const subscribed = await AlunoAtividadeService.getSubscribed(idUser);
-        const student = await UserService.getById(idUser);
         const classes = await AlunoTurmaService.getClassById(idTurma);
 
         return res.render('aluno-atividades-dashboard', 
         { 
             data,
             subscribed,
-            student,
+            nome,
             classes
         });
     },
     getActivityById: async (req, res) => {
         const { id, idTurma } = req.params;
-        const { idUser } = req.user;
+        const { idUser, nome } = req.user;
         const data = await AlunoAtividadeService.getActivityById(id);
-        const student = await UserService.getById(idUser);
         const classes = await AlunoTurmaService.getClassById(idTurma);
 
         return res.render('aluno-atividade-dashboard', 
         {
             data,
-            student,
+            nome,
             classes
         });
     },
@@ -45,15 +42,14 @@ const AlunoAtividadeController = {
     },
     enrollActivity: async (req, res) => {
         const { idAtividade, idTurma } = req.params;
-        const { idUser } = req.user;
+        const { idUser, nome } = req.user;
         const data = await AlunoAtividadeService.getActivity(idAtividade);
-        const student = await UserService.getById(idUser);
         const classes = await AlunoTurmaService.getClassById(idTurma);
         return res.render('aluno-aceitar-dashboard',
         {
             data,
             classes,
-            student
+            nome
         });
     },
     createAssociation: async (req, res) => {
