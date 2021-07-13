@@ -51,6 +51,21 @@ const AlunoAtividadeService = {
   getActivity: async (idAtividade) => {
     const activity = await database.Atividade.findOne({ where: { idAtividade }});
     return activity;
+  },
+  getUniqueActivity: async () => {
+    const uniqueActivity = await database.sequelize.query(
+      `SELECT idAtividade
+      FROM (
+      SELECT idAtividade FROM atividade_aluno
+      UNION ALL
+      SELECT idAtividade FROM atividade_turma
+      ) tbl
+      GROUP BY idAtividade
+      HAVING count(*) = 1
+      ORDER BY idAtividade`
+    );
+    console.log(uniqueActivity);
+    return uniqueActivity;
   }
 };
 
