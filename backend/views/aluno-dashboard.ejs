@@ -25,9 +25,9 @@
         </div>
         <h2>Dashboard / Área do Aluno</h2>
         <hr />
-        <div class="billboard">
-            <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
-            <h3>Olá, <%= student.nome %>! 😀</h3>
+        <div id="billboard">
+            <button id="close-billboard"><i class="fas fa-times"></i></button>
+            <h3>Olá, <%= nome %>! 😀</h3>
             <p>Esta é a sua área de aluno no Dashboard Elevel. Aqui você pode encontrar as turmas das quais faz parte, gerenciar atividades pendentes e verificar quantos pontos você possui em comparação com outras pessoas da mesma turma.</p>
         </div>
         <h4>Turmas que faço parte</h4>
@@ -65,5 +65,6 @@
             <a href="/dashboard/aluno/profile"><button>Editar meu perfil</button></a>
         </div>
     </div>
+    <script src="/js/dashboard-aluno/dashboard.js"></script>
 </body>
 </html>

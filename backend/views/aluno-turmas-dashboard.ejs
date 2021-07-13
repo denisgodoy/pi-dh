@@ -22,9 +22,9 @@
     <div class="main">
         <h2>Dashboard / Turmas</h2>
         <hr />
-        <div class="billboard">
-            <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
-            <h3><%= student.nome %>,</h3>
+        <div id="billboard">
+            <button id="close-billboard"><i class="fas fa-times"></i></button>
+            <h3><%= nome %>,</h3>
             <p>Aqui você pode conferir e gerenciar todos cursos e turmas que participa! Selecione para visualizar todos os detalhes.</p>
         </div>
         <h4>Turmas que faço parte</h4>
@@ -68,5 +68,6 @@
             <span class="badge">🔔</span>
         </div>
     </div>
+    <script src="/js/dashboard-aluno/dashboard.js"></script>
 </body>
 </html>

@@ -23,8 +23,8 @@
     <div class="main">
         <h2>Dashboard / Turmas / <%= data.titulo %></h2>
         <hr />
-        <div class="billboard">
-            <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
+        <div id="billboard">
+            <button id="close-billboard"><i class="fas fa-times"></i></button>
             <h3><%= data.titulo %></h3>
             <p>Este é o seu curso de <%= data.titulo %>. Aqui você pode ver seus colegas de turma, ranking e atividades pendentes.</p>
         </div>
@@ -64,5 +64,6 @@
             <span class="badge">🔔</span>
         </div>
     </div>
+    <script src="/js/dashboard-aluno/dashboard.js"></script>
 </body>
 </html>
