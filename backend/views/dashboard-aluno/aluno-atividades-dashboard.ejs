@@ -28,7 +28,7 @@
             <h3><%= nome %>,</h3>
             <p>Aqui você tem acesso às atividades que já se registrou e outras atividades que estão disponíveis para a turma de <%= classes.titulo %>, praticando todos os conceitos das aulas.</p>
         </div>
-        <h4>Atividades para entregar</h4>
+        <h4>Atividades pendentes</h4>
             <div class="tables">
                 <table id="data-table">
                     <thead>
@@ -44,10 +44,10 @@
                     <% for (let atividade of subscribed) { %>
                         <% if (atividade.evaluation == null) { %>
                     <tr onclick="window.location='/dashboard/aluno/turmas/<%= classes.idTurma %>/atividade/<%= atividade.id %>'">
-                        <td><%= atividade.Atividade.titulo %></td>
-                        <td><%= atividade.Atividade.descricao %></td>
-                        <td><%= atividade.Atividade.pontuacao %></td>
-                        <td><%= atividade.Atividade.dataTermino %></td>
+                        <td><%= atividade.titulo %></td>
+                        <td><%= atividade.descricao %></td>
+                        <td><%= atividade.pontuacao %></td>
+                        <td><%= atividade.dataTermino %></td>
                     <% if(atividade.textField != null && atividade.textField != '') { %>
                         <td>Enviado</td>
                     <% } else { %>
@@ -72,16 +72,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><%= atividade.Atividade.titulo %></td>
-                        <td><%= atividade.Atividade.descricao %></td>
-                        <td><%= atividade.Atividade.pontuacao %></td>
+                        <td><%= atividade.titulo %></td>
+                        <td><%= atividade.descricao %></td>
+                        <td><%= atividade.pontuacao %></td>
                         <% if (atividade.evaluation == 0) { %>
                         <td>❌</td>
                         <% } %>
-                        <% if (atividade.evaluation >= (atividade.Atividade.pontuacao / 2)) { %>
+                        <% if (atividade.evaluation >= (atividade.pontuacao / 2)) { %>
                         <td>✔️</td>
                         <% } %>
-                        <% if (atividade.evaluation > 0 && atividade.evaluation < (atividade.Atividade.pontuacao / 2)) { %>
+                        <% if (atividade.evaluation > 0 && atividade.evaluation < (atividade.pontuacao / 2)) { %>
                         <td>🟡</td>
                         <% } %>
                         <td><%= atividade.evaluation %></td>
@@ -101,17 +101,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% for (let i = 0; i < data.length; i++) { 
-                        let id = 0 %>
-                        <% if (data[i].Atividade.idAtividade != id) { %>
-                    <tr onclick="window.location='/dashboard/aluno/turmas/<%= classes.idTurma %>/atividades/<%= data[i].Atividade.idAtividade %>'">
-                        <td><%= data[i].Atividade.titulo %></td>
-                        <td><%= data[i].Atividade.descricao %></td>
-                        <td><%= data[i].Atividade.pontuacao %></td>
-                        <td><%= data[i].Atividade.dataTermino %></td>
+                    <% for (let i = 0; i < data.length; i++) { %>
+                    <tr onclick="window.location='/dashboard/aluno/turmas/<%= classes.idTurma %>/atividades/<%= data[i].idAtividade %>'">
+                        <td><%= data[i].titulo %></td>
+                        <td><%= data[i].descricao %></td>
+                        <td><%= data[i].pontuacao %></td>
+                        <td><%= data[i].dataTermino %></td>
                         <td>Aceitar</td>
                     </tr>
-                <% } } %>
+                <% } %>
                 </tbody>
             </table>
         </div>
