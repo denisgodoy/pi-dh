@@ -1,5 +1,5 @@
 const database = require('../database/models/index');
-const { Op } = require('Sequelize')
+const { QueryTypes } = require('sequelize');
 
 const AlunoAtividadeService = {
   getSubscribed: async (idUser) => {
@@ -62,7 +62,8 @@ const AlunoAtividadeService = {
       ) tbl
       GROUP BY idAtividade
       HAVING count(*) = 1
-      ORDER BY idAtividade`
+      ORDER BY idAtividade`,
+      { type: QueryTypes.SELECT }
     );
     console.log(uniqueActivity);
     return uniqueActivity;

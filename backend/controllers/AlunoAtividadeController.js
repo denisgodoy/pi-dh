@@ -22,7 +22,7 @@ const AlunoAtividadeController = {
     },
     getActivityById: async (req, res) => {
         const { id, idTurma } = req.params;
-        const { idUser, nome } = req.user;
+        const { nome } = req.user;
         const data = await AlunoAtividadeService.getActivityById(id);
         const classes = await AlunoTurmaService.getClassById(idTurma);
 
@@ -42,7 +42,7 @@ const AlunoAtividadeController = {
     },
     enrollActivity: async (req, res) => {
         const { idAtividade, idTurma } = req.params;
-        const { idUser, nome } = req.user;
+        const { nome } = req.user;
         const data = await AlunoAtividadeService.getActivity(idAtividade);
         const classes = await AlunoTurmaService.getClassById(idTurma);
         return res.render('dashboard-aluno/aluno-aceitar-dashboard',
