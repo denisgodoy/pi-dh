@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/global.css">
+    <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
+    <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
+    <script defer src="/fa/brands.js"></script>
+    <script defer src="/fa/solid.js"></script>
+    <script defer src="/fa/fontawesome.js"></script>
+    <title>elevel - Dashboard Aluno</title>
+</head>
+<body>
+    <%- include('../partials/aside-top.ejs') %>
+            <a href="/dashboard/aluno"><i class="fas fa-graduation-cap"></i> Aluno</a>
+            <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
+            <a href="/dashboard/aluno/turmas" ><i class="fas fa-users"></i> Turmas</a>
+            <a href="/dashboard/aluno/turmas/<%= classes.idTurma %>/atividades"><i class="fas fa-file-alt"></i> Atividades</a>
+            <a href="#"  class="active"><i class="fas fa-chart-bar"></i> Ranking</a>
+    <%- include('../partials/aside-bottom.ejs') %>
+    <div class="main">
+        <h2>Dashboard / Turmas / <%= classes.titulo %> / Ranking </h2>
+        <hr />
+        <div class="tables">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Aluno</th>
+                        <th>Total de Pontos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < rankResult.length; i++) { %>
+                    <tr>
+                        <% if (rankResult[i].sumEvaluation != null && rankResult[i].sumEvaluation != 0) { %>
+                        <td><%= (i + 1) %></td>
+                        <td><%= rankResult[i].nome + ' ' + rankResult[i].sobrenome %></td>
+                        <td><%= rankResult[i].sumEvaluation %></td>
+                        <% } else { %>
+                        <td>-</td>
+                        <td><%= rankResult[i].nome + ' ' + rankResult[i].sobrenome %></td>
+                        <td>0</td>
+                        <% } %>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
