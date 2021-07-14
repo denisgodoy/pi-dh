@@ -17,11 +17,24 @@ const RankingService = {
 
         return classPoints;
     },
-    getRanking: async (idUser) => {
+    getRanking: async (idTurma) => {
         const ranking = await database.sequelize.query(
-            `SELECT SUM(evaluation) sumEvaluation
-            FROM atividade_aluno
-            WHERE idUser = ${idUser}`,
+            `SELECT user.nome, user.sobrenome, Ranking.sumEvaluation 
+            FROM user
+            JOIN 
+            (
+                SELECT idUser, SUM(evaluation) sumEvaluation
+                FROM atividade_aluno
+                WHERE idAtividade IN 
+            (
+                SELECT atividade_turma.idAtividade
+                FROM atividade_turma
+                WHERE idTurma = ${idTurma}
+            )
+            GROUP BY idUser
+            ) AS Ranking 
+            ON user.idUser = Ranking.idUser
+            ORDER BY Ranking.sumEvaluation DESC, user.nome ASC`,
             { type: QueryTypes.SELECT }
         );
 
