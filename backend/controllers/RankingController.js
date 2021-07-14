@@ -2,8 +2,8 @@ const RankingService = require('../services/RankingService');
 
 const RankingController = {
     index: async (req, res) => {
-        const { idUser } = req.user;
-        const rankResult = await RankingService.getRanking(idUser);
+        const { idUser, idTurma } = req.params;
+        const rankResult = await RankingService.getTotalPoints(idUser, idTurma);
 
         return res.json(rankResult);
     }
