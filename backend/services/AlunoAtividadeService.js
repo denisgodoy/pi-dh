@@ -65,7 +65,7 @@ const AlunoAtividadeService = {
     const activity = await database.Atividade.findOne({ where: { idAtividade }});
     return activity;
   },
-  getUniqueActivity: async (idTurma) => {
+  getUniqueActivity: async (idUser, idTurma) => {
     const uniqueActivity = await database.sequelize.query(
       `SELECT * FROM atividade
       WHERE atividade.idAtividade IN
@@ -76,6 +76,7 @@ const AlunoAtividadeService = {
       (
         SELECT atividade_aluno.idAtividade
         FROM atividade_aluno
+        WHERE idUser = ${idUser}
       )
       )`,
       { type: QueryTypes.SELECT }
