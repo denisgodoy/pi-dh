@@ -17,6 +17,7 @@ router.get('/aluno/turmas', alunoTurmaController.getAllClasses);
 router.post('/aluno/turmas', alunoTurmaController.createAssociation);
 router.get('/aluno/turmas/:idTurma', alunoTurmaController.getClassById);
 router.post('/aluno/turmas/:idTurma', alunoTurmaController.destroyAssociation);
+router.get('/aluno/turmas/:idTurma/ranking', rankingController.index);
 router.get('/aluno/turmas/:idTurma/atividades', alunoAtividadeController.getAllActivities);
 router.get('/aluno/turmas/:idTurma/atividades/:idAtividade', alunoAtividadeController.enrollActivity);
 router.post('/aluno/turmas/:idTurma/atividades/:idAtividade', alunoAtividadeController.createAssociation);
