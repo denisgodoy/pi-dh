@@ -45,8 +45,12 @@
                         <td><%= data.idTurma %></td>
                         <td><%= data.titulo %></td>
                         <td><%= data.codigo.slice(0,8) %></td>
+                        <% if (sum[0].sumEvaluation != null) { %>
                         <td><%= sum[0].sumEvaluation %></td>
-                        <td>10</td>
+                        <% } else { %>
+                        <td>0</td>
+                        <% } %>
+                        <td><%= classmates[0].count %></td>
                         <td>
                             <a href=""><i class="fas fa-trash"></i></a>
                         </td>

@@ -21,13 +21,15 @@ const AlunoTurmaController = {
         const { idTurma } = req.params;
         const { idUser, nome } = req.user;
         const data = await AlunoTurmaService.getClassById(idTurma);
-        const sum = await RankingService.getRanking(idUser);
-        
+        const sum = await RankingService.getTotalPoints(idUser, idTurma);
+        const classmates = await AlunoTurmaService.getTotalClassmates(idTurma);
+      
         return res.render('dashboard-aluno/aluno-turma-dashboard', 
         { 
             nome,
             data,
-            sum
+            sum,
+            classmates
         });
     },
     createAssociation: async (req, res) => {

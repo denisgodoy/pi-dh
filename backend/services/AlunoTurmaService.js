@@ -1,4 +1,5 @@
 const database = require('../database/models/index');
+const { QueryTypes } = require('sequelize');
 
 const AlunoTurmaService = {
   getClasses: async (idUser) => {
@@ -41,7 +42,16 @@ const AlunoTurmaService = {
   destroyAssociation: async (idTurma) => {
     const destroyed = await database.TurmaAluno.destroy({ where: { idTurma }});
     return destroyed;
-  }
+  },
+  getTotalClassmates: async (idTurma) => {
+    const classmates = await database.sequelize.query(
+        `SELECT COUNT(idTurma) AS count 
+        FROM turma_aluno AS TurmaAluno 
+        WHERE TurmaAluno.idTurma = ${idTurma}`,
+        { type: QueryTypes.SELECT }
+    );
+    return classmates;
+  },
 };
 
 module.exports = AlunoTurmaService;
