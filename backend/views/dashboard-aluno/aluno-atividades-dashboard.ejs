@@ -18,7 +18,7 @@
             <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
             <a href="/dashboard/aluno/turmas" ><i class="fas fa-users"></i> Turmas</a>
             <a href="#" class="active"><i class="fas fa-file-alt"></i> Atividades</a>
-            <a href="#"><i class="fas fa-chart-bar"></i> Ranking</a>
+            <a href="/dashboard/aluno/turmas/<%= classes.idTurma %>/ranking"><i class="fas fa-chart-bar"></i> Ranking</a>
     <%- include('../partials/aside-bottom.ejs') %>
     <div class="main">
         <h2>Dashboard / Turmas / <%= classes.titulo %> / Atividades</h2>
@@ -57,8 +57,6 @@
                 <% }} %>
                 </tbody>
             </table>
-            <% for (let atividade of subscribed) { %>
-                <% if (atividade.evaluation != null) { %>
             <h4>Atividades corrigidas</h4>
             <table id="data-table">
                 <thead>
@@ -66,11 +64,13 @@
                         <th>Atividade</th>
                         <th>Descrição</th>
                         <th>Pontos</th>
-                        <th>Status</th>
+                        <th>Correção</th>
                         <th>Atribuídos</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <% for (let atividade of subscribed) { %>
+                    <% if (atividade.evaluation != null) { %>
                     <tr>
                         <td><%= atividade.titulo %></td>
                         <td><%= atividade.descricao %></td>
@@ -84,11 +84,11 @@
                         <% if (atividade.evaluation > 0 && atividade.evaluation < (atividade.pontuacao / 2)) { %>
                         <td>🟡</td>
                         <% } %>
-                        <td><%= atividade.evaluation %></td>
+                        <td><strong><%= atividade.evaluation %></strong></td>
                     </tr>
+                    <% }} %>
                 </tbody>
             </table>
-            <% } } %>
             <h4>Novas atividades para a turma</h4>
             <table id="data-table">
                 <thead>
