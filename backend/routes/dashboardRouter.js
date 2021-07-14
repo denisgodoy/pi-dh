@@ -24,6 +24,9 @@ router.post('/aluno/turmas/:idTurma/atividades/:idAtividade', alunoAtividadeCont
 router.get('/aluno/turmas/:idTurma/atividade/:id', alunoAtividadeController.getActivityById);
 router.post('/aluno/turmas/:idTurma/atividade/:id', alunoAtividadeController.sendActivity);
 router.post('/aluno/turmas/:idTurma/atividade/:id/desistir', alunoAtividadeController.destroyAssociation);
+router.get('/aluno/atividades-pendentes', alunoAtividadeController.getPending);
+router.get('/aluno/atividades-corrigidas', alunoAtividadeController.getSent);
+router.get('/aluno/novas-atividades', alunoAtividadeController.getAllNew);
 
 //Rota perfil de professor
 router.get(
