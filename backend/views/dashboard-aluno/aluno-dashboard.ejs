@@ -23,7 +23,7 @@
             <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
             <span class="badge">🔔</span>
         </div>
-        <h2>Dashboard / Área do Aluno</h2>
+        <h2>Dashboard / Aluno</h2>
         <hr />
         <div id="billboard">
             <button id="close-billboard"><i class="fas fa-times"></i></button>
@@ -40,18 +40,18 @@
                         <th>Turma</th>
                         <th>ID</th>
                         <th>Professor</th>
-                        <th>Pontos</th>
+                        <th>-</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% for (let turma of data) { %>
-                        <tr onclick="window.location='/dashboard/aluno/turmas/<%= turma.Turma.idTurma %>'">
+                        <tr onclick="window.location='/dashboard/aluno/turmas/<%= turma.idTurma %>'">
                         <td><%= turma.id %></td>
                         <td><%= turma.Turma.titulo %></td>
                         <td><%= turma.Turma.codigo.slice(0,6) %></td>
                         <td><%= turma.Turma.idTurma %></td>
-                        <td>Ivens Müller</td>
-                        <td>pontos</td>
+                        <td>-</td>
+                        <td>-</td>
                     </tr>
                 <% } %>
                 </tbody>
@@ -59,9 +59,9 @@
         </div>
         <h4>Ações rápidas</h4>
         <div class="more-actions">
-            <a href="#"><button>Entrar em uma nova turma</button></a>
-            <a href="#"><button>Atividades pendentes</button></a>
-            <a href="#"><button>Atividades entregues</button></a>
+            <a href="/dashboard/aluno/novas-atividades"><button>Novas Atividades</button></a>
+            <a href="/dashboard/aluno/atividades-pendentes"><button>Atividades Pendentes</button></a>
+            <a href="/dashboard/aluno/atividades-corrigidas"><button>Atividades Corrigidas</button></a>
             <a href="/dashboard/aluno/profile"><button>Editar meu perfil</button></a>
         </div>
     </div>
