@@ -63,6 +63,33 @@ const AlunoAtividadeController = {
         const { id } = req.params;
         await AlunoAtividadeService.destroyAssociation(id);
         return res.redirect(`/dashboard/aluno/turmas/${idTurma}/atividades`);
+    },
+    getPending: async (req, res) => {
+        const { idUser, nome } = req.user;
+        const pending = await AlunoAtividadeService.getPendingActivities(idUser);
+        return res.render('dashboard-aluno/aluno-pendentes-dashboard', 
+        { 
+            pending,
+            nome 
+        });
+    },
+    getSent: async (req, res) => {
+        const { idUser, nome } = req.user;
+        const sent = await AlunoAtividadeService.getSentActivities(idUser);
+        return res.render('dashboard-aluno/aluno-corrigidas-dashboard', 
+        {
+            sent,
+            nome 
+        });
+    },
+    getAllNew: async (req, res) => {
+        const { idUser, nome } = req.user;
+        const newAct = await AlunoAtividadeService.getAllNew(idUser);
+        return res.render('dashboard-aluno/aluno-novas-dashboard', 
+        {
+            nome,
+            newAct
+        });
     }
 };
 
