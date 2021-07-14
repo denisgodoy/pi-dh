@@ -39,6 +39,9 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'idAtividade',
             otherKey: 'idUser'
         });
+        Atividade.belongsTo(models.AtividadeTurma, {
+            foreignKey: 'idAtividade'
+        });
     }
     return Atividade;
 };
