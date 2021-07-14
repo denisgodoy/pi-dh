@@ -9,7 +9,7 @@ const AlunoAtividadeController = {
         const { idTurma } = req.params;
         const { idUser, nome } = req.user;
         const subscribed = await AlunoAtividadeService.getSubscribed(idUser, idTurma);
-        const data = await AlunoAtividadeService.getUniqueActivity(idTurma);
+        const data = await AlunoAtividadeService.getUniqueActivity(idUser, idTurma);
         const classes = await AlunoTurmaService.getClassById(idTurma);
 
         return res.render('dashboard-aluno/aluno-atividades-dashboard', 
