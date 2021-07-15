@@ -2,8 +2,12 @@ const database = require('../database/models/index');
 
 const AlunoTurmaService = {
   getClasses: async (idUser) => {
-    const classes = await database.Turma.findAll({
-      where: { idUser }
+    const classes = await database.TurmaAluno.findAll({
+      where: { idUser },
+      include: [{ 
+        model: database.Turma, 
+        attributes: ['idTurma', 'titulo', 'codigo'] 
+      }]
     });
     return classes;
   },
@@ -26,14 +30,16 @@ const AlunoTurmaService = {
     return activityById;
   },
   createAssociation: async (idUser, idTurma) => {
-    const associate = await database.TurmaAluno.create({
-      idUser,
-      idTurma
-    });
+    const associate = await database.TurmaAluno.create(
+      {
+        idUser,
+        idTurma
+      }
+    );
     return associate;
   },
-  destroyAssociation: async (id) => {
-    const destroyed = await database.TurmaAluno.destroy({ where: { id } });
+  destroyAssociation: async (idTurma) => {
+    const destroyed = await database.TurmaAluno.destroy({ where: { idTurma }});
     return destroyed;
   }
 };

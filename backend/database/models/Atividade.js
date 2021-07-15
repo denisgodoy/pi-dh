@@ -1,4 +1,3 @@
-  
 module.exports = (sequelize, DataTypes) => {
     const Atividade = sequelize.define("Atividade", 
         {

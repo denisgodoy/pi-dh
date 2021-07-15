@@ -10,7 +10,7 @@ main {
     padding: 20px;
 }
 
-main > h2, p {
+main > h2, main > p {
     padding: 10px;
 }
 
@@ -26,8 +26,14 @@ main > button {
     font-weight: bold;
     box-shadow: 2px 3px 0px var(--magenta-light);
     margin-top: 10px;
+    cursor: pointer;
 }
 
 main > button:hover {
     background-color: var(--magenta-light);
+}
+
+main > button > a {
+    text-decoration: inherit;
+    color: inherit;
 }

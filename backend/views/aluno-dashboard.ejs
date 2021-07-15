@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" turma="IE=edge">
+    <meta name="viewport" turma="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/global.css">
+    <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
+    <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
+    <script defer src="/fa/brands.js"></script>
+    <script defer src="/fa/solid.js"></script>
+    <script defer src="/fa/fontawesome.js"></script>
+    <title>elevel - Dashboard Aluno</title>
+</head>
+<body>
+    <%- include('./partials/aside-top.ejs') %>
+    <a href="#" class="active"><i class="fas fa-graduation-cap"></i> Aluno</a>
+    <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
+    <a href="/dashboard/aluno/turmas"><i class="fas fa-users"></i> Turmas</a>
+    <%- include('./partials/aside-bottom.ejs') %>
+    <div class="main">
+        <div class="notification">
+            <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
+            <span class="badge">🔔</span>
+        </div>
+        <h2>Dashboard / Área do Aluno</h2>
+        <hr />
+        <div class="billboard">
+            <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
+            <h3>Olá, <%= student.nome %>! 😀</h3>
+            <p>Esta é a sua área de aluno no Dashboard Elevel. Aqui você pode encontrar as turmas das quais faz parte, gerenciar atividades pendentes e verificar quantos pontos você possui em comparação com outras pessoas da mesma turma.</p>
+        </div>
+        <h4>Turmas que faço parte</h4>
+        <div class="tables">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Curso</th>
+                        <th>Turma</th>
+                        <th>ID</th>
+                        <th>Professor</th>
+                        <th>Pontos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let turma of data) { %>
+                        <tr onclick="window.location='/dashboard/aluno/turmas/<%= turma.Turma.idTurma %>'">
+                        <td><%= turma.id %></td>
+                        <td><%= turma.Turma.titulo %></td>
+                        <td><%= turma.Turma.codigo.slice(0,6) %></td>
+                        <td><%= turma.Turma.idTurma %></td>
+                        <td>Ivens Müller</td>
+                        <td><%= sum[0].sumEvaluation %></td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+        <h4>Ações rápidas</h4>
+        <div class="more-actions">
+            <a href="#"><button>Entrar em uma nova turma</button></a>
+            <a href="#"><button>Atividades pendentes</button></a>
+            <a href="#"><button>Atividades entregues</button></a>
+            <a href="/dashboard/aluno/profile"><button>Editar meu perfil</button></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -4,7 +4,7 @@ const RankingService = require('../services/RankingService');
 
 const DashboardController = {
     indexStudent: async (req, res) => {
-        const { idUser } = req.user;
+        const { idUser} = req.user;
         const student = await UserService.getById(idUser);
         const data = await AlunoTurmaService.getClasses(idUser);
         const sum = await RankingService.getRanking(idUser);

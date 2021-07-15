@@ -9,6 +9,14 @@ module.exports = (sequelize, DataTypes) => {
             textField: {
                 type: DataTypes.STRING(1000),
                 allowNull: true
+            },
+            status: {
+                type: DataTypes.INTEGER,
+                defaultValue: 0
+            },
+            evaluation: {
+                type: DataTypes.INTEGER,
+                allowNull: true
             }
         },
         {

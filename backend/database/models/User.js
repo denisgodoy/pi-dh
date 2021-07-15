@@ -44,6 +44,11 @@ module.exports = (sequelize, DataTypes) => {
 			foreignKey: 'idUser',
 			otherKey: 'idAtividade'				
 		});
+		User.belongsToMany(models.Turma, {
+			through: models.TurmaAluno,
+			foreignKey: 'idUser',
+			otherKey: 'idTurma'
+		});
 	}
 	return User;
 };
