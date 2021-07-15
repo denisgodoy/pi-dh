@@ -105,6 +105,7 @@ aside > nav > a.active,
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    box-shadow: 8px 8px 10px rgba(0,0,0,0.1);
 }
 
 #billboard > h3 {
@@ -147,21 +148,27 @@ h4 {
 }
 
 .more-actions > a > button {
-    background-color: rgb(223, 223, 223);
-    border: none;
+    background-color: var(--blue-dark);
     border-radius: 10px;
-    height: 80px;
-    width: 170px;
+    height: 40px;
+    width: 175px;
     padding: 10px;
-    color: #5f5f5f;
+    color: white;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: bold;
     margin: 10px 0 10px 0;
+    border: none;
 }
 
 .more-actions > a {
     text-decoration: inherit;
     color: inherit;
+}
+
+.more-actions > a > button:hover {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid var(--blue-dark);
+    color: var(--blue-dark);
 }
 
 .tags {
@@ -181,9 +188,7 @@ hr {
     width: 100%;
     border-spacing: 0 0.5rem;
     color: #747373;
-
     overflow-x: auto;
-
 }
 
 .evaluate,
@@ -321,6 +326,7 @@ table tbody tr td:last-child {
     align-items: center;
     justify-content: center;
     border-radius: 15px;
+    box-shadow: 8px 8px 10px rgba(0,0,0,0.05);
 }
 
 .btn-action {
