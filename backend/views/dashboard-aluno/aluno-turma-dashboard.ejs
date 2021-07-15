@@ -20,7 +20,7 @@
             <a href="/dashboard/aluno/turmas/<%= data.idTurma %>/atividades"><i class="fas fa-file-alt"></i> Atividades</a>
             <a href="/dashboard/aluno/turmas/<%= data.idTurma %>/ranking"><i class="fas fa-chart-bar"></i> Ranking</a>
     <%- include('../partials/aside-bottom.ejs') %>
-    <div class="main">
+    <main class="main">
         <h2>Dashboard / Turmas / <%= data.titulo %></h2>
         <hr />
         <div id="billboard">
@@ -66,16 +66,17 @@
             <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
             <span class="badge">🔔</span>
         </div>
-    </div>
-    <div id="leave-class">
-        <p>Tem certeza que deseja sair da turma <%= data.titulo %>?</p>
-        <div class="btn-action">
-            <form method="POST" action="/dashboard/aluno/turmas/<%= data.idTurma %>">
-                <button class="submit-giveup" type="submit">Sair</button>
-            </form>
-            <button id="stay" type="submit" class="submit-send" value="stay">Ficar</button>
         </div>
-    </div>
+        <div id="leave-class">
+            <p>Tem certeza que deseja sair da turma <%= data.titulo %>?</p>
+            <div class="btn-action">
+                <form method="POST" action="/dashboard/aluno/turmas/<%= data.idTurma %>">
+                    <button class="submit-giveup" type="submit">Sair</button>
+                </form>
+                <button id="stay" type="submit" class="submit-send" value="stay">Ficar</button>
+            </div>
+        </div>
+    </main>
     <script src="/js/dashboard-aluno/dashboard.js"></script>
 </body>
 </html>

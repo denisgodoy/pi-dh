@@ -70,15 +70,13 @@ aside > nav > a.active,
     color: #FAFAFA;
 }
 
-
 .main {
-    margin-left: 230px;
+    padding-left: 230px;
     padding-bottom: 100px;
 }
 
 .logo {
     text-align: center;
-
 }
 
 .main > h2 {
