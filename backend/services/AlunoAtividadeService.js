@@ -110,10 +110,11 @@ const AlunoAtividadeService = {
   },
   getAllNew: async (idUser) => {
     const uniqueActivity = await database.sequelize.query(
-      `SELECT atividade_turma.idTurma, tbl.* 
+      `SELECT turma.titulo AS turmaTitulo, tbl2.* 
+      FROM (
+      SELECT atividade_turma.idTurma, tbl.* 
       FROM atividade_turma 
-      JOIN 
-      (
+      JOIN (
         SELECT * FROM atividade
         WHERE atividade.idAtividade NOT IN
       (
@@ -121,7 +122,10 @@ const AlunoAtividadeService = {
         FROM atividade_aluno
         WHERE idUser = ${idUser}
       )) AS tbl
-      ON atividade_turma.idAtividade = tbl.idAtividade`,
+      ON atividade_turma.idAtividade = tbl.idAtividade
+      ) AS tbl2
+      JOIN turma
+      ON tbl2.idTurma = turma.idTurma`,
       { type: QueryTypes.SELECT }
     );
 
