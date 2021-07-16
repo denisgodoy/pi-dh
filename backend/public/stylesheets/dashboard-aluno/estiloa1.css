@@ -9,67 +9,6 @@ strong {
     padding: 0 5px;
 }
 
-/** SIDEBAR **/
-
-aside {
-    height: 100vh;
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: var(--blue-dark);
-    overflow-x: hidden;
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 1px 0px 1px rgba(0, 0, 0, 0.3);
-}
-
-aside > h1 {
-    width: 50px;
-    align-self: left;
-}
-
-.btn {
-    margin: 20px 8px 0px 8px;
-    max-width: 50%;
-    display: flex;
-    align-self: center;
-    margin-left: 10% !important;
-}
-
-.btn:hover {
-    filter: brightness(90%);
-}
-
-aside > nav > a,
-.btn {
-    padding: 15px 32px;
-    background-color: #FAFAFA;
-    font-size: 14px;
-    color: var(--blue-dark);
-    width: 160px;
-    display: block;
-    text-align: center;
-    border-radius: 10px;
-}
-
-aside > nav > a {
-    margin: 40px 8px;
-}
-
-aside > nav > a:hover:not(.active) {
-    filter: brightness(70%);
-}
-
-aside > nav > a.active,
-.btn {
-    background-color: #E31151;
-    color: #FAFAFA;
-}
-
 .main {
     padding-left: 230px;
     padding-bottom: 100px;
@@ -169,14 +108,6 @@ h4 {
     color: var(--blue-dark);
 }
 
-.tags {
-    margin: 0px 10px;
-    padding: 0px 10px;
-    border-radius: 10px;
-    background-color: #E31151;
-    color: white;
-}
-
 hr {
     color: black;
 }
@@ -187,11 +118,6 @@ hr {
     border-spacing: 0 0.5rem;
     color: #747373;
     overflow-x: auto;
-}
-
-.evaluate,
-.evaluated {
-    color: var(--blue-dark);
 }
 
 table th {
@@ -234,8 +160,26 @@ table tbody tr td:last-child {
 }
 
 .form > textarea {
+    min-width: 100%;
     max-width: 100%;
     padding: 10px;
+	font-size: 14px;
+	border: solid 0.5px var(--grey);
+	color: #000;
+	border-radius: 10px;
+    outline: none;
+}
+
+.styled-input {
+    width: 50%;
+	margin-top: 10px;
+	padding: 5px 5px;
+	font-size: 14px;
+	border: solid 0.5px var(--grey);
+	color: #000;
+	border-radius: 10px;
+    resize: none;
+    outline: none;
 }
 
 .action-btn {
@@ -387,10 +331,6 @@ footer > p > a {
 /** FIM DO FOOTER **/
 
 @media(max-width: 600px) {
-
-    #live-chat {
-        display: none;
-    }
 
     #data-table {
         width: 100%;
