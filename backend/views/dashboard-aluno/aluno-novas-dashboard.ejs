@@ -31,7 +31,7 @@
             <table id="data-table">
                 <thead>
                     <tr>
-                        <th>Turma</th>
+                        <th>Curso</th>
                         <th>Atividade</th>
                         <th>Descrição</th>
                         <th>Pontos</th>
@@ -41,7 +41,7 @@
                 <tbody>
                 <% for (let nova of newAct) { %>
                     <tr onclick="window.location='/dashboard/aluno/turmas/<%= nova.idTurma %>/atividades/<%= nova.idAtividade %>'">
-                        <td><%= nova.idTurma %></td>
+                        <td><%= nova.turmaTitulo %></td>
                         <td><%= nova.titulo %></td>
                         <td><%= nova.descricao %></td>
                         <td><%= nova.pontuacao %></td>
