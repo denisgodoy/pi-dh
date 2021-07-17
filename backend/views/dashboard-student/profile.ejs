@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" turma="IE=edge" />
+    <meta name="viewport" turma="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/global.css" />
+    <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
+    <link rel="stylesheet" href="/stylesheets/user-profile/dashboard.css" />
+    <link rel="stylesheet" href="/stylesheets/user-profile/estiloa1.css" />
+    <script defer src="/fa/brands.js"></script>
+    <script defer src="/fa/solid.js"></script>
+    <script defer src="/fa/fontawesome.js"></script>
+    <title>elevel - Dashboard Aluno</title>
+  </head>
+  <body>
+    <%- include('../partials/aside-top.ejs') %>
+    <a href="#" class="active"><i class="fas fa-graduation-cap"></i> Aluno</a>
+    <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
+    <a href="/dashboard/aluno/turmas"><i class="fas fa-users"></i> Turmas</a>
+    <%- include('../partials/aside-bottom.ejs') %>
+    <div class="main">
+      <div class="notification">
+        <img src="/images/avatar.png" class="avatar" alt="avatar" />
+        <span class="badge">🔔</span>
+      </div>
+
+      <h2>Dashboard / Perfil</h2>
+
+      <form action="" id="profileForm">
+        <span id="updateError" class="error"></span>
+        <input
+          type="text"
+          name="idUser"
+          id="idUser"
+          value="<%= user.idUser %>"
+          class="error"
+        />
+        <input
+          type="text"
+          name="userType"
+          id="userType"
+          value="<%= user.tipoUser %>"
+          class="error"
+        />
+        <label for="nome">Nome * </label>
+        <span id="nameError" class="error"></span>
+        <input
+          type="text"
+          name="nome"
+          id="nome"
+          placeholder="Nome"
+          value="<%= user.nome %>"
+        />
+        <label for="sobrenome">Sobrenome *</label>
+        <span id="lastNameError" class="error"></span>
+        <input
+          type="text"
+          name="sobrenome"
+          id="sobrenome"
+          placeholder="Sobrenome"
+          value="<%= user.sobrenome %>"
+        />
+        <label for="email">E-mail *</label>
+        <span id="emailError" class="error"></span>
+
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="E-mail"
+          value="<%= user.email %>"
+        />
+        <label for="profile-image">Imagem de perfil</label>
+        <input type="file" id="profile-image" name="profile-image" />
+
+        <div class="password-group">
+          <label for="password">Alterar senha </label>
+          <span id="passwordError" class="error"></span>
+          <input
+            class="styled-input"
+            type="password"
+            name="senha"
+            id="senha"
+            placeholder="Crie uma senha"
+          />
+          <label for="password">Confirme a nova senha </label>
+          <span id="passwordConfirmationError" class="error"></span>
+          <input
+            class="styled-input"
+            type="password"
+            name="confirmacaoSenha"
+            id="confirmacaoSenha"
+            placeholder="Confirme sua senha"
+          />
+        </div>
+        <button class="submit-send" id="update-profile" type="submit">
+          Atualizar perfil
+        </button>
+      </form>
+
+      <div class="action-btn">
+        <span id="deleteError" class="error"></span>
+        <button id="leave" class="delete-button" type="submit" value="leave">
+          Deletar perfil
+        </button>
+      </div>
+
+      <div id="leave-class">
+        <p>Tem certeza que deseja apagar o seu perfil?</p>
+        <div class="btn-action">
+          <form id="deleteUser">
+            <button class="submit-giveup" type="submit">Apagar</button>
+          </form>
+          <button id="stay" type="submit" class="submit-send" value="stay">
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="/js/user/student-profile.js"></script>
+  </body>
+</html>
