@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
-    <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
-    <script defer src="/fa/brands.js"></script>
+    <link rel="stylesheet" href="/stylesheets/global.css">
+    <link rel="stylesheet" href="/stylesheets/dashboard-student/dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/global-sidebar.css">
     <script defer src="/fa/solid.js"></script>
     <script defer src="/fa/fontawesome.js"></script>
     <title>elevel - Dashboard Aluno</title>
@@ -20,7 +20,7 @@
             <a href="/dashboard/aluno/turmas/<%= data.idTurma %>/atividades"><i class="fas fa-file-alt"></i> Atividades</a>
             <a href="/dashboard/aluno/turmas/<%= data.idTurma %>/ranking"><i class="fas fa-chart-bar"></i> Ranking</a>
     <%- include('../partials/aside-bottom.ejs') %>
-    <div class="main">
+    <main class="main">
         <h2>Dashboard / Turmas / <%= data.titulo %></h2>
         <hr />
         <div id="billboard">
@@ -28,6 +28,7 @@
             <h3><%= data.titulo %></h3>
             <p>Este é o seu curso de <%= data.titulo %>. Aqui você pode ver seus colegas de turma, ranking e atividades pendentes.</p>
         </div>
+        <h4>Gerenciar turma</h4>
         <div class="tables">
             <table id="data-table">
                 <thead>
@@ -37,7 +38,6 @@
                         <th>Turma</th>
                         <th>Pontos</th>
                         <th>Alunos</th>
-                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,9 +51,6 @@
                         <td>0</td>
                         <% } %>
                         <td><%= classmates[0].count %></td>
-                        <td>
-                            <a href=""><i class="fas fa-trash"></i></a>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -65,16 +62,17 @@
             <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
             <span class="badge">🔔</span>
         </div>
-    </div>
-    <div id="leave-class">
-        <p>Tem certeza que deseja sair da turma <%= data.titulo %>?</p>
-        <div class="btn-action">
-            <form method="POST" action="/dashboard/aluno/turmas/<%= data.idTurma %>">
-                <button class="submit-giveup" type="submit">Sair</button>
-            </form>
-            <button id="stay" type="submit" class="submit-send" value="stay">Ficar</button>
         </div>
-    </div>
-    <script src="/js/dashboard-aluno/dashboard.js"></script>
+        <div id="leave-class">
+            <p>Tem certeza que deseja sair da turma <%= data.titulo %>?</p>
+            <div class="btn-action">
+                <form method="POST" action="/dashboard/aluno/turmas/<%= data.idTurma %>">
+                    <button class="submit-giveup" type="submit">Sair</button>
+                </form>
+                <button id="stay" type="submit" class="submit-send" value="stay">Ficar</button>
+            </div>
+        </div>
+    </main>
+    <script src="/js/dashboard-student/dashboard.js"></script>
 </body>
 </html>

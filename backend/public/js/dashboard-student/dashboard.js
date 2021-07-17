@@ -1,10 +1,12 @@
-function hideBillboard() {
+function hideBillboard(event) {
+    event.preventDefault();
     const billboard = document.getElementById("billboard");
     billboard.style.display = "none";
 };
 
 function popUpConfirm(event) {
     const leave = document.getElementById("leave-class");
+    event.preventDefault();
 
     if (event.target.value == "stay") {
         leave.style.display = "none";

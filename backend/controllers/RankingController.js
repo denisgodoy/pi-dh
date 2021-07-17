@@ -7,7 +7,7 @@ const RankingController = {
         const rankResult = await RankingService.getRanking(idTurma);
         const classes = await AlunoTurmaService.getClassById(idTurma);
 
-        return res.render('dashboard-aluno/aluno-ranking-dashboard', 
+        return res.render('dashboard-student/ranking', 
         {
             rankResult,
             classes

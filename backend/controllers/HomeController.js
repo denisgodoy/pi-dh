@@ -5,7 +5,7 @@ const HomeController = {
         return res.render('landing-page/landing-page');
     },
     contactUs: (req, res) => {
-        return res.render('contact-us');
+        return res.render('landing-page/contact-us');
     },
     sendMail: async (req, res) => {
         const { name, email, message } = req.body;

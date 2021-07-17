@@ -1,5 +1,5 @@
 const database = require('../database/models/index');
-const { QueryTypes } = require('sequelize');
+const { QueryTypes, Op } = require('sequelize');
 
 const AlunoAtividadeService = {
   getSubscribed: async (idUser, idTurma) => {
@@ -83,7 +83,54 @@ const AlunoAtividadeService = {
     );
 
     return uniqueActivity;
-  }
+  },
+  getPendingActivities: async (idUser) => {
+    const pending = await database.AtividadeAluno.findAll(
+      { 
+        where: { idUser, evaluation: null },
+        include: [{ model: database.Atividade, as: 'Atividade',
+            where: 'Atividade'.idAtividade,
+            include: [{ model: database.AtividadeTurma }]
+        }]
+      }
+    );
+    return pending;
+  },
+  getSentActivities: async (idUser) => {
+    const sent = await database.AtividadeAluno.findAll(
+      { 
+        where: { idUser, evaluation: {[Op.ne]: null} },
+        include: [{ model: database.Atividade, as: 'Atividade',
+            where: 'Atividade'.idAtividade,
+            include: [{ model: database.AtividadeTurma }]
+        }]
+      }
+    );
+    return sent;
+  },
+  getAllNew: async (idUser) => {
+    const uniqueActivity = await database.sequelize.query(
+      `SELECT turma.titulo AS turmaTitulo, tbl2.* 
+      FROM (
+      SELECT atividade_turma.idTurma, tbl.* 
+      FROM atividade_turma 
+      JOIN (
+        SELECT * FROM atividade
+        WHERE atividade.idAtividade NOT IN
+      (
+        SELECT atividade_aluno.idAtividade
+        FROM atividade_aluno
+        WHERE idUser = ${idUser}
+      )) AS tbl
+      ON atividade_turma.idAtividade = tbl.idAtividade
+      ) AS tbl2
+      JOIN turma
+      ON tbl2.idTurma = turma.idTurma`,
+      { type: QueryTypes.SELECT }
+    );
+
+    return uniqueActivity;
+  },
 };
 
 module.exports = AlunoAtividadeService;

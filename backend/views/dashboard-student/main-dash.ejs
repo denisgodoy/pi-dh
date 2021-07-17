@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" turma="IE=edge">
     <meta name="viewport" turma="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
-    <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
-    <script defer src="/fa/brands.js"></script>
+    <link rel="stylesheet" href="/stylesheets/dashboard-student/dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/global.css">
+    <link rel="stylesheet" href="/stylesheets/global-sidebar.css">
     <script defer src="/fa/solid.js"></script>
     <script defer src="/fa/fontawesome.js"></script>
     <title>elevel - Dashboard Aluno</title>
@@ -18,12 +18,12 @@
     <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
     <a href="/dashboard/aluno/turmas"><i class="fas fa-users"></i> Turmas</a>
     <%- include('../partials/aside-bottom.ejs') %>
-    <div class="main">
+    <main class="main">
         <div class="notification">
             <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
             <span class="badge">🔔</span>
         </div>
-        <h2>Dashboard / Área do Aluno</h2>
+        <h2>Dashboard / Aluno</h2>
         <hr />
         <div id="billboard">
             <button id="close-billboard"><i class="fas fa-times"></i></button>
@@ -39,19 +39,15 @@
                         <th>Curso</th>
                         <th>Turma</th>
                         <th>ID</th>
-                        <th>Professor</th>
-                        <th>Pontos</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% for (let turma of data) { %>
-                        <tr onclick="window.location='/dashboard/aluno/turmas/<%= turma.Turma.idTurma %>'">
+                        <tr onclick="window.location='/dashboard/aluno/turmas/<%= turma.idTurma %>'">
                         <td><%= turma.id %></td>
                         <td><%= turma.Turma.titulo %></td>
                         <td><%= turma.Turma.codigo.slice(0,6) %></td>
                         <td><%= turma.Turma.idTurma %></td>
-                        <td>Ivens Müller</td>
-                        <td>pontos</td>
                     </tr>
                 <% } %>
                 </tbody>
@@ -59,12 +55,12 @@
         </div>
         <h4>Ações rápidas</h4>
         <div class="more-actions">
-            <a href="#"><button>Entrar em uma nova turma</button></a>
-            <a href="#"><button>Atividades pendentes</button></a>
-            <a href="#"><button>Atividades entregues</button></a>
-            <a href="/dashboard/aluno/profile"><button>Editar meu perfil</button></a>
+            <a href="/dashboard/aluno/novas-atividades"><button>Novas Atividades</button></a>
+            <a href="/dashboard/aluno/atividades-pendentes"><button>Atividades Pendentes</button></a>
+            <a href="/dashboard/aluno/atividades-corrigidas"><button>Atividades Corrigidas</button></a>
+            <a href="/dashboard/aluno/profile"><button>Editar Perfil</button></a>
         </div>
-    </div>
-    <script src="/js/dashboard-aluno/dashboard.js"></script>
+    </main>
+    <script src="/js/dashboard-student/dashboard.js"></script>
 </body>
 </html>

@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
-    <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
-    <script defer src="/fa/brands.js"></script>
+    <link rel="stylesheet" href="/stylesheets/global.css">
+    <link rel="stylesheet" href="/stylesheets/dashboard-student/dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/global-sidebar.css">
     <script defer src="/fa/solid.js"></script>
     <script defer src="/fa/fontawesome.js"></script>
     <title>elevel - Dashboard Aluno</title>
@@ -20,7 +20,7 @@
             <a href="#" class="active"><i class="fas fa-file-alt"></i> Atividades</a>
             <a href="/dashboard/aluno/turmas/<%= classes.idTurma %>/ranking"><i class="fas fa-chart-bar"></i> Ranking</a>
     <%- include('../partials/aside-bottom.ejs') %>
-    <div class="main">
+    <main class="main">
         <h2>Dashboard / Turmas / <%= classes.titulo %> / Atividade / <%= data.Atividade.titulo %></h2>
         <hr />
         <div class="tables">
@@ -70,6 +70,6 @@
             <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
             <span class="badge">🔔</span>
         </div>
-    </div>
+    </main>
 </body>
 </html>
