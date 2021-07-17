@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
+    <link rel="stylesheet" href="/stylesheets/global.css">
+    <link rel="stylesheet" href="/stylesheets/dashboard-student/dashboard.css">
+    <link rel="stylesheet" href="/stylesheets/global-sidebar.css">
+    <script defer src="/fa/solid.js"></script>
+    <script defer src="/fa/fontawesome.js"></script>
+    <title>elevel - Dashboard Aluno</title>
+</head>
+<body>
+    <%- include('../partials/aside-top.ejs') %>
+            <a href="/dashboard/aluno" class="active"><i class="fas fa-graduation-cap"></i> Aluno</a>
+            <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
+            <a href="/dashboard/aluno/turmas" ><i class="fas fa-users"></i> Turmas</a>
+    <%- include('../partials/aside-bottom.ejs') %>
+    <main class="main">
+        <h2>Dashboard / Aluno / Atividades Corrigidas</h2>
+        <hr />
+        <div id="billboard">
+            <button id="close-billboard"><i class="fas fa-times"></i></button>
+            <h3><%= nome %>,</h3>
+            <p>Estas são suas atividades corrigidas em todas as turmas que está registrado.</p>
+        </div>
+        <h4>Atividades corrigidas</h4>
+        <div class="tables">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Turma</th>
+                        <th>Atividade</th>
+                        <th>Descrição</th>
+                        <th>Pontos</th>
+                        <th>Atribuídos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% for (let corrigida of sent) { %>
+                    <tr onclick="window.location='/dashboard/aluno/turmas/<%= corrigida.Atividade.AtividadeTurma.idTurma %>/atividades/'">
+                        <td><%= corrigida.Atividade.AtividadeTurma.idTurma %></td>
+                        <td><%= corrigida.Atividade.titulo %></td>
+                        <td><%= corrigida.Atividade.descricao %></td>
+                        <td><%= corrigida.Atividade.pontuacao %></td>
+                        <td><strong><%= corrigida.evaluation %></strong></td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div class="notification">
+            <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
+            <span class="badge">🔔</span>
+        </div>
+    </main>
+    <script src="/js/dashboard-student/dashboard.js"></script>
+</body>
+</html>

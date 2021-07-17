@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
     <link rel="stylesheet" href="/stylesheets/global.css">
-    <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
+    <link rel="stylesheet" href="/stylesheets/dashboard-student/dashboard.css">
     <link rel="stylesheet" href="/stylesheets/global-sidebar.css">
     <script defer src="/fa/solid.js"></script>
     <script defer src="/fa/fontawesome.js"></script>
@@ -38,7 +38,6 @@
                         <th>Turma</th>
                         <th>Pontos</th>
                         <th>Alunos</th>
-                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,9 +51,6 @@
                         <td>0</td>
                         <% } %>
                         <td><%= classmates[0].count %></td>
-                        <td>
-                            <a href=""><i class="fas fa-trash"></i></a>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -77,6 +73,6 @@
             </div>
         </div>
     </main>
-    <script src="/js/dashboard-aluno/dashboard.js"></script>
+    <script src="/js/dashboard-student/dashboard.js"></script>
 </body>
 </html>

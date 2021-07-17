@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" turma="IE=edge">
     <meta name="viewport" turma="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
-    <link rel="stylesheet" href="/stylesheets/dashboard-aluno/estiloa1.css">
+    <link rel="stylesheet" href="/stylesheets/dashboard-student/dashboard.css">
     <link rel="stylesheet" href="/stylesheets/global.css">
     <link rel="stylesheet" href="/stylesheets/global-sidebar.css">
     <script defer src="/fa/solid.js"></script>
@@ -39,8 +39,6 @@
                         <th>Curso</th>
                         <th>Turma</th>
                         <th>ID</th>
-                        <th>Professor</th>
-                        <th>-</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,8 +48,6 @@
                         <td><%= turma.Turma.titulo %></td>
                         <td><%= turma.Turma.codigo.slice(0,6) %></td>
                         <td><%= turma.Turma.idTurma %></td>
-                        <td>-</td>
-                        <td>-</td>
                     </tr>
                 <% } %>
                 </tbody>
@@ -65,6 +61,6 @@
             <a href="/dashboard/aluno/profile"><button>Editar Perfil</button></a>
         </div>
     </main>
-    <script src="/js/dashboard-aluno/dashboard.js"></script>
+    <script src="/js/dashboard-student/dashboard.js"></script>
 </body>
 </html>
