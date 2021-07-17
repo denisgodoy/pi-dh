@@ -2,9 +2,6 @@ const AlunoAtividadeService = require('../services/AlunoAtividadeService');
 const AlunoTurmaService = require('../services/AlunoTurmaService');
 
 const AlunoAtividadeController = {
-    index: (req, res) => {
-        return res.render('dashboard-aluno/aluno-atividades-dashboard');
-    },
     getAllActivities: async (req, res) => {
         const { idTurma } = req.params;
         const { idUser, nome } = req.user;
@@ -12,7 +9,7 @@ const AlunoAtividadeController = {
         const data = await AlunoAtividadeService.getUniqueActivity(idUser, idTurma);
         const classes = await AlunoTurmaService.getClassById(idTurma);
 
-        return res.render('dashboard-aluno/aluno-atividades-dashboard', 
+        return res.render('dashboard-student/activities', 
         { 
             data,
             subscribed,
@@ -26,7 +23,7 @@ const AlunoAtividadeController = {
         const data = await AlunoAtividadeService.getActivityById(id);
         const classes = await AlunoTurmaService.getClassById(idTurma);
 
-        return res.render('dashboard-aluno/aluno-atividade-dashboard', 
+        return res.render('dashboard-student/activity-dash', 
         {
             data,
             nome,
@@ -45,7 +42,7 @@ const AlunoAtividadeController = {
         const { nome } = req.user;
         const data = await AlunoAtividadeService.getActivity(idAtividade);
         const classes = await AlunoTurmaService.getClassById(idTurma);
-        return res.render('dashboard-aluno/aluno-aceitar-dashboard',
+        return res.render('dashboard-student/accept-activity',
         {
             data,
             classes,
@@ -67,7 +64,7 @@ const AlunoAtividadeController = {
     getPending: async (req, res) => {
         const { idUser, nome } = req.user;
         const pending = await AlunoAtividadeService.getPendingActivities(idUser);
-        return res.render('dashboard-aluno/aluno-pendentes-dashboard', 
+        return res.render('dashboard-student/pending-activities', 
         { 
             pending,
             nome 
@@ -76,7 +73,7 @@ const AlunoAtividadeController = {
     getSent: async (req, res) => {
         const { idUser, nome } = req.user;
         const sent = await AlunoAtividadeService.getSentActivities(idUser);
-        return res.render('dashboard-aluno/aluno-corrigidas-dashboard', 
+        return res.render('dashboard-student/evaluated', 
         {
             sent,
             nome 
@@ -85,7 +82,7 @@ const AlunoAtividadeController = {
     getAllNew: async (req, res) => {
         const { idUser, nome } = req.user;
         const newAct = await AlunoAtividadeService.getAllNew(idUser);
-        return res.render('dashboard-aluno/aluno-novas-dashboard', 
+        return res.render('dashboard-student/new-activities', 
         {
             nome,
             newAct

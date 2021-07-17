@@ -2,15 +2,12 @@ const AlunoTurmaService = require("../services/AlunoTurmaService");
 const RankingService = require("../services/RankingService");
 
 const AlunoTurmaController = {
-    index: (req, res) => {
-        return res.render('aluno-turmas-dashboard');
-    },
     getAllClasses: async (req, res) => {
         const { idUser, nome } = req.user;
         const data = await AlunoTurmaService.getClasses(idUser);
         const sum = await RankingService.getRanking(idUser);
 
-        return res.render('dashboard-aluno/aluno-turmas-dashboard', 
+        return res.render('dashboard-student/classes', 
         { 
             nome,
             data,
@@ -24,7 +21,7 @@ const AlunoTurmaController = {
         const sum = await RankingService.getTotalPoints(idUser, idTurma);
         const classmates = await AlunoTurmaService.getTotalClassmates(idTurma);
       
-        return res.render('dashboard-aluno/aluno-turma-dashboard', 
+        return res.render('dashboard-student/class-dash', 
         { 
             nome,
             data,
@@ -38,7 +35,7 @@ const AlunoTurmaController = {
         await AlunoTurmaService.createAssociation(idUser, idTurma);
         const data = await AlunoTurmaService.getClasses(idUser);
 
-        return res.render('dashboard-aluno/aluno-turmas-dashboard', 
+        return res.render('dashboard-student/classes', 
         {
             nome,
             data
