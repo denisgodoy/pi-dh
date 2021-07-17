@@ -220,12 +220,45 @@ async function onSubmitSignUp(event) {
     updateError.classList.add('show');
     updateError.innerText = data.err;
   } else {
-    window.location.href = '/aluno/profile/success';
+    window.location.href = '/dashboard/aluno/profile/success';
+  }
+}
+
+async function onClickDeleteUser(event) {
+  event.preventDefault();
+  const idUser = document.getElementById('idUser').value;
+  console.log(idUser);
+  const response = await fetch(`http://localhost:3000/users/${idUser}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.status != 200) {
+    const leave = document.getElementById('leave-class');
+    leave.style.display = 'none';
+    const data = await response.json();
+    const updateError = document.getElementById('deleteError');
+    updateError.classList.add('show');
+    updateError.innerText = data.err;
+  } else {
+    window.location.href = 'http://localhost:3000/';
+  }
+}
+
+function popUpConfirm(event) {
+  const leave = document.getElementById('leave-class');
+
+  if (event.target.value == 'stay') {
+    leave.style.display = 'none';
+  } else {
+    leave.style.display = 'flex';
   }
 }
 
 window.onload = function () {
-  const form = document.querySelector('form');
+  const form = document.getElementById('profileForm');
   form.addEventListener('submit', onSubmitSignUp);
 
   const userNameInput = document.getElementById('nome');
@@ -245,4 +278,13 @@ window.onload = function () {
     'blur',
     onValidatePasswordConfirmationInput
   );
+
+  const deleteProfile = document.getElementById('deleteUser');
+  deleteProfile.addEventListener('submit', onClickDeleteUser);
+
+  const stayBtn = document.getElementById('stay');
+  stayBtn.addEventListener('click', popUpConfirm);
+
+  const leaveBtn = document.getElementById('leave');
+  leaveBtn.addEventListener('click', popUpConfirm);
 };

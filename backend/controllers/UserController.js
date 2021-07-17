@@ -68,8 +68,9 @@ const UserController = {
   updateUser: async (req, res) => {
     let { idUser, nome, sobrenome, email, senha, tipoUser } = req.body;
 
-    if (senha == undefined) {
-      senha = await UserService.getUserPassword(idUser);
+    if (!senha) {
+      user = await UserService.getUserPassword(idUser);
+      senha = user.senha;
     } else {
       senha = await UserService.hashPassword(senha);
     }
@@ -86,9 +87,16 @@ const UserController = {
     res.json(updatedUser);
   },
   destroy: async (req, res) => {
-    let { idUser } = req.params;
-    let destroyedUser = await UserService.destroy(idUser);
-    return res.json(destroyedUser);
+    try {
+      let { idUser } = req.params;
+      let destroyedUser = await UserService.destroy(idUser);
+      req.session.userToken = '';
+      return res.json(destroyedUser);
+    } catch (error) {
+      return res.status(400).json({
+        err: 'Você deve sair de todas as turmas antes de deletar o seu perfil',
+      });
+    }
   },
 
   showUserProfile: async (req, res) => {
@@ -99,6 +107,15 @@ const UserController = {
   },
   showUserProfileSuccess: async (req, res) => {
     return res.render('user/profile-success');
+  },
+  showStudentProfile: async (req, res) => {
+    let userInfo = req.user;
+    let user = await UserService.getById(userInfo.idUser);
+
+    return res.render('dashboard-student/profile', { user: user });
+  },
+  showStudentProfileSuccess: async (req, res) => {
+    return res.render('dashboard-student/profile-success');
   },
 };
 
