@@ -5,14 +5,9 @@ function hideBillboard(event) {
 };
 
 function popUpConfirm(event) {
-    const leave = document.getElementById("leave-class");
     event.preventDefault();
-
-    if (event.target.value == "stay") {
-        leave.style.display = "none";
-    } else {
-        leave.style.display = "flex";
-    };
+    const leave = document.getElementById("leave-class");
+    event.target.value == "stay" ? leave.style.display = "none" : leave.style.display = "flex";
 };
 
 window.onload = function () {
