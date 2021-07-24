@@ -28,8 +28,31 @@
             <h3><%= nome %>,</h3>
             <p>Aqui você tem acesso às atividades que já se registrou e outras atividades que estão disponíveis para a turma de <%= classes.titulo %>, praticando todos os conceitos das aulas.</p>
         </div>
+        <h4>Novas atividades para a turma</h4>
+        <div class="tables">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Atividade</th>
+                        <th>Descrição</th>
+                        <th>Pontos</th>
+                        <th>Prazo</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < data.length; i++) { %>
+                    <tr onclick="window.location='/dashboard/aluno/turmas/<%= classes.idTurma %>/atividades/<%= data[i].idAtividade %>'">
+                        <td><%= data[i].titulo %></td>
+                        <td><%= data[i].descricao %></td>
+                        <td><%= data[i].pontuacao %></td>
+                        <td><%= data[i].dataTermino %></td>
+                        <td>Aceitar</td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
         <h4>Atividades pendentes</h4>
-            <div class="tables">
                 <table id="data-table">
                     <thead>
                         <tr>
@@ -87,29 +110,6 @@
                         <td><strong><%= atividade.evaluation %></strong></td>
                     </tr>
                     <% }} %>
-                </tbody>
-            </table>
-            <h4>Novas atividades para a turma</h4>
-            <table id="data-table">
-                <thead>
-                    <tr>
-                        <th>Atividade</th>
-                        <th>Descrição</th>
-                        <th>Pontos</th>
-                        <th>Prazo</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for (let i = 0; i < data.length; i++) { %>
-                    <tr onclick="window.location='/dashboard/aluno/turmas/<%= classes.idTurma %>/atividades/<%= data[i].idAtividade %>'">
-                        <td><%= data[i].titulo %></td>
-                        <td><%= data[i].descricao %></td>
-                        <td><%= data[i].pontuacao %></td>
-                        <td><%= data[i].dataTermino %></td>
-                        <td>Aceitar</td>
-                    </tr>
-                <% } %>
                 </tbody>
             </table>
         </div>

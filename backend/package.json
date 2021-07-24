@@ -21,6 +21,7 @@
     "nodemon": "^2.0.11",
     "qr-image": "^3.2.0",
     "sequelize": "^6.6.2",
+    "tinymce": "^5.8.2",
     "yup": "^0.32.9"
   },
   "devDependencies": {

@@ -11,17 +11,27 @@ const AlunoValidator = require('../middlewares/AlunoRouteValidator');
 const ProfessorValidator = require('../middlewares/ProfessorRouteValidator');
 
 //ROTAS ALUNO
-router.get('/', AlunoValidator, dashboardController.redirect);
-router.get('/aluno', AlunoValidator, dashboardController.indexStudent);
-
-router.get('/aluno/profile', AlunoValidator, UserController.showStudentProfile);
+router.get('/',
+  AlunoValidator,
+  dashboardController.redirect
+);
+router.get('/aluno',
+  AlunoValidator,
+  dashboardController.indexStudent
+);
+router.get('/aluno/profile',
+  AlunoValidator, 
+  UserController.showStudentProfile
+);
 router.get(
   '/aluno/profile/success',
   AlunoValidator,
   UserController.showStudentProfileSuccess
 );
-
-router.get('/aluno/turmas', AlunoValidator, alunoTurmaController.getAllClasses);
+router.get('/aluno/turmas',
+  AlunoValidator,
+  alunoTurmaController.getAllClasses
+);
 router.post(
   '/aluno/turmas',
   AlunoValidator,
