@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/dashboard-professor/global.css">
+    <link rel="stylesheet" href="/stylesheets/dashboard-professor/dashboard.css">
+    <link rel="shortcut icon" href="/images/favicon.png" />
+
+    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"></script>
+    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"></script>
+    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"></script>
+
+    <title>elevel - Dashboard Professor</title>
+</head>
+
+<body>
+
+    <%- include('partials/aside'); %>
+
+    <div class="main">
+        <h2>Dashboard / Avaliações</h2>
+        <hr />
+        <div class="billboard">
+            <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
+            <h3>Olá, <%= nome %>! 😀</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia repudiandae nemo, enim assumenda
+                placeat rem optio earum quod a, voluptates illo laudantium perferendis ea doloremque explicabo quam
+                reiciendis totam!</p>
+        </div>
+        <div class="tables">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Aluno</th>
+                        <th>Atividade</th>
+                        <th>Tag</th>
+                        <th>Prazo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Leandro</td>
+                        <td>sla</td>
+                        <td><span class="tags">JS</span><span class="tags">HTML</span></td>
+                        <td>31/02/2022</td>
+                        <td class="evaluate">AVALIAR</td>
+                        <td><a href=""><i class="fas fa-edit btn-gray"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="notification">
+            <img src="/images/avatar.png" class="avatar" alt="avatar">
+            <span class="badge">🔔</span>
+        </div>
+
+        <div id="live-chat">
+
+            <header class="clearfix">
+
+                <a href="#" class="chat-close">x</a>
+
+                <h4>Turma Fullstack 2021 - DH</h4>
+
+                <span class="chat-message-counter">3</span>
+
+            </header>
+
+            <div class="chat">
+
+                <div class="chat-history">
+
+                    <div class="chat-message clearfix">
+
+                        <img src="http://0.gravatar.com/userimage/5/ff5263e8c30557b57e64423ee8496e41?size=400" alt="" width="32" height="32">
+
+                        <div class="chat-message-content clearfix">
+
+                            <span class="chat-time">13:35</span>
+
+                            <h5>José</h5>
+
+                            <p>Olá galera!</p>
+
+                        </div> <!-- end chat-message-content -->
+
+                    </div> <!-- end chat-message -->
+
+                    <hr>
+
+                    <div class="chat-message clearfix">
+
+                        <img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32"
+                            height="32">
+
+                        <div class="chat-message-content clearfix">
+
+                            <span class="chat-time">13:37</span>
+
+                            <h5>Marco Biedermann</h5>
+
+                            <p>Eae men kkk</p>
+
+                        </div> <!-- end chat-message-content -->
+
+                    </div> <!-- end chat-message -->
+
+                    <hr>
+
+                    <div class="chat-message clearfix">
+
+                        <img src="http://0.gravatar.com/userimage/5/ff5263e8c30557b57e64423ee8496e41?size=400" alt="" width="32" height="32">
+
+                        <div class="chat-message-content clearfix">
+
+                            <span class="chat-time">13:38</span>
+
+                            <h5>José</h5>
+
+                            <p>Alguém fez o exercício de Multer??? Tô desesperado!!! 😭 </p>
+
+                        </div> <!-- end chat-message-content -->
+
+                    </div> <!-- end chat-message -->
+
+                    <hr>
+
+                </div> <!-- end chat-history -->
+
+
+                <form action="#" method="post">
+
+                    <fieldset>
+
+                        <input type="text" placeholder="José" autofocus>
+                        <input type="hidden">
+
+                    </fieldset>
+
+                </form>
+
+            </div> <!-- end chat -->
+
+        </div> <!-- end live-chat -->
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="assets/scritps/dashboard-professor/dashboard.js"></script>
+</body>
+
+</html>

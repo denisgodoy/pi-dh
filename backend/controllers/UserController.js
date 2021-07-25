@@ -114,8 +114,36 @@ const UserController = {
 
     return res.render('dashboard-student/profile', { user: user });
   },
+  showProfessorProfile: async (req, res) => {
+    let userInfo = req.user;
+    let user = await UserService.getById(userInfo.idUser);
+
+    return res.render('dashboard-professor/dashboard-avaliacoes', { user: user });
+  },
   showStudentProfileSuccess: async (req, res) => {
     return res.render('dashboard-student/profile-success');
+  },
+  showStudentUpdateAvatar: async (req, res) => {
+    let userInfo = req.user;
+    let user = await UserService.getById(userInfo.idUser);
+
+    return res.render('dashboard-student/profile-avatar', { user: user });
+  },
+  updateUserAvatar: async (req, res) => {
+    let { idUser } = req.body;
+    let avatar = req.file.firebaseUrl;
+
+    let updatedAvatar = await UserService.updateAvatar(idUser, avatar);
+
+    let user = await UserService.getById(idUser);
+
+    const userToken = await UserService.createWebToken(user);
+    req.session.userToken = userToken;
+
+    return res.redirect('/dashboard/aluno/profile/avatar');
+    },
+  showProfessorProfileSuccess: async (req, res) => {
+    return res.render('dashboard-professor/dashboard-avaliacoes');
   },
 };
 

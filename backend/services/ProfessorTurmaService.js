@@ -1,14 +1,13 @@
 const database = require('../database/models/index');
 const { QueryTypes } = require('sequelize');
 
-const AlunoTurmaService = {
+const ProfessorTurmaService = {
   getClasses: async (idUser) => {
-    const classes = await database.TurmaAluno.findAll({
+    const classes = await database.TurmaProfessor.findAll({
       where: { idUser },
-	  order: [['Turma', 'titulo', 'ASC']],
       include: [{ 
         model: database.Turma, 
-        attributes: ['idTurma', 'titulo', 'codigo']
+        attributes: ['idTurma', 'titulo', 'codigo'] 
       }]
     });
     return classes;
@@ -32,7 +31,7 @@ const AlunoTurmaService = {
     return activityById;
   },
   createAssociation: async (idUser, idTurma) => {
-    const associate = await database.TurmaAluno.create(
+    const associate = await database.TurmaProfessor.create(
       {
         idUser,
         idTurma
@@ -41,18 +40,18 @@ const AlunoTurmaService = {
     return associate;
   },
   destroyAssociation: async (idTurma) => {
-    const destroyed = await database.TurmaAluno.destroy({ where: { idTurma }});
+    const destroyed = await database.TurmaProfessor.destroy({ where: { idTurma }});
     return destroyed;
   },
-  getTotalClassmates: async (idTurma) => {
-    const classmates = await database.sequelize.query(
+  getTotal: async (idTurma) => {
+    const numberOfStudents = await database.sequelize.query(
         `SELECT COUNT(idTurma) AS count 
-        FROM turma_aluno AS TurmaAluno 
-        WHERE TurmaAluno.idTurma = ${idTurma}`,
+        FROM turma_professor AS TurmaProfessor 
+        WHERE TurmaProfessor.idTurma = ${idTurma}`,
         { type: QueryTypes.SELECT }
     );
-    return classmates;
+    return numberOfStudents;
   },
 };
 
-module.exports = AlunoTurmaService;
+module.exports = ProfessorTurmaService;

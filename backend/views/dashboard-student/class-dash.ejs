@@ -21,6 +21,7 @@
             <a href="/dashboard/aluno/turmas/<%= data.idTurma %>/ranking"><i class="fas fa-chart-bar"></i> Ranking</a>
     <%- include('../partials/aside-bottom.ejs') %>
     <main class="main">
+         <%- include('../partials/profile.ejs') %>
         <h2>Dashboard / Turmas / <%= data.titulo %></h2>
         <hr />
         <div id="billboard">
@@ -57,10 +58,6 @@
         </div>
         <div class="action-btn">
             <button id="leave" class="submit-giveup" type="submit" value="leave">Sair da Turma</button>
-        </div>
-        <div class="notification">
-            <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
-            <span class="badge">🔔</span>
         </div>
         </div>
         <div id="leave-class">

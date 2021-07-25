@@ -2,36 +2,35 @@ const express = require('express');
 const router = express.Router();
 
 const alunoAtividadeController = require('../controllers/AlunoAtividadeController');
+const professorAtividadeController = require('../controllers/ProfessorAtividadeController');
 const alunoTurmaController = require('../controllers/AlunoTurmaController');
+const professorTurmaController = require('../controllers/ProfessorTurmaController');
 const dashboardController = require('../controllers/DashboardController');
 const UserController = require('../controllers/UserController');
 const rankingController = require('../controllers/RankingController');
 
+const UserInfo = require('../middlewares/UserInfo');
 const AlunoValidator = require('../middlewares/AlunoRouteValidator');
 const ProfessorValidator = require('../middlewares/ProfessorRouteValidator');
 
+//Middleware para propagar informações do usuário nas sessions
+router.use(UserInfo);
+
 //ROTAS ALUNO
-router.get('/',
+router.get('/', AlunoValidator, dashboardController.redirect);
+router.get('/aluno', AlunoValidator, dashboardController.indexStudent);
+router.get('/aluno/profile', AlunoValidator, UserController.showStudentProfile);
+router.get(
+  '/aluno/profile/avatar',
   AlunoValidator,
-  dashboardController.redirect
-);
-router.get('/aluno',
-  AlunoValidator,
-  dashboardController.indexStudent
-);
-router.get('/aluno/profile',
-  AlunoValidator, 
-  UserController.showStudentProfile
+  UserController.showStudentUpdateAvatar
 );
 router.get(
   '/aluno/profile/success',
   AlunoValidator,
   UserController.showStudentProfileSuccess
 );
-router.get('/aluno/turmas',
-  AlunoValidator,
-  alunoTurmaController.getAllClasses
-);
+router.get('/aluno/turmas', AlunoValidator, alunoTurmaController.getAllClasses);
 router.post(
   '/aluno/turmas',
   AlunoValidator,
@@ -104,5 +103,35 @@ router.get(
   ProfessorValidator,
   UserController.showUserProfile
 );
+
+
+//ROTAS PROFESSOR
+router.get('/',
+  ProfessorValidator,
+  UserController.showProfessorProfile
+);
+
+router.get('/professor',
+  ProfessorValidator,
+  dashboardController.indexProfessor
+);
+
+router.get(
+  '/professor/profile/success',
+  ProfessorValidator,
+  UserController.showProfessorProfileSuccess
+);
+
+router.get('/professor/turmas',
+  ProfessorValidator,
+  professorTurmaController.getClasses
+  
+);
+
+router.get('/professor/atividades',
+  ProfessorValidator,
+  professorAtividadeController.getAllActivities
+);
+
 
 module.exports = router;
