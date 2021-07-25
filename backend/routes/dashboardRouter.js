@@ -16,6 +16,11 @@ router.get('/aluno', AlunoValidator, dashboardController.indexStudent);
 
 router.get('/aluno/profile', AlunoValidator, UserController.showStudentProfile);
 router.get(
+  '/aluno/profile/avatar',
+  AlunoValidator,
+  UserController.showStudentUpdateAvatar
+);
+router.get(
   '/aluno/profile/success',
   AlunoValidator,
   UserController.showStudentProfileSuccess

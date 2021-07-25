@@ -80,6 +80,17 @@ const UserService = {
       attributes: ['senha'],
     }));
   },
+  updateAvatar: async (idUser, avatar) => {
+    const updatedAvatar = await database.User.update(
+      {
+        avatar: avatar,
+      },
+      {
+        where: { idUser: idUser },
+      }
+    );
+    return updatedAvatar;
+  },
 };
 
 module.exports = UserService;

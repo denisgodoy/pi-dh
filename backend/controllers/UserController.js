@@ -117,6 +117,21 @@ const UserController = {
   showStudentProfileSuccess: async (req, res) => {
     return res.render('dashboard-student/profile-success');
   },
+  showStudentUpdateAvatar: async (req, res) => {
+    let userInfo = req.user;
+    let user = await UserService.getById(userInfo.idUser);
+
+    return res.render('dashboard-student/profile-avatar', { user: user });
+  },
+  updateUserAvatar: async (req, res) => {
+    let { idUser } = req.body;
+    console.log(idUser);
+    let avatar = req.file.firebaseUrl;
+
+    let updatedAvatar = await UserService.updateAvatar(idUser, avatar);
+    console.log(updatedAvatar);
+    res.send('test');
+  },
 };
 
 module.exports = UserController;

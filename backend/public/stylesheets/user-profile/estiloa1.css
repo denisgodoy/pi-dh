@@ -267,6 +267,7 @@ table tbody tr td:last-child {
   padding: 5px 0;
   margin-top: 20px;
   width: 200px;
+  text-align: center;
 }
 
 .delete-button {
