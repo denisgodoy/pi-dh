@@ -4,6 +4,7 @@ const userController = require('../controllers/UserController');
 const userValidator = require('../middlewares/UserValidator');
 const UserUpdateValidator = require('../middlewares/UserUpdateValidator');
 const uploadFirebase = require('../middlewares/Firebase');
+const UserInfo = require('../middlewares/UserInfo');
 
 const multer = require('multer');
 const multerConfig = require('../database/config/multer');

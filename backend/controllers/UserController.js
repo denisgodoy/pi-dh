@@ -125,12 +125,16 @@ const UserController = {
   },
   updateUserAvatar: async (req, res) => {
     let { idUser } = req.body;
-    console.log(idUser);
     let avatar = req.file.firebaseUrl;
 
     let updatedAvatar = await UserService.updateAvatar(idUser, avatar);
-    console.log(updatedAvatar);
-    res.send('test');
+
+    let user = await UserService.getById(idUser);
+
+    const userToken = await UserService.createWebToken(user);
+    req.session.userToken = userToken;
+
+    return res.redirect('/dashboard/aluno/profile/avatar');
   },
 };
 

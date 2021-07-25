@@ -52,7 +52,14 @@ const UserService = {
   },
   getById: async (idUser) => {
     return await database.User.findByPk(idUser, {
-      attributes: ['idUser', 'nome', 'sobrenome', 'email', 'tipoUser'],
+      attributes: [
+        'idUser',
+        'nome',
+        'sobrenome',
+        'email',
+        'tipoUser',
+        'avatar',
+      ],
     });
   },
   updateUser: async (idUser, nome, sobrenome, email, senha, tipoUser) => {
