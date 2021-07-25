@@ -1,57 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
-    <link rel="stylesheet" href="/stylesheets/global.css">
-    <link rel="stylesheet" href="/stylesheets/dashboard-student/dashboard.css">
-    <link rel="stylesheet" href="/stylesheets/global-sidebar.css">
+    <link rel="stylesheet" href="/stylesheets/global.css" />
+    <link
+      rel="stylesheet"
+      href="/stylesheets/dashboard-student/dashboard.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/global-sidebar.css" />
     <script defer src="/fa/solid.js"></script>
     <script defer src="/fa/fontawesome.js"></script>
     <title>elevel - Dashboard Aluno</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('../partials/aside-top.ejs') %>
-            <a href="/dashboard/aluno"><i class="fas fa-graduation-cap"></i> Aluno</a>
-            <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
-            <a href="/dashboard/aluno/turmas" ><i class="fas fa-users"></i> Turmas</a>
-            <a href="#" class="active"><i class="fas fa-file-alt"></i> Atividades</a>
-            <a href="/dashboard/aluno/turmas/<%= classes.idTurma %>/ranking"><i class="fas fa-chart-bar"></i> Ranking</a>
+    <a href="/dashboard/aluno"><i class="fas fa-graduation-cap"></i> Aluno</a>
+    <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
+    <a href="/dashboard/aluno/turmas"><i class="fas fa-users"></i> Turmas</a>
+    <a href="#" class="active"><i class="fas fa-file-alt"></i> Atividades</a>
+    <a href="/dashboard/aluno/turmas/<%= classes.idTurma %>/ranking"
+      ><i class="fas fa-chart-bar"></i> Ranking</a
+    >
     <%- include('../partials/aside-bottom.ejs') %>
     <main class="main">
-        <h2>Dashboard / Turmas / <%= classes.titulo %> / Atividade / <%= data.titulo %> </h2>
-        <hr />
-        <div class="tables">
-            <table id="data-table">
-                <thead>
-                    <tr>
-                        <th>Atividade</th>
-                        <th>Descrição</th>
-                        <th>Pontos</th>
-                        <th>Prazo</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><%= data.titulo %></td>
-                        <td><%= data.descricao %></td>
-                        <td><%= data.pontuacao %></td>
-                        <td><%= data.dataTermino %></td>
-                        <td>Aceitar</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <form class="form" method="POST" action="/dashboard/aluno/turmas/<%= classes.idTurma %>/atividades/<%= data.idAtividade %>">
-            <button class="submit-send" type="submit">Aceitar Atividade</button>
-        </form>
-        <div class="notification">
-            <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
-            <span class="badge">🔔</span>
-        </div>
+      <%- include('../partials/profile.ejs') %>
+      <h2>
+        Dashboard / Turmas / <%= classes.titulo %> / Atividade / <%= data.titulo
+        %>
+      </h2>
+      <hr />
+      <div class="tables">
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Atividade</th>
+              <th>Descrição</th>
+              <th>Pontos</th>
+              <th>Prazo</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= data.titulo %></td>
+              <td><%= data.descricao %></td>
+              <td><%= data.pontuacao %></td>
+              <td><%= data.dataTermino %></td>
+              <td>Aceitar</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <form
+        class="form"
+        method="POST"
+        action="/dashboard/aluno/turmas/<%= classes.idTurma %>/atividades/<%= data.idAtividade %>"
+      >
+        <button class="submit-send" type="submit">Aceitar Atividade</button>
+      </form>
     </main>
-</body>
+  </body>
 </html>

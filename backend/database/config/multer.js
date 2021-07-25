@@ -1,6 +1,4 @@
 const multer = require('multer');
-const crypto = require('crypto');
-const path = require('path');
 
 module.exports = {
   limits: { fileSize: 2 * 1024 * 1024 },

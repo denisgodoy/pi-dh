@@ -37,6 +37,7 @@ const UserService = {
         idUser: user.idUser,
         nome: user.nome,
         tipoUser: user.tipoUser,
+        avatar: user.avatar,
       },
       jwtSecret,
       { expiresIn: '48h' }

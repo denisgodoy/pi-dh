@@ -7,8 +7,12 @@ const dashboardController = require('../controllers/DashboardController');
 const UserController = require('../controllers/UserController');
 const rankingController = require('../controllers/RankingController');
 
+const UserInfo = require('../middlewares/UserInfo');
 const AlunoValidator = require('../middlewares/AlunoRouteValidator');
 const ProfessorValidator = require('../middlewares/ProfessorRouteValidator');
+
+//Middleware para propagar informações do usuário nas sessions
+router.use(UserInfo);
 
 //ROTAS ALUNO
 router.get('/', AlunoValidator, dashboardController.redirect);

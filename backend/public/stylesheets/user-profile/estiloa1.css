@@ -324,6 +324,7 @@ table tbody tr td:last-child {
   right: 20px;
   z-index: 80;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .badge {
