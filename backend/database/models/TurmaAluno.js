@@ -7,8 +7,13 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true
         }
     },
-    {
-        tableName: 'TURMA_ALUNO',
+	{
+		indexes: 
+		[{
+			name: 'index_turma_aluno',
+			fields: ['idUser', 'idTurma']
+		}],
+		tableName: 'TURMA_ALUNO',
         timestamps: false,
     }
     );
