@@ -1,4 +1,3 @@
 node_modules
 .sequelizerc
 .env
-/database/config/firebase-key.json
