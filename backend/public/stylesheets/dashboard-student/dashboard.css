@@ -26,7 +26,7 @@ strong {
 }
 
 .main {
-  padding-left: 230px;
+  margin-left: 230px;
   padding-bottom: 100px;
 }
 
@@ -173,17 +173,6 @@ table tbody tr td:last-child {
   width: 65%;
   display: flex;
   flex-direction: column;
-}
-
-.form > textarea {
-  min-width: 100%;
-  max-width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: solid 0.5px var(--grey);
-  color: #000;
-  border-radius: 10px;
-  outline: none;
 }
 
 .styled-input {

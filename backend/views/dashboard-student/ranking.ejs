@@ -42,8 +42,15 @@
             <% for (let i = 0; i < rankResult.length; i++) { %>
             <tr>
               <% if (rankResult[i].sumEvaluation != null &&
-              rankResult[i].sumEvaluation != 0) { %>
-              <td><strong><%= (i + 1) + 'ª' %></strong></td>
+              rankResult[i].sumEvaluation != 0) { %> <% if ((i + 1) == 1) { %>
+              <td><strong>1 🥇</strong></td>
+              <% } %> <% if ((i + 1) == 2) { %>
+              <td><strong>2 🥈</strong></td>
+              <% } %> <% if ((i + 1) == 3) { %>
+              <td><strong>3 🥉</strong></td>
+              <% } %> <% if ((i + 1) > 3) { %>
+              <td><strong><%= (i + 1) %></strong></td>
+              <% } %>
               <td><%= rankResult[i].nome + ' ' + rankResult[i].sobrenome %></td>
               <td><%= rankResult[i].sumEvaluation %></td>
               <% } else { %>

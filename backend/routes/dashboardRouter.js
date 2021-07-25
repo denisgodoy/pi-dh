@@ -15,10 +15,18 @@ const ProfessorValidator = require('../middlewares/ProfessorRouteValidator');
 router.use(UserInfo);
 
 //ROTAS ALUNO
-router.get('/', AlunoValidator, dashboardController.redirect);
-router.get('/aluno', AlunoValidator, dashboardController.indexStudent);
-
-router.get('/aluno/profile', AlunoValidator, UserController.showStudentProfile);
+router.get('/',
+  AlunoValidator,
+  dashboardController.redirect
+);
+router.get('/aluno',
+  AlunoValidator,
+  dashboardController.indexStudent
+);
+router.get('/aluno/profile',
+  AlunoValidator, 
+  UserController.showStudentProfile
+);
 router.get(
   '/aluno/profile/avatar',
   AlunoValidator,
@@ -29,8 +37,10 @@ router.get(
   AlunoValidator,
   UserController.showStudentProfileSuccess
 );
-
-router.get('/aluno/turmas', AlunoValidator, alunoTurmaController.getAllClasses);
+router.get('/aluno/turmas',
+  AlunoValidator,
+  alunoTurmaController.getAllClasses
+);
 router.post(
   '/aluno/turmas',
   AlunoValidator,
