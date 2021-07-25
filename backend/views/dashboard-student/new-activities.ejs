@@ -19,6 +19,7 @@
             <a href="/dashboard/aluno/turmas" ><i class="fas fa-users"></i> Turmas</a>
     <%- include('../partials/aside-bottom.ejs') %>
     <main class="main">
+         <%- include('../partials/profile.ejs') %>
         <h2>Dashboard / Aluno / Novas Atividades</h2>
         <hr />
         <div id="billboard">
@@ -50,10 +51,6 @@
                 <% } %>
                 </tbody>
             </table>
-        </div>
-        <div class="notification">
-            <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
-            <span class="badge">🔔</span>
         </div>
     </main>
     <script src="/js/dashboard-student/dashboard.js"></script>

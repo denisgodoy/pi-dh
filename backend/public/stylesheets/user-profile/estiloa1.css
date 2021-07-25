@@ -267,6 +267,7 @@ table tbody tr td:last-child {
   padding: 5px 0;
   margin-top: 20px;
   width: 200px;
+  text-align: center;
 }
 
 .delete-button {
@@ -323,6 +324,7 @@ table tbody tr td:last-child {
   right: 20px;
   z-index: 80;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .badge {

@@ -7,31 +7,28 @@ const dashboardController = require('../controllers/DashboardController');
 const UserController = require('../controllers/UserController');
 const rankingController = require('../controllers/RankingController');
 
+const UserInfo = require('../middlewares/UserInfo');
 const AlunoValidator = require('../middlewares/AlunoRouteValidator');
 const ProfessorValidator = require('../middlewares/ProfessorRouteValidator');
 
+//Middleware para propagar informações do usuário nas sessions
+router.use(UserInfo);
+
 //ROTAS ALUNO
-router.get('/',
+router.get('/', AlunoValidator, dashboardController.redirect);
+router.get('/aluno', AlunoValidator, dashboardController.indexStudent);
+router.get('/aluno/profile', AlunoValidator, UserController.showStudentProfile);
+router.get(
+  '/aluno/profile/avatar',
   AlunoValidator,
-  dashboardController.redirect
-);
-router.get('/aluno',
-  AlunoValidator,
-  dashboardController.indexStudent
-);
-router.get('/aluno/profile',
-  AlunoValidator, 
-  UserController.showStudentProfile
+  UserController.showStudentUpdateAvatar
 );
 router.get(
   '/aluno/profile/success',
   AlunoValidator,
   UserController.showStudentProfileSuccess
 );
-router.get('/aluno/turmas',
-  AlunoValidator,
-  alunoTurmaController.getAllClasses
-);
+router.get('/aluno/turmas', AlunoValidator, alunoTurmaController.getAllClasses);
 router.post(
   '/aluno/turmas',
   AlunoValidator,

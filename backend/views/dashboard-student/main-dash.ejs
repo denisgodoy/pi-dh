@@ -1,66 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" turma="IE=edge">
-    <meta name="viewport" turma="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" turma="IE=edge" />
+    <meta name="viewport" turma="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
-    <link rel="stylesheet" href="/stylesheets/dashboard-student/dashboard.css">
-    <link rel="stylesheet" href="/stylesheets/global.css">
-    <link rel="stylesheet" href="/stylesheets/global-sidebar.css">
+    <link
+      rel="stylesheet"
+      href="/stylesheets/dashboard-student/dashboard.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/global.css" />
+    <link rel="stylesheet" href="/stylesheets/global-sidebar.css" />
     <script defer src="/fa/solid.js"></script>
     <script defer src="/fa/fontawesome.js"></script>
     <title>elevel - Dashboard Aluno</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('../partials/aside-top.ejs') %>
     <a href="#" class="active"><i class="fas fa-graduation-cap"></i> Aluno</a>
     <a href="/dashboard/aluno/profile"><i class="fas fa-user"></i> Perfil</a>
     <a href="/dashboard/aluno/turmas"><i class="fas fa-users"></i> Turmas</a>
     <%- include('../partials/aside-bottom.ejs') %>
     <main class="main">
-        <div class="notification">
-            <img src="/images/dashboard-aluno/avatar.png" class="avatar" alt="avatar">
-            <span class="badge">🔔</span>
-        </div>
-        <h2>Dashboard / Aluno</h2>
-        <hr />
-        <div id="billboard">
-            <button id="close-billboard"><i class="fas fa-times"></i></button>
-            <h3>Olá, <%= nome %>! 😀</h3>
-            <p>Esta é a sua área de aluno no Dashboard Elevel. Aqui você pode encontrar as turmas das quais faz parte, gerenciar atividades pendentes e verificar quantos pontos você possui em comparação com outras pessoas da mesma turma.</p>
-        </div>
-        <h4>Turmas que faço parte</h4>
-        <div class="tables">
-            <table id="data-table">
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Curso</th>
-                        <th>Turma</th>
-                        <th>ID</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for (let turma of data) { %>
-                        <tr onclick="window.location='/dashboard/aluno/turmas/<%= turma.idTurma %>'">
-                        <td><%= turma.id %></td>
-                        <td><%= turma.Turma.titulo %></td>
-                        <td><%= turma.Turma.codigo.slice(0,6) %></td>
-                        <td><%= turma.Turma.idTurma %></td>
-                    </tr>
-                <% } %>
-                </tbody>
-            </table>
-        </div>
-        <h4>Ações rápidas</h4>
-        <div class="more-actions">
-            <a href="/dashboard/aluno/novas-atividades"><button>Novas Atividades</button></a>
-            <a href="/dashboard/aluno/atividades-pendentes"><button>Atividades Pendentes</button></a>
-            <a href="/dashboard/aluno/atividades-corrigidas"><button>Atividades Corrigidas</button></a>
-            <a href="/dashboard/aluno/profile"><button>Editar Perfil</button></a>
-        </div>
+      <%- include('../partials/profile.ejs') %>
+      <h2>Dashboard / Aluno</h2>
+      <hr />
+      <div id="billboard">
+        <button id="close-billboard"><i class="fas fa-times"></i></button>
+        <h3>Olá, <%= nome %>! 😀</h3>
+        <p>
+          Esta é a sua área de aluno no Dashboard Elevel. Aqui você pode
+          encontrar as turmas das quais faz parte, gerenciar atividades
+          pendentes e verificar quantos pontos você possui em comparação com
+          outras pessoas da mesma turma.
+        </p>
+      </div>
+      <h4>Turmas que faço parte</h4>
+      <div class="tables">
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Curso</th>
+              <th>Turma</th>
+              <th>ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (let turma of data) { %>
+            <tr
+              onclick="window.location='/dashboard/aluno/turmas/<%= turma.idTurma %>'"
+            >
+              <td><%= turma.id %></td>
+              <td><%= turma.Turma.titulo %></td>
+              <td><%= turma.Turma.codigo.slice(0,6) %></td>
+              <td><%= turma.Turma.idTurma %></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      <h4>Ações rápidas</h4>
+      <div class="more-actions">
+        <a href="/dashboard/aluno/novas-atividades"
+          ><button>Novas Atividades</button></a
+        >
+        <a href="/dashboard/aluno/atividades-pendentes"
+          ><button>Atividades Pendentes</button></a
+        >
+        <a href="/dashboard/aluno/atividades-corrigidas"
+          ><button>Atividades Corrigidas</button></a
+        >
+        <a href="/dashboard/aluno/profile"><button>Editar Perfil</button></a>
+      </div>
     </main>
     <script src="/js/dashboard-student/dashboard.js"></script>
-</body>
+  </body>
 </html>
