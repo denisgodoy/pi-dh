@@ -32,9 +32,16 @@ const AlunoTurmaController = {
     createAssociation: async (req, res) => {
         const { idUser, nome } = req.user;
         const { idTurma } = req.body;
-        await AlunoTurmaService.createAssociation(idUser, idTurma);
-        const data = await AlunoTurmaService.getClasses(idUser);
+		const data = await AlunoTurmaService.getClasses(idUser);
 
+        try {
+			await AlunoTurmaService.createAssociation(idUser, idTurma);
+			if (err)
+				console.log(err);
+		} catch (e) {
+			console.log(e);
+		}
+		
         return res.render('dashboard-student/classes', 
         {
             nome,
