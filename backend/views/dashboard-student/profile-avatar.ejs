@@ -6,6 +6,7 @@
     <meta name="viewport" turma="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/global.css" />
     <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
+
     <link rel="stylesheet" href="/stylesheets/user-profile/dashboard.css" />
     <link rel="stylesheet" href="/stylesheets/user-profile/estiloa1.css" />
     <script defer src="/fa/brands.js"></script>
@@ -21,10 +22,37 @@
     <%- include('../partials/aside-bottom.ejs') %>
     <div class="main">
       <%- include('../partials/profile.ejs') %>
+      <h2>Dashboard / Perfil / Atualizar avatar</h2>
 
-      <h2>Dashboard / Perfil</h2>
-      <h2>Perfil atualizado com sucesso</h2>
-      <h4><a href="/dashboard/aluno/profile">Voltar</a></h4>
+      <form
+        action="/users/upload"
+        method="POST"
+        id="profileForm"
+        enctype="multipart/form-data"
+      >
+        <p class="avatar-text">
+          Envie abaixo a sua imagem de avatar. Recomendamos o uso de fotos com
+          proporção quadrada e com até 2MB. Tipos de arquivo aceitos: .jpeg,
+          .jpg, .png
+        </p>
+        <span id="updateError" class="error show">
+          <%= typeof msg != 'undefined' ? msg : '' %></span
+        >
+        <input
+          type="text"
+          name="idUser"
+          id="idUser"
+          value="<%= user.idUser %>"
+          class="error"
+        />
+
+        <label for="profile-image">Imagem de perfil</label>
+        <input type="file" id="avatar" name="avatar" accept="image/*" />
+
+        <button class="submit-send" id="update-profile" type="submit">
+          Atualizar avatar
+        </button>
+      </form>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>

@@ -16,7 +16,8 @@ input {
   border: 1px solid grey;
 }
 
-label {
+label,
+.avatar-text {
   font-size: 13px;
   color: grey;
   margin: 10px 0 0 0;

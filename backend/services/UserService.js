@@ -37,6 +37,7 @@ const UserService = {
         idUser: user.idUser,
         nome: user.nome,
         tipoUser: user.tipoUser,
+        avatar: user.avatar,
       },
       jwtSecret,
       { expiresIn: '48h' }
@@ -51,7 +52,14 @@ const UserService = {
   },
   getById: async (idUser) => {
     return await database.User.findByPk(idUser, {
-      attributes: ['idUser', 'nome', 'sobrenome', 'email', 'tipoUser'],
+      attributes: [
+        'idUser',
+        'nome',
+        'sobrenome',
+        'email',
+        'tipoUser',
+        'avatar',
+      ],
     });
   },
   updateUser: async (idUser, nome, sobrenome, email, senha, tipoUser) => {
@@ -79,6 +87,17 @@ const UserService = {
     return (password = await database.User.findByPk(idUser, {
       attributes: ['senha'],
     }));
+  },
+  updateAvatar: async (idUser, avatar) => {
+    const updatedAvatar = await database.User.update(
+      {
+        avatar: avatar,
+      },
+      {
+        where: { idUser: idUser },
+      }
+    );
+    return updatedAvatar;
   },
 };
 

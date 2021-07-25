@@ -20,11 +20,7 @@
     <a href="/dashboard/aluno/turmas"><i class="fas fa-users"></i> Turmas</a>
     <%- include('../partials/aside-bottom.ejs') %>
     <div class="main">
-      <div class="notification">
-        <img src="/images/avatar.png" class="avatar" alt="avatar" />
-        <span class="badge">🔔</span>
-      </div>
-
+      <%- include('../partials/profile.ejs') %>
       <h2>Dashboard / Perfil</h2>
 
       <form action="" id="profileForm">
@@ -71,8 +67,10 @@
           placeholder="E-mail"
           value="<%= user.email %>"
         />
-        <label for="profile-image">Imagem de perfil</label>
-        <input type="file" id="profile-image" name="profile-image" />
+
+        <a href="/dashboard/aluno/profile/avatar" class="submit-send"
+          >Atualizar avatar</a
+        >
 
         <div class="password-group">
           <label for="password">Alterar senha </label>
