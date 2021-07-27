@@ -129,12 +129,6 @@ const UserController = {
   showProfessorProfileSuccess: async (req, res) => {
     return res.render('dashboard-professor/profile-success');
   },
-  showProfessorUpdateAvatar: async (req, res) => {
-    let userInfo = req.user;
-    let user = await UserService.getById(userInfo.idUser);
-
-    return res.render('dashboard-professor/profile-avatar', { user: user });
-  },
   updateUserAvatar: async (req, res) => {
     let { idUser } = req.body;
     let avatar = req.file.firebaseUrl;
@@ -156,7 +150,6 @@ const UserController = {
         return res.redirect('/dashboard/aluno/profile/avatar');
     }
   },
-
   showForgotPage: (req, res) => {
     return res.render('user/forgot-password');
   },
