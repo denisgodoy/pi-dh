@@ -3,6 +3,8 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const jwtSecret = process.env.JWT_SECRET;
 
+const nodemailer = require('nodemailer');
+
 const UserService = {
   createUser: async (nome, sobrenome, email, senha, tipoUser) => {
     const newUser = await database.User.create({
@@ -98,6 +100,28 @@ const UserService = {
       }
     );
     return updatedAvatar;
+  },
+  clearResetToken: async (email) => {
+    const clearResetToken = await database.ResetTokens.update(
+      {
+        used: 1,
+      },
+      {
+        where: {
+          email: email,
+        },
+      }
+    );
+    return clearResetToken;
+  },
+  setResetToken: async (email, fpSalt, expireDate) => {
+    const setResetToken = await database.ResetTokens.create({
+      email: email,
+      expiration: expireDate,
+      token: fpSalt,
+      used: 0,
+    });
+    return setResetToken;
   },
 };
 

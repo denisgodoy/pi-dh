@@ -1,4 +1,6 @@
 const UserService = require('../services/UserService');
+const SendMailService = require('../services/SendMailService');
+const crypto = require('crypto');
 
 const UserController = {
   showSignUpPage: (req, res) => {
@@ -64,7 +66,6 @@ const UserController = {
     }
     return res.json(user);
   },
-
   updateUser: async (req, res) => {
     let { idUser, nome, sobrenome, email, senha, tipoUser } = req.body;
 
@@ -98,7 +99,6 @@ const UserController = {
       });
     }
   },
-
   showUserProfile: async (req, res) => {
     let userInfo = req.user;
     let user = await UserService.getById(userInfo.idUser);
@@ -118,7 +118,9 @@ const UserController = {
     let userInfo = req.user;
     let user = await UserService.getById(userInfo.idUser);
 
-    return res.render('dashboard-professor/dashboard-avaliacoes', { user: user });
+    return res.render('dashboard-professor/dashboard-avaliacoes', {
+      user: user,
+    });
   },
   showStudentProfileSuccess: async (req, res) => {
     return res.render('dashboard-student/profile-success');
@@ -141,9 +143,52 @@ const UserController = {
     req.session.userToken = userToken;
 
     return res.redirect('/dashboard/aluno/profile/avatar');
-    },
+  },
   showProfessorProfileSuccess: async (req, res) => {
     return res.render('dashboard-professor/dashboard-avaliacoes');
+  },
+  showResetPage: (req, res) => {
+    return res.render('user/password-reset');
+  },
+  resetPassword: async (req, res) => {
+    let { email } = req.body;
+
+    const verifyUser = await UserService.findUser(email);
+    if (!verifyUser) {
+      return res.status(400).json({
+        err: 'E-mail não cadastrado.',
+      });
+    }
+
+    await UserService.clearResetToken(email);
+
+    const resetToken = crypto.randomBytes(64).toString('base64');
+
+    const expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() + 1 / 24);
+
+    console.log(email, resetToken, expireDate);
+
+    await UserService.setResetToken(email, resetToken, expireDate);
+
+    const mailData = {
+      recipient: email,
+      topic: 'Recuperação de senha',
+      body:
+        'Para recuperar a sua senha, por favor, cline no link abaixo: \n\nhttp://localhost:3000/user/reset-password?token=' +
+        encodeURIComponent(resetToken) +
+        '&email=' +
+        email,
+    };
+    await SendMailService.sendMail(mailData, function (err, info) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(info);
+      }
+    });
+
+    return res.json({ status: 'ok' });
   },
 };
 
