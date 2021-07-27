@@ -99,12 +99,7 @@ const UserController = {
       });
     }
   },
-  showUserProfile: async (req, res) => {
-    let userInfo = req.user;
-    let user = await UserService.getById(userInfo.idUser);
 
-    return res.render('user/profile', { user: user });
-  },
   showUserProfileSuccess: async (req, res) => {
     return res.render('user/profile-success');
   },
@@ -113,14 +108,6 @@ const UserController = {
     let user = await UserService.getById(userInfo.idUser);
 
     return res.render('dashboard-student/profile', { user: user });
-  },
-  showProfessorProfile: async (req, res) => {
-    let userInfo = req.user;
-    let user = await UserService.getById(userInfo.idUser);
-
-    return res.render('dashboard-professor/dashboard-avaliacoes', {
-      user: user,
-    });
   },
   showStudentProfileSuccess: async (req, res) => {
     return res.render('dashboard-student/profile-success');
@@ -131,6 +118,23 @@ const UserController = {
 
     return res.render('dashboard-student/profile-avatar', { user: user });
   },
+  showProfessorProfile: async (req, res) => {
+    let userInfo = req.user;
+    let user = await UserService.getById(userInfo.idUser);
+
+    return res.render('dashboard-professor/profile', {
+      user: user,
+    });
+  },
+  showProfessorProfileSuccess: async (req, res) => {
+    return res.render('dashboard-professor/profile-success');
+  },
+  showProfessorUpdateAvatar: async (req, res) => {
+    let userInfo = req.user;
+    let user = await UserService.getById(userInfo.idUser);
+
+    return res.render('dashboard-professor/profile-avatar', { user: user });
+  },
   updateUserAvatar: async (req, res) => {
     let { idUser } = req.body;
     let avatar = req.file.firebaseUrl;
@@ -138,15 +142,21 @@ const UserController = {
     let updatedAvatar = await UserService.updateAvatar(idUser, avatar);
 
     let user = await UserService.getById(idUser);
+    console.log(user);
 
     const userToken = await UserService.createWebToken(user);
     req.session.userToken = userToken;
 
-    return res.redirect('/dashboard/aluno/profile/avatar');
+    let tipoUser = user.tipoUser;
+
+    switch (tipoUser) {
+      case 'professor':
+        return res.redirect('/dashboard/professor/profile/avatar');
+      case 'aluno':
+        return res.redirect('/dashboard/aluno/profile/avatar');
+    }
   },
-  showProfessorProfileSuccess: async (req, res) => {
-    return res.render('dashboard-professor/dashboard-avaliacoes');
-  },
+
   showForgotPage: (req, res) => {
     return res.render('user/forgot-password');
   },

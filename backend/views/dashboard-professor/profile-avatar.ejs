@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" turma="IE=edge" />
+    <meta name="viewport" turma="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/global.css" />
+    <link rel="shortcut icon" href="/images/dashboard-aluno/favicon.png" />
+
+    <link rel="stylesheet" href="/stylesheets/user-profile/dashboard.css" />
+    <link rel="stylesheet" href="/stylesheets/user-profile/estiloa1.css" />
+    <script defer src="/fa/brands.js"></script>
+    <script defer src="/fa/solid.js"></script>
+    <script defer src="/fa/fontawesome.js"></script>
+    <title>elevel - Dashboard Aluno</title>
+  </head>
+  <body>
+    <%- include('partials/aside'); %>
+
+    <div class="main">
+      <%- include('../partials/profile.ejs') %>
+      <h2>Dashboard / Perfil / Atualizar avatar</h2>
+
+      <form
+        action="/users/upload"
+        method="POST"
+        id="profileForm"
+        enctype="multipart/form-data"
+      >
+        <p class="avatar-text">
+          Envie abaixo a sua imagem de avatar. Recomendamos o uso de fotos com
+          proporção quadrada e com até 2MB. Tipos de arquivo aceitos: .jpeg,
+          .jpg, .png
+        </p>
+        <span id="updateError" class="error show">
+          <%= typeof msg != 'undefined' ? msg : '' %></span
+        >
+        <input
+          type="text"
+          name="idUser"
+          id="idUser"
+          value="<%= user.idUser %>"
+          class="error"
+        />
+
+        <label for="profile-image">Imagem de perfil</label>
+        <input type="file" id="avatar" name="avatar" accept="image/*" />
+
+        <button class="submit-send" id="update-profile" type="submit">
+          Atualizar avatar
+        </button>
+      </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  </body>
+</html>
