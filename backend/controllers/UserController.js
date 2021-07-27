@@ -147,10 +147,10 @@ const UserController = {
   showProfessorProfileSuccess: async (req, res) => {
     return res.render('dashboard-professor/dashboard-avaliacoes');
   },
-  showResetPage: (req, res) => {
-    return res.render('user/password-reset');
+  showForgotPage: (req, res) => {
+    return res.render('user/forgot-password');
   },
-  resetPassword: async (req, res) => {
+  forgotPassword: async (req, res) => {
     let { email } = req.body;
 
     const verifyUser = await UserService.findUser(email);
@@ -175,11 +175,12 @@ const UserController = {
       recipient: email,
       topic: 'Recuperação de senha',
       body:
-        'Para recuperar a sua senha, por favor, cline no link abaixo: \n\nhttp://localhost:3000/user/reset-password?token=' +
+        'Para recuperar a sua senha, por favor, cline no link abaixo: \n\nhttp://localhost:3000/sign-in/reset-password?token=' +
         encodeURIComponent(resetToken) +
         '&email=' +
         email,
     };
+
     await SendMailService.sendMail(mailData, function (err, info) {
       if (err) {
         console.log(err);
@@ -189,6 +190,40 @@ const UserController = {
     });
 
     return res.json({ status: 'ok' });
+  },
+  showForgotSuccessPage: (req, res) => {
+    res.render('user/forgot-password-success');
+  },
+  showResetPage: async (req, res) => {
+    let { email, token } = req.query;
+
+    await UserService.clearExpiredTokens;
+
+    const record = await UserService.findToken(email, token);
+    console.log(record);
+    if (!record) {
+      let showForm = { showForm: false };
+      return res.render('user/reset-password', { showForm });
+    } else {
+      let showForm = { showForm: true };
+      return res.render('user/reset-password', { showForm });
+    }
+  },
+  showResetSuccessPage: (req, res) => {
+    res.render('user/reset-password-success');
+  },
+  resetPassword: async (req, res) => {
+    let { email, senha } = req.body;
+
+    await UserService.clearResetToken(email);
+
+    console.log(email, senha);
+
+    let senhaHash = await UserService.hashPassword(senha);
+
+    let updatePassword = await UserService.updatePassword(email, senhaHash);
+
+    res.json(updatePassword);
   },
 };
 

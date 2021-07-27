@@ -227,7 +227,6 @@ async function onSubmitSignUp(event) {
 async function onClickDeleteUser(event) {
   event.preventDefault();
   const idUser = document.getElementById('idUser').value;
-  console.log(idUser);
   const response = await fetch(`http://localhost:3000/users/${idUser}`, {
     method: 'DELETE',
     headers: {

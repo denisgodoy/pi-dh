@@ -293,9 +293,24 @@ table tbody tr td:last-child {
   border: 0.5px solid var(--magenta-dark);
 }
 
+.logout-button {
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 5px 0;
+  width: 200px;
+  background-color: var(--blue-dark);
+  border: 0.5px solid var(--blue-dark);
+  margin-bottom: 15px;
+}
 .submit-send:hover,
 .submit-giveup:hover,
-.delete-button:hover {
+.delete-button:hover,
+.logout-button:hover {
   background: var(--white);
   text-decoration: none;
 }
@@ -309,6 +324,9 @@ table tbody tr td:last-child {
   color: rgb(27, 134, 27);
 }
 
+.logout-button:hover {
+  color: var(--dark-blue);
+}
 .submit-send:active,
 .submit-giveup:active {
   position: relative;

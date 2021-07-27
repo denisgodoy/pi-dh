@@ -44,27 +44,30 @@ async function onClickSubmit(event) {
 
   const email = document.getElementById('email').value;
 
-  const response = await fetch('http://localhost:3000/sign-in/reset-password', {
-    method: 'POST',
-    body: JSON.stringify({
-      email: email,
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  const response = await fetch(
+    'http://localhost:3000/sign-in/forgot-password',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        email: email,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 
   console.log(response);
 
   if (response.status != 200) {
     const data = await response.json();
-    console.log(data.err);
     const resetError = document.getElementById('resetError');
     resetError.classList.add('show');
     resetError.innerText = data.err;
   } else {
-    const data = await response.json();
-    console.log(data);
+    await response.json();
+    window.location.href =
+      'http://localhost:3000/sign-in/forgot-password-success';
   }
 }
 
