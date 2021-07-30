@@ -6,11 +6,6 @@ var logger = require('morgan');
 require('dotenv').config({ path: path.resolve(__dirname + '/.env') });
 const session = require('express-session');
 
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
-
-
-
 var indexRouter = require('./routes/index');
 const signUpRouter = require('./routes/signUpRouter');
 const signInRouter = require('./routes/signInRouter');

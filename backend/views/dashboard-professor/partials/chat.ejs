@@ -1,0 +1,68 @@
+
+<%- include('head-chat'); %>
+
+<div class="container">
+  <div class="header">
+      <div class="info">
+          <span class="status"></span>
+          <span class="name">Chat</span>
+      </div>
+      <div class="action">
+          <i class="fas fa-times"></i>
+      </div>
+  </div>
+  <div class="chat">
+      <div class="date-line">
+          <span>Today</span>
+      </div>
+      <form id="chat">
+          <div class="messages">
+              
+          </div>
+      <div class="separator"></div>
+      
+      <div class="chat-input">
+          <input type="hidden" name="name" value="<%= nome %>">
+          <input type="text" name="message" placeholder="Digite sua mensagem">
+          <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+    var socket = io('http://localhost:3000');
+
+    function renderMessage(message){
+        $('.messages').append(` <div class="chat-bubble">
+          <div class="timestamp">${message.author}</div>
+          <div class="message">
+            ${message.message}
+          </div>
+      </div>`)
+    }
+
+    socket.on('receivedMessage', function(message){
+        renderMessage(message);
+    })
+
+    $('#chat').submit(function(event){
+        event.preventDefault();
+        
+        var author = $('input[name=name').val();
+        var message = $('input[name=message').val();
+
+        if(author.length && message.length){
+            var messageObject = {
+                author: author,
+                message: message,
+            };
+
+            renderMessage(messageObject);
+
+            socket.emit('sendMessage', messageObject);
+
+            $('input[name=message').val("");
+        }
+    })
+</script>
