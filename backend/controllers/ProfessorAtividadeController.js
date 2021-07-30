@@ -1,18 +1,16 @@
-const ProfessorAtividadeService = require('../services/AlunoAtividadeService');
-const ProfessorTurmaService = require('../services/AlunoTurmaService');
+const ProfessorAtividadeService = require('../services/ProfessorAtividadeService');
+const ProfessorTurmaService = require('../services/ProfessorTurmaService');
 
 const ProfessorAtividadeController = {
     getAllActivities: async (req, res) => {
         const { idTurma } = req.params;
         const { idUser, nome } = req.user;
-        const data = await ProfessorAtividadeService.getUniqueActivity(idUser, idTurma);
-        const classes = await ProfessorTurmaService.getClassById(idTurma);
+        const data = await ProfessorAtividadeService.getActivities(idTurma);
 
         return res.render('dashboard-professor/dashboard-atividades', 
         { 
             data,
-            nome,
-            classes
+            nome
         });
     },
     getActivityById: async (req, res) => {
@@ -34,12 +32,17 @@ const ProfessorAtividadeController = {
     //     await AlunoAtividadeService.createAssociation(idUser, idAtividade);
     //     return res.redirect(`/dashboard/aluno/turmas/${idTurma}/atividades`);
     // },
-    // destroyAssociation: async (req, res) => {
-    //     const { idTurma } = req.params;
-    //     const { id } = req.params;
-    //     await AlunoAtividadeService.destroyAssociation(id);
-    //     return res.redirect(`/dashboard/aluno/turmas/${idTurma}/atividades`);
-    // }
+    destroyClass: async (req, res) => {
+        const { idTurma } = req.params;
+        const { nome } = req.user;
+        await ProfessorTurmaService.destroyClass(idTurma);
+        const classes = await ProfessorTurmaService.getClassById(idTurma);
+        return res.render('dashboard-professor/dashboard-atividades', 
+        { 
+            nome,
+            classes
+        });
+    }
 };
 
 module.exports = ProfessorAtividadeController;

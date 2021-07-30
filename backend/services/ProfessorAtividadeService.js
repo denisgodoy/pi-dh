@@ -1,7 +1,15 @@
 const database = require('../database/models/index');
 const { QueryTypes, Op } = require('sequelize');
 
-const AlunoAtividadeService = {
+const ProfessorAtividadeService = {
+  getActivities: async (idTurma) => {
+    const activities = await database.AtividadeTurma.findAll({
+      where: { idTurma },
+      include: [{ model: database.Atividade }]
+    });
+    return activities;
+  },
+  
   getSubscribed: async (idUser, idTurma) => {
     const subscribed = await database.sequelize.query(
       `SELECT * FROM atividade
@@ -21,13 +29,6 @@ const AlunoAtividadeService = {
     );
 
     return subscribed;
-  },
-  getActivities: async (idTurma) => {
-    const activities = await database.AtividadeTurma.findAll({
-      where: { idTurma },
-      include: [{ model: database.Atividade }]
-    });
-    return activities;
   },
   getActivityById: async (id) => {
     const activityById = await database.AtividadeAluno.findByPk(id, {
@@ -133,4 +134,4 @@ const AlunoAtividadeService = {
   },
 };
 
-module.exports = AlunoAtividadeService;
+module.exports = ProfessorAtividadeService;

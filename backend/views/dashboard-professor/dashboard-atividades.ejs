@@ -50,12 +50,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% for(var i=0; i < atividades.length; i++){ %>
+                    <% for(var i=0; i < data.length; i++){ %>
                     <tr>
-                        <td><%= atividades[i].titulo %></td>
-                        <td><%= atividades[i].descricao %></td>
+                        <td><%= data[i].titulo %></td>
+                        <td><%= data[i].descricao %></td>
                         <td><span class="tags">JS</span><span class="tags">HTML</span></td>
-                        <td class="evaluate"><%= atividades[i].dataTermino %></td>
+                        <td class="evaluate"><%= data[i].dataTermino %></td>
                         <td><a href=""><i class="fas fa-edit btn-gray"></i></a>
                             <a href=""><i class="fas fa-trash btn-red"></i></a></td>
                     </tr>

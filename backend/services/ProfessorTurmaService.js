@@ -2,16 +2,34 @@ const database = require('../database/models/index');
 const { QueryTypes } = require('sequelize');
 
 const ProfessorTurmaService = {
-  getClasses: async (idUser) => {
-    const classes = await database.TurmaProfessor.findAll({
-      where: { idUser },
-      include: [{ 
-        model: database.Turma, 
-        attributes: ['idTurma', 'titulo', 'codigo'] 
-      }]
-    });
+  getClasses: async () => {
+    const classes = await database.sequelize.query(
+      `SELECT Turma.idturma, Turma.codigo, Turma.titulo
+      FROM turma
+      INNER JOIN turma_professor ON Turma.idturma=turma_professor.idturma;
+      `,
+      { type: QueryTypes.SELECT }
+    );
     return classes;
   },
+  createClass: async (codigo, titulo) => {
+    const newClass = await database.Turma.create({
+      codigo,
+      titulo
+    }
+      );
+      return newClass.idTurma;
+  },
+  createAssociationClassProfessor: async (idUser, idTurma) => {
+    
+    const associateToClass = await database.TurmaProfessor.create({
+      idUser,
+      idTurma
+    }
+      );
+      return associateToClass;
+  },
+
   getClassById: async (idTurma) => {
     const classId = await database.Turma.findByPk(idTurma);
     return classId;
@@ -30,16 +48,11 @@ const ProfessorTurmaService = {
     });
     return activityById;
   },
-  createAssociation: async (idUser, idTurma) => {
-    const associate = await database.TurmaProfessor.create(
-      {
-        idUser,
-        idTurma
-      }
-    );
-    return associate;
+  destroyClass: async (idTurma) => {
+    const destroyed = await database.Turma.destroy({ where: { idTurma }});
+    return destroyed;
   },
-  destroyAssociation: async (idTurma) => {
+  destroyAssociationProfessorClass: async (idTurma) => {
     const destroyed = await database.TurmaProfessor.destroy({ where: { idTurma }});
     return destroyed;
   },
