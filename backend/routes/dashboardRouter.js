@@ -107,7 +107,7 @@ router.get(
 router.get(
   '/professor/profile/avatar',
   ProfessorValidator,
-  UserController.showProfessorUpdateAvatar
+  UserController.updateUserAvatar
 );
 router.get(
   '/professor/profile/success',
