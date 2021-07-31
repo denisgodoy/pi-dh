@@ -14,13 +14,12 @@
     <script defer src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"></script>
 
     <title>elevel - Dashboard Professor</title>
-
+    
 </head>
 
 <body>
 
     <%- include('partials/aside'); %>
-
 
     <div class="main">
 
@@ -29,52 +28,28 @@
             <span class="badge">🔔</span>
         </div>
 
-        <h2>Dashboard / Turmas </h2>
+        <h2>Dashboard / Turmas / Editar</h2>
         <hr />
-        <div class="billboard">
+        <div class="billboard" style="display:none;">
             <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
-            <h3><%= nome %> 😀</h3>
+            <h3>Olá, Gustavo! 😀</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia repudiandae nemo, enim assumenda
                 placeat rem optio earum quod a, voluptates illo laudantium perferendis ea doloremque explicabo quam
                 reiciendis totam!</p>
         </div>
-        <div class="tables">
-            <table id="data-table">
-                <thead>
-                    <tr>
-                        <th>Código</th>
-                        <th>Curso</th>
-                        <!-- <th>Início</th>
-                        <th>Final</th> -->
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for (let turma of data) { %>
-                    <tr>
-                        <td><%= turma.codigo %></td>
-                        <td><%= turma.titulo %></td>
-                        <!-- <td>01/01/2021</td>
-                        <td>31/12/2021</td> -->
-                        <td>
-                       <span>
 
-                        <form method="POST" action="/dashboard/professor/turmas/<%= turma.idturma %>/alterar?_method=UPDATE">
-                            <a href="#"><button type="submit"><i class="fas fa-edit btn-gray"></i></button></a>
-                        </form>
-
-                        <form method="POST" action="/dashboard/professor/turmas/<%= turma.idturma %>/deletar?_method=DELETE"> 
-                            <button type="submit"><a><i class="fas fa-trash btn-red"></i></a></button>
-                        </form>   
+            <form action="/dashboard/professor/turmas/nova" method="POST">
+                <div>
+                    <span>
+                        <input type="text" id="codigoturma" name="codigo" value="<%= turma.codigo %>" placeholder="Código da Turma">
                     </span>
-                        </td>
-                    </tr>
-                    <% } %>
-                </tbody>
-            </table>
-        </div>
+                    <span>
+                        <input type="text" id="nomecurso" name="titulo" value="<%= turma.nome %>"  style="min-width:350px;" placeholder="Nome do Curso">
+                    </span>
+                <button type="submit" class="btn new" style="margin-left:0px !important;">Cadastrar Turma</button>
+            </form>
 
-        <a href="/dashboard/professor/turmas/nova" class="btn new">Nova Turma</a>
+
 
         <div id="live-chat">
 
@@ -168,6 +143,7 @@
         </div> <!-- end live-chat -->
 
     </div>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="assets/scritps/dashboard-professor/dashboard.js"></script>

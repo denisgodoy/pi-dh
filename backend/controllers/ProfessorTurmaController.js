@@ -10,7 +10,7 @@ const ProfessorTurmaController = {
             data
         });
     },
-    createClasse: (req, res) => {
+    createClass: (req, res) => {
         return res.render('dashboard-professor/dashboard-turmas-criar')
     },
     sendClass: async (req, res)=>{
@@ -24,6 +24,25 @@ const ProfessorTurmaController = {
         const idTurma = await ProfessorTurmaService.createClass(codigo, titulo);
 
         await ProfessorTurmaService.createAssociationClassProfessor(idUser, idTurma);
+
+        // return res.render('dashboard-professor/dashboard-turmas', 
+        // { 
+        //     nome,
+        //     data
+        // });
+        res.redirect("/dashboard/professor/turmas");
+    },
+    updateFormClass: (req, res) => {
+        return res.render('dashboard-professor/dashboard-turmas-editar')
+    },
+    updateClass: async (req,res) =>{
+        if(!req.body){
+            res.status(400).send({message: "Teste: dados não estão vindo do formulário!"})
+        }
+        const { idUser, nome } = req.user;
+        const { codigo, titulo } = req.body;
+        const data = await ProfessorTurmaService.getClasses(idUser);
+        await ProfessorTurmaService.updateClass(codigo, titulo);
 
         return res.render('dashboard-professor/dashboard-turmas', 
         { 
@@ -62,11 +81,12 @@ const ProfessorTurmaController = {
         const data = await ProfessorTurmaService.getClasses(idUser);
         await ProfessorTurmaService.destroyAssociationProfessorClass(idTurma);
         await ProfessorTurmaService.destroyClass(idTurma);
-        return res.render('dashboard-professor/dashboard-turmas', 
-        {
-            nome,
-            data
-        });
+        res.redirect("/dashboard/professor/turmas");
+        // return res.render('dashboard-professor/dashboard-turmas', 
+        // {
+        //     nome,
+        //     data
+        // });
     }
 };
 

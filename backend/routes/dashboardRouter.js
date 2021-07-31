@@ -105,7 +105,6 @@ router.get(
 );
 
 
-
 //ROTAS PROFESSOR
 router.get('/',
   ProfessorValidator,
@@ -130,7 +129,12 @@ router.get('/professor/turmas',
 
 router.get('/professor/turmas/nova',
   ProfessorValidator,
-  professorTurmaController.createClasse
+  professorTurmaController.createClass
+);
+
+router.get('/professor/turmas/alterar/:idTurma',
+  ProfessorValidator,
+  professorTurmaController.updateFormClass
 );
 
 router.post(
@@ -144,10 +148,16 @@ router.get('/professor/atividades',
   professorAtividadeController.getAllActivities
 );
 
-router.post(
+router.delete(
   '/professor/turmas/:idTurma/deletar',
   ProfessorValidator,
-  professorAtividadeController.destroyClass
+  professorTurmaController.destroyClass
+);
+
+router.put(
+  '/professor/turmas/:idTurma/alterar',
+  ProfessorValidator,
+  professorTurmaController.updateClass
 );
 
 module.exports = router;

@@ -20,6 +20,16 @@ const ProfessorTurmaService = {
       );
       return newClass.idTurma;
   },
+  updateClass: async (codigo, titulo) => {
+    const newClass = await database.Turma.update({
+      codigo,
+      titulo
+    }, {
+      where: { idTurma }
+    }
+      );
+      return newClass.idTurma;
+  },
   createAssociationClassProfessor: async (idUser, idTurma) => {
     
     const associateToClass = await database.TurmaProfessor.create({
@@ -33,20 +43,6 @@ const ProfessorTurmaService = {
   getClassById: async (idTurma) => {
     const classId = await database.Turma.findByPk(idTurma);
     return classId;
-  },
-  getAllActivities: async (idTurma) => {
-    const activity = await database.Turma.findAll({
-      where: { idTurma },
-      include: [{ model: database.Atividade }]
-    });
-    return activity;
-  },
-  getActivityById: async (idAtividade) => {
-    const activityById = await database.Turma.findOne({
-      where: { idAtividade },
-      include: [{ model: database.Atividade }]
-    });
-    return activityById;
   },
   destroyClass: async (idTurma) => {
     const destroyed = await database.Turma.destroy({ where: { idTurma }});
