@@ -10,8 +10,9 @@ const ProfessorTurmaController = {
             data
         });
     },
-    createClass: (req, res) => {
-        return res.render('dashboard-professor/dashboard-turmas-criar')
+    createClass: async (req, res) => {
+        return res.render('dashboard-professor/dashboard-turmas-criar');
+    
     },
     sendClass: async (req, res)=>{
 
@@ -25,30 +26,32 @@ const ProfessorTurmaController = {
 
         await ProfessorTurmaService.createAssociationClassProfessor(idUser, idTurma);
 
-        // return res.render('dashboard-professor/dashboard-turmas', 
-        // { 
-        //     nome,
-        //     data
-        // });
         res.redirect("/dashboard/professor/turmas");
     },
-    updateFormClass: (req, res) => {
-        return res.render('dashboard-professor/dashboard-turmas-editar')
+    updateFormClass: async (req, res) => {
+        const { idTurma } = req.params;
+        const { nome } = req.user;
+
+        const data = await ProfessorTurmaService.getById(idTurma);
+        console.log(idTurma);
+        return res.render('dashboard-professor/dashboard-turmas-editar', 
+        { 
+            nome,
+            data,
+            idTurma
+        });
     },
     updateClass: async (req,res) =>{
         if(!req.body){
             res.status(400).send({message: "Teste: dados não estão vindo do formulário!"})
         }
-        const { idUser, nome } = req.user;
-        const { codigo, titulo } = req.body;
-        const data = await ProfessorTurmaService.getClasses(idUser);
-        await ProfessorTurmaService.updateClass(codigo, titulo);
+        const { nome } = req.user;
+        const { idTurma } = req.params;
+        const {codigo, titulo } = req.body;
 
-        return res.render('dashboard-professor/dashboard-turmas', 
-        { 
-            nome,
-            data
-        });
+        let updatedClass = await ProfessorTurmaService.updateClass(idTurma, codigo, titulo); 
+
+        res.redirect("/dashboard/professor/turmas");
     },
     getClassById: async (req, res) => {
         const { idUser, nome } = req.user;
@@ -82,11 +85,6 @@ const ProfessorTurmaController = {
         await ProfessorTurmaService.destroyAssociationProfessorClass(idTurma);
         await ProfessorTurmaService.destroyClass(idTurma);
         res.redirect("/dashboard/professor/turmas");
-        // return res.render('dashboard-professor/dashboard-turmas', 
-        // {
-        //     nome,
-        //     data
-        // });
     }
 };
 

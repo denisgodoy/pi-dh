@@ -25,24 +25,8 @@ const ProfessorAtividadeController = {
             nome,
             classes
         });
-    },
-    // createAssociation: async (req, res) => {
-    //     const { idAtividade, idTurma } = req.params;
-    //     const { idUser } = req.user;
-    //     await AlunoAtividadeService.createAssociation(idUser, idAtividade);
-    //     return res.redirect(`/dashboard/aluno/turmas/${idTurma}/atividades`);
-    // },
-    destroyClass: async (req, res) => {
-        const { idTurma } = req.params;
-        const { nome } = req.user;
-        await ProfessorTurmaService.destroyClass(idTurma);
-        const classes = await ProfessorTurmaService.getClassById(idTurma);
-        return res.render('dashboard-professor/dashboard-atividades', 
-        { 
-            nome,
-            classes
-        });
     }
+
 };
 
 module.exports = ProfessorAtividadeController;

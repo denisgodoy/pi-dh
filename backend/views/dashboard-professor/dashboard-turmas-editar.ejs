@@ -33,20 +33,19 @@
         <div class="billboard" style="display:none;">
             <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
             <h3>Olá, Gustavo! 😀</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quia repudiandae nemo, enim assumenda
-                placeat rem optio earum quod a, voluptates illo laudantium perferendis ea doloremque explicabo quam
-                reiciendis totam!</p>
+            <p>⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
         </div>
 
-            <form action="/dashboard/professor/turmas/nova" method="POST">
+            <form action="/dashboard/professor/turmas/<%= idTurma %>/alterar" method="POST">
                 <div>
                     <span>
-                        <input type="text" id="codigoturma" name="codigo" value="<%= turma.codigo %>" placeholder="Código da Turma">
+                        <input type="text" id="codigoturma" name="codigo" value="<%= data.codigo %>" placeholder="Código da Turma">
                     </span>
                     <span>
-                        <input type="text" id="nomecurso" name="titulo" value="<%= turma.nome %>"  style="min-width:350px;" placeholder="Nome do Curso">
+                        <input type="text" id="nomecurso" name="titulo" value="<%= data.titulo %>"  style="min-width:350px;" placeholder="Nome do Curso">
                     </span>
-                <button type="submit" class="btn new" style="margin-left:0px !important;">Cadastrar Turma</button>
+                <button type="submit" class="btn new" style="margin-left:0px !important;">Editar Turma</button>
+
             </form>
 
 

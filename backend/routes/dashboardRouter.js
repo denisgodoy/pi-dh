@@ -122,6 +122,11 @@ router.get(
   UserController.showProfessorProfileSuccess
 );
 
+router.get('/professor/atividades',
+  ProfessorValidator,
+  professorAtividadeController.getAllActivities
+);
+
 router.get('/professor/turmas',
   ProfessorValidator,
   professorTurmaController.getClasses
@@ -132,20 +137,10 @@ router.get('/professor/turmas/nova',
   professorTurmaController.createClass
 );
 
-router.get('/professor/turmas/alterar/:idTurma',
-  ProfessorValidator,
-  professorTurmaController.updateFormClass
-);
-
 router.post(
   '/professor/turmas/nova',
   ProfessorValidator,
   professorTurmaController.sendClass
-);
-
-router.get('/professor/atividades',
-  ProfessorValidator,
-  professorAtividadeController.getAllActivities
 );
 
 router.delete(
@@ -154,7 +149,12 @@ router.delete(
   professorTurmaController.destroyClass
 );
 
-router.put(
+router.get('/professor/turmas/:idTurma',
+  ProfessorValidator,
+  professorTurmaController.updateFormClass
+);
+
+router.post(
   '/professor/turmas/:idTurma/alterar',
   ProfessorValidator,
   professorTurmaController.updateClass
