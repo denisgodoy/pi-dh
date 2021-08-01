@@ -1,6 +1,9 @@
-const database = require('../database/models/index');
-const bcryptjs = require('bcryptjs');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const jwt = require('jsonwebtoken');
+const bcryptjs = require('bcryptjs');
+
+const database = require('../database/models/index');
 const jwtSecret = process.env.JWT_SECRET;
 
 const UserService = {
@@ -98,6 +101,59 @@ const UserService = {
       }
     );
     return updatedAvatar;
+  },
+  clearResetToken: async (email) => {
+    const clearResetToken = await database.ResetTokens.update(
+      {
+        used: 1,
+      },
+      {
+        where: {
+          email: email,
+        },
+      }
+    );
+    return clearResetToken;
+  },
+  setResetToken: async (email, fpSalt, expireDate) => {
+    const setResetToken = await database.ResetTokens.create({
+      email: email,
+      expiration: expireDate,
+      token: fpSalt,
+      used: 0,
+    });
+    return setResetToken;
+  },
+  clearExpiredTokens: async () => {
+    await database.ResetTokens.destroy({
+      where: {
+        expiration: { [Op.lt]: Sequelize.fn('CURDATE') },
+      },
+    });
+  },
+  findToken: async (email, token) => {
+    const record = await database.ResetTokens.findOne({
+      where: {
+        email: email,
+        expiration: { [Op.gt]: Sequelize.fn('CURDATE') },
+        token: token,
+        used: 0,
+      },
+    });
+    return record;
+  },
+  updatePassword: async (email, senhaHash) => {
+    const saveNewPassword = await database.User.update(
+      {
+        senha: senhaHash,
+      },
+      {
+        where: {
+          email: email,
+        },
+      }
+    );
+    return saveNewPassword;
   },
 };
 

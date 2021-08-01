@@ -101,17 +101,24 @@ router.get(
 router.get(
   '/professor/profile',
   ProfessorValidator,
-  UserController.showUserProfile
-);
-
-
-//ROTAS PROFESSOR
-router.get('/',
-  ProfessorValidator,
   UserController.showProfessorProfile
 );
 
-router.get('/professor',
+router.get(
+  '/professor/profile/avatar',
+  ProfessorValidator,
+  UserController.updateUserAvatar
+);
+router.get(
+  '/professor/profile/success',
+  ProfessorValidator,
+  UserController.showProfessorProfileSuccess
+);
+
+//ROTAS PROFESSOR
+
+router.get(
+  '/professor',
   ProfessorValidator,
   dashboardController.indexProfessor
 );

@@ -89,7 +89,6 @@ async function onClickSubmit(event) {
     signInError.innerText = data.err;
   } else {
     const data = await response.json();
-    console.log(data);
     switch (data.tipoUser) {
       case 'professor':
         window.location.href = '/dashboard/professor';
