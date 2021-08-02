@@ -28,10 +28,107 @@ body {
   
   /** SIDEBAR **/
   
+  
+.more-actions {
+	width: 65%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap-reverse;
+  }
+
+  
+.form {
+	width: 65%;
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .styled-input {
+	width: 50%;
+	margin-top: 10px;
+	padding: 5px 5px;
+	font-size: 14px;
+	border: solid 0.5px var(--grey);
+	color: #000;
+	border-radius: 10px;
+	resize: none;
+	outline: none;
+  }
+  
+  .action-btn {
+	width: 100%;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+  }
+  
+  .submit-send,
+  .submit-giveup {
+	border-radius: 10px;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 700;
+	padding: 5px 0;
+	margin-top: 15px;
+	width: 200px;
+  }
+  
+  .submit-send {
+	background-color: rgb(27, 134, 27);
+	border: 0.5px solid rgb(27, 134, 27);
+  }
+  
+  .submit-giveup {
+	background-color: var(--magenta-dark);
+	border: 0.5px solid var(--magenta-dark);
+  }
+  
+  .submit-send:hover,
+  .submit-giveup:hover {
+	background: var(--white);
+	text-decoration: none;
+  }
+  
+  .submit-giveup:hover {
+	color: var(--magenta-dark);
+  }
+  
+  .submit-send:hover {
+	color: rgb(27, 134, 27);
+  }
+  
+  .submit-send:active,
+  .submit-giveup:active {
+	position: relative;
+	top: 1px;
+  }
+
+  .evaluation {
+	  padding: 10px;
+	  margin-top: 15px;
+	  max-width: 65%;
+	  height: 280px;
+	  border: solid 0.5px var(--grey);
+	  border-radius: 10px;
+	  background-color: white;
+  }
+
+  h4 {
+	color: var(--blue-light);
+	font-size: 18px;
+	margin-top: 15px;
+	margin-bottom: 10px;
+  }
+
   aside {
     height: 100%;
     width: 200px;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
@@ -157,7 +254,6 @@ body {
   }
   
   .tables {
-    margin-top: 80px;
     font-size: 12px;
   }
   

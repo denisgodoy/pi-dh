@@ -8,6 +8,7 @@ const professorTurmaController = require('../controllers/ProfessorTurmaControlle
 const dashboardController = require('../controllers/DashboardController');
 const UserController = require('../controllers/UserController');
 const rankingController = require('../controllers/RankingController');
+const evaluationController = require('../controllers/EvaluationController');
 
 const UserInfo = require('../middlewares/UserInfo');
 const AlunoValidator = require('../middlewares/AlunoRouteValidator');
@@ -120,7 +121,19 @@ router.get(
 router.get(
   '/professor',
   ProfessorValidator,
-  dashboardController.indexProfessor
+  evaluationController.getActivities
+);
+
+router.get(
+  '/professor/avaliacao/:idUser/:idAtividade',
+  ProfessorValidator,
+  evaluationController.evaluate
+);
+
+router.post(
+  '/professor/avaliacao/:idUser/:idAtividade',
+  ProfessorValidator,
+  evaluationController.sendEvaluation
 );
 
 router.get(
