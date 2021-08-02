@@ -129,9 +129,9 @@ router.get(
   UserController.showProfessorProfileSuccess
 );
 
-router.get('/professor/atividades',
+router.get('/professor/atividades/:idTurma',
   ProfessorValidator,
-  professorAtividadeController.getAllActivities
+  professorAtividadeController.getAllActivitiesByClass
 );
 
 router.get('/professor/turmas',
@@ -144,10 +144,33 @@ router.get('/professor/turmas/nova',
   professorTurmaController.createClass
 );
 
+router.get('/professor/atividade/:idTurma/nova',
+  ProfessorValidator,
+  professorAtividadeController.createActivity
+);
+
 router.post(
   '/professor/turmas/nova',
   ProfessorValidator,
   professorTurmaController.sendClass
+);
+
+router.post(
+  '/professor/atividade/:idTurma/nova',
+  ProfessorValidator,
+  professorAtividadeController.sendActivity
+);
+
+router.get(
+  '/professor/atividades/:idAtividade/alterar',
+  ProfessorValidator,
+  professorAtividadeController.updateFormActivity
+);
+
+router.post(
+  '/professor/atividade/:idAtividade/alterar',
+  ProfessorValidator,
+  professorAtividadeController.updateActivity
 );
 
 router.delete(

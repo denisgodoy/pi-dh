@@ -23,17 +23,13 @@
 
     <div class="main">
 
-        <div class="notification">
-            <img src="/images/avatar.png" class="avatar" alt="avatar">
-            <span class="badge">🔔</span>
-        </div>
-
+        <%- include('../partials/profile.ejs') %>
         <h2>Dashboard / Turmas / Editar</h2>
         <hr />
         <div class="billboard" style="display:none;">
             <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
             <h3>Olá, Gustavo! 😀</h3>
-            <p>⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
+            <p>Esta é a sua área de professor no Dashboard Elevel. Aqui você pode encontrar as turmas das quais faz parte, gerenciar atividades pendentes e verificar quantos pontos você possui em comparação com outras pessoas da mesma turma.</p>
         </div>
 
             <form action="/dashboard/professor/turmas/<%= idTurma %>/alterar" method="POST">
@@ -48,98 +44,6 @@
 
             </form>
 
-
-
-        <div id="live-chat">
-
-            <header class="clearfix">
-
-                <a href="#" class="chat-close">x</a>
-
-                <h4>Turma Fullstack 2021 - DH</h4>
-
-                <span class="chat-message-counter">3</span>
-
-            </header>
-
-            <div class="chat">
-
-                <div class="chat-history">
-
-                    <div class="chat-message clearfix">
-
-                        <img src="http://0.gravatar.com/userimage/5/ff5263e8c30557b57e64423ee8496e41?size=400" alt=""
-                            width="32" height="32">
-
-                        <div class="chat-message-content clearfix">
-
-                            <span class="chat-time">13:35</span>
-
-                            <h5>José</h5>
-
-                            <p>Olá galera!</p>
-
-                        </div> <!-- end chat-message-content -->
-
-                    </div> <!-- end chat-message -->
-
-                    <hr>
-
-                    <div class="chat-message clearfix">
-
-                        <img src="http://gravatar.com/avatar/2c0ad52fc5943b78d6abe069cc08f320?s=32" alt="" width="32"
-                            height="32">
-
-                        <div class="chat-message-content clearfix">
-
-                            <span class="chat-time">13:37</span>
-
-                            <h5>Marco Biedermann</h5>
-
-                            <p>Eae men kkk</p>
-
-                        </div> <!-- end chat-message-content -->
-
-                    </div> <!-- end chat-message -->
-
-                    <hr>
-
-                    <div class="chat-message clearfix">
-
-                        <img src="http://0.gravatar.com/userimage/5/ff5263e8c30557b57e64423ee8496e41?size=400" alt=""
-                            width="32" height="32">
-
-                        <div class="chat-message-content clearfix">
-
-                            <span class="chat-time">13:38</span>
-
-                            <h5>José</h5>
-
-                            <p>Alguém fez o exercício de Multer??? Tô desesperado!!! 😭 </p>
-
-                        </div> <!-- end chat-message-content -->
-
-                    </div> <!-- end chat-message -->
-
-                    <hr>
-
-                </div> <!-- end chat-history -->
-
-
-                <form action="#" method="post">
-
-                    <fieldset>
-
-                        <input type="text" placeholder="José" autofocus>
-                        <input type="hidden">
-
-                    </fieldset>
-
-                </form>
-
-            </div> <!-- end chat -->
-
-        </div> <!-- end live-chat -->
 
     </div>
 

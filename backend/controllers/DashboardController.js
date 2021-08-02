@@ -13,8 +13,6 @@ const DashboardController = {
     },
     indexProfessor: async (req, res) => {
         const { idUser, nome } = req.user;
-        // const data = await AlunoTurmaService.getClasses(idUser);
-        // const sum = await RankingService.getRanking(idUser);
         return res.render('dashboard-professor/dashboard-avaliacoes', 
         { 
             nome

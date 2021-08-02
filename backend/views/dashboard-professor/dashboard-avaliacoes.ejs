@@ -16,15 +16,23 @@
   </head>
 
   <body>
-    <%- include('partials/aside'); %>
+   
+    <%- include('../partials/aside-top.ejs') %>
+    <nav>
+      <a href="/dashboard/professor/profile"><i class="fas fa-graduation-cap"></i> Perfil</a>
+      <a href="/dashboard/professor/avaliacoes" class="active"><i class="fas fa-spell-check"></i> Avaliações</a>
+      <a href="/dashboard/professor/turmas"><i class="fas fa-users"></i> Turmas</a>
+  </nav>
+    <%- include('../partials/aside-bottom.ejs') %>
 
         <div class="main">
+            <%- include('../partials/profile.ejs') %>
             <h2>Dashboard / Avaliações</h2>
             <hr />
             <div class="billboard">
                 <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
                 <h3>Olá, <%= nome %>! 😀</h3>
-                <p>⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
+                <p>Esta é a sua área de professor no Dashboard Elevel. Aqui você pode encontrar as turmas das quais faz parte, gerenciar atividades pendentes e verificar quantos pontos você possui em comparação com outras pessoas da mesma turma.</p>
             </div>
             <div class="tables">
                 <table id="data-table">
@@ -50,10 +58,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="notification">
-                <img src="/images/avatar.png" class="avatar" alt="avatar">
-                <span class="badge">🔔</span>
-            </div>
+
 
             <%- include('partials/chat'); %>
 

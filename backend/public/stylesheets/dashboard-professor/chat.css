@@ -22,11 +22,11 @@ html {
   margin: -230px 0px;
   right: 10px;
   min-width: 300px;
-  width: 300px;
+  min-height: 800px;
+  height: 800px;
   background-color: #fff;
   border-radius: 4px;
   position: fixed;
-  overflow: hidden;
 }
 
 .header {
