@@ -14,51 +14,51 @@
 
     <title>elevel - Dashboard Professor</title>
   </head>
-  <body>
 
-    <%- include('../partials/aside-top.ejs') %>
-    <nav>
-      <a href="/dashboard/professor/profile"><i class="fas fa-graduation-cap"></i> Perfil</a>
-      <a href="/dashboard/professor/avaliacoes" class="active"><i class="fas fa-spell-check"></i> Avaliações</a>
-      <a href="/dashboard/professor/turmas"><i class="fas fa-users"></i> Turmas</a>
-  </nav>
-    <%- include('../partials/aside-bottom.ejs') %>
-    
+  <body>
+    <%- include('partials/aside'); %>
+
         <div class="main">
-            <h2>Dashboard / Professor</h2>
+            <h2>Dashboard / Avaliação</h2>
             <hr />
-            <div class="billboard">
-                <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
-                <h3>Olá <%= nome %>! 😀</h3>
-                <p>Aqui você tem acesso às atividades enviadas para correção por alunos das turmas que você é professor.</p>
-            </div>
             <div class="tables">
 				<table id="data-table">
 				  <thead>
 					<tr>
+					  <th>Prazo</th>
 					  <th>Atividade</th>
-					  <th>Turma</th>
-					  <th>Aluno</th>
-					  <th>Status</th>
+					  <th>Descrição</th>
+					  <th>Pontos</th>
 					</tr>
 				  </thead>
 				  <tbody>
-					<% for (let i = 0; i < data.length; i++) { %>
-					<tr
-					  onclick="window.location='/dashboard/professor/avaliacao/<%= data[i].idUser %>/<%= data[i].idAtividade %>'"
-					>
-					  <td><%= data[i].idAtividade %></td>
-					  <td><%= data[i].turmaTitulo %></td>
-					  <td><%= data[i].idUser %></td>
-					  <td>Avaliar</td>
+					<tr>
+					  <td><%= data.dataTermino %></td>
+					  <td><%= data.titulo %></td>
+					  <td><%= data.descricao %></td>
+					  <td><%= data.pontuacao %></td>
 					</tr>
-					<% } %>
 				  </tbody>
 				</table>
 			</div>
-            <%- include('partials/chat'); %>
+			<h4>Resolução do aluno</h4>
+			<div class="evaluation">
+				<%- activity[0].textField %>
+			</div>
+			<div class="more-actions">
+				<form class="form" method="POST" action="/dashboard/professor/avaliacao/<%= activity[0].idUser %>/<%= activity[0].idAtividade %>">
+				  <input
+					class="styled-input"
+					type="text"
+					name="evaluation"
+					placeholder="Atribuir pontos"
+				  />
+				  <button class="submit-send" type="submit">Enviar correção</button>
+				</form>
+			  </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <script src="assets/scritps/dashboard-professor/dashboard.js"></script>
+
 </body>
 </html>
