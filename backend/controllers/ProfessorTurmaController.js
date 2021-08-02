@@ -3,11 +3,13 @@ const ProfessorTurmaService = require("../services/ProfessorTurmaService");
 const ProfessorTurmaController = {
     getClasses: async (req, res) => {
         const { idUser, nome } = req.user;
+        const {idTurma} = req.params;
         const data = await ProfessorTurmaService.getClasses(idUser);
         return res.render('dashboard-professor/dashboard-turmas', 
         { 
             nome,
-            data
+            data,
+            idTurma
         });
     },
     createClass: async (req, res) => {
@@ -33,7 +35,7 @@ const ProfessorTurmaController = {
         const { nome } = req.user;
 
         const data = await ProfessorTurmaService.getById(idTurma);
-        console.log(idTurma);
+
         return res.render('dashboard-professor/dashboard-turmas-editar', 
         { 
             nome,
@@ -49,7 +51,7 @@ const ProfessorTurmaController = {
         const { idTurma } = req.params;
         const {codigo, titulo } = req.body;
 
-        let updatedClass = await ProfessorTurmaService.updateClass(idTurma, codigo, titulo); 
+        await ProfessorTurmaService.updateClass(idTurma, codigo, titulo); 
 
         res.redirect("/dashboard/professor/turmas");
     },

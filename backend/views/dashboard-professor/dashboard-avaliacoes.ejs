@@ -15,7 +15,15 @@
     <title>elevel - Dashboard Professor</title>
   </head>
   <body>
-    <%- include('partials/aside'); %>
+
+    <%- include('../partials/aside-top.ejs') %>
+    <nav>
+      <a href="/dashboard/professor/profile"><i class="fas fa-graduation-cap"></i> Perfil</a>
+      <a href="/dashboard/professor/avaliacoes" class="active"><i class="fas fa-spell-check"></i> Avaliações</a>
+      <a href="/dashboard/professor/turmas"><i class="fas fa-users"></i> Turmas</a>
+  </nav>
+    <%- include('../partials/aside-bottom.ejs') %>
+    
         <div class="main">
             <h2>Dashboard / Professor</h2>
             <hr />

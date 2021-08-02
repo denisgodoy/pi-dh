@@ -32,17 +32,14 @@
 
     <div class="main">
 
-        <div class="notification">
-            <img src="/images/avatar.png" class="avatar" alt="avatar">
-            <span class="badge">🔔</span>
-        </div>
+      <%- include('../partials/profile.ejs') %>
 
         <h2>Dashboard / Alunos</h2>
         <hr />
         <div class="billboard">
             <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
             <h3>Olá, Gustavo! 😀</h3>
-            <p>⠀⠀⠀⠀⠀⠀⠀⠀⠀</p>
+            <p>Esta é a sua área de professor no Dashboard Elevel. Aqui você pode encontrar as turmas das quais faz parte, gerenciar atividades pendentes e verificar quantos pontos você possui em comparação com outras pessoas da mesma turma.</p>
         </div>
         <div class="tables">
             <table id="data-table">
@@ -75,6 +72,8 @@
       </div>
       <!-- end live-chat -->
     </div>
+
+    <%- include('partials/chat'); %>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="assets/scritps/dashboard-professor/dashboard.js"></script>

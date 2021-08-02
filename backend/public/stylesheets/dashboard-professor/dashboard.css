@@ -202,7 +202,7 @@ body {
   
   aside nav a.active,
   .btn {
-    background-color: #e31151;
+    background-color: #e31151 !important;
     color: #fafafa;
   }
   

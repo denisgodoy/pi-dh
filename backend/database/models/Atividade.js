@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             },
             dataInicio: {
                 type: DataTypes.STRING(10),
-                allowNull: false
+                allowNull: true
             },
             dataTermino: {
                 type: DataTypes.STRING(10),
