@@ -28,14 +28,21 @@
   </head>
 
   <body>
-    
     <%- include('../partials/aside-top.ejs') %>
     <nav>
-      <a href="/dashboard/professor/profile"><i class="fas fa-graduation-cap"></i> Perfil</a>
-      <a href="/dashboard/professor/atividades/<%= idTurma %>" class="active"><i class="fas fa-graduation-cap"></i> Atividades</a>
-      <a href="/dashboard/professor/avaliacoes"><i class="fas fa-spell-check"></i> Avaliações</a>
-      <a href="/dashboard/professor/turmas"><i class="fas fa-users"></i> Turmas</a>
-  </nav>
+      <a href="/dashboard/professor/profile"
+        ><i class="fas fa-graduation-cap"></i> Perfil</a
+      >
+      <a href="/dashboard/professor/atividades/<%= idTurma %>" class="active"
+        ><i class="fas fa-graduation-cap"></i> Atividades</a
+      >
+      <a href="/dashboard/professor/avaliacoes"
+        ><i class="fas fa-spell-check"></i> Avaliações</a
+      >
+      <a href="/dashboard/professor/turmas"
+        ><i class="fas fa-users"></i> Turmas</a
+      >
+    </nav>
     <%- include('../partials/aside-bottom.ejs') %>
 
     <div class="main">
@@ -49,17 +56,33 @@
         ></a>
         <h3>Olá, Leandro! 😀</h3>
         <p>
-          Esta é a sua área de professor no Dashboard Elevel. Aqui você pode encontrar as turmas das quais faz parte, gerenciar atividades pendentes e verificar quantos pontos você possui em comparação com outras pessoas da mesma turma.
+          Esta é a sua área de professor no Dashboard Elevel. Aqui você pode
+          encontrar as turmas das quais faz parte, gerenciar atividades
+          pendentes e verificar quantos pontos você possui em comparação com
+          outras pessoas da mesma turma.
         </p>
       </div>
 
-      <form action="/dashboard/professor/atividade/<%= idTurma %>/nova" method="POST">
+      <form
+        action="/dashboard/professor/atividade/<%= idTurma %>/nova"
+        method="POST"
+      >
         <div>
           <span>
-            <input type="text" name="titulo" placeholder="Titulo da Atividade" />
+            <input
+              type="text"
+              name="titulo"
+              placeholder="Titulo da Atividade"
+            />
           </span>
           <span>
-            <input type="number" name="pontuacao" step="100" min="500" placeholder="Pontuação" />
+            <input
+              type="number"
+              name="pontuacao"
+              step="100"
+              min="500"
+              placeholder="Pontuação"
+            />
           </span>
           <span>
             <input
@@ -82,8 +105,13 @@
           </span>
         </div>
 
-        <button type="submit" class="btn new" style="margin-left:0px !important;">Cadastrar Atividade</button>
-
+        <button
+          type="submit"
+          class="btn new"
+          style="margin-left: 0px !important"
+        >
+          Cadastrar Atividade
+        </button>
       </form>
 
       <!-- end live-chat -->

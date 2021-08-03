@@ -1,64 +1,88 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/dashboard-professor/global.css">
-    <link rel="stylesheet" href="/stylesheets/dashboard-professor/dashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"></script>
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"></script>
-    <script defer src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/dashboard-professor/global.css" />
+    <link
+      rel="stylesheet"
+      href="/stylesheets/dashboard-professor/dashboard.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"
+    />
+    <script
+      defer
+      src="/node_modules/@fortawesome/fontawesome-free/js/brands.js"
+    ></script>
+    <script
+      defer
+      src="/node_modules/@fortawesome/fontawesome-free/js/solid.js"
+    ></script>
+    <script
+      defer
+      src="/node_modules/@fortawesome/fontawesome-free/js/fontawesome.js"
+    ></script>
 
     <title>elevel - Dashboard Professor</title>
   </head>
   <body>
-
     <%- include('../partials/aside-top.ejs') %>
     <nav>
-      <a href="/dashboard/professor/profile"><i class="fas fa-graduation-cap"></i> Perfil</a>
-      <a href="/dashboard/professor/avaliacoes" class="active"><i class="fas fa-spell-check"></i> Avaliações</a>
-      <a href="/dashboard/professor/turmas"><i class="fas fa-users"></i> Turmas</a>
-  </nav>
+      <a href="/dashboard/professor/profile"
+        ><i class="fas fa-graduation-cap"></i> Perfil</a
+      >
+      <a href="/dashboard/professor" class="active"
+        ><i class="fas fa-spell-check"></i> Avaliações</a
+      >
+      <a href="/dashboard/professor/turmas"
+        ><i class="fas fa-users"></i> Turmas</a
+      >
+    </nav>
     <%- include('../partials/aside-bottom.ejs') %>
-    
-        <div class="main">
-            <h2>Dashboard / Professor</h2>
-            <hr />
-            <div class="billboard">
-                <a href="#menu-toggle" class="close-bilboard btn-default"><i class="fas fa-times"></i></a>
-                <h3>Olá <%= nome %>! 😀</h3>
-                <p>Aqui você tem acesso às atividades enviadas para correção por alunos das turmas que você é professor.</p>
-            </div>
-            <div class="tables">
-				<table id="data-table">
-				  <thead>
-					<tr>
-					  <th>Atividade</th>
-					  <th>Turma</th>
-					  <th>Aluno</th>
-					  <th>Status</th>
-					</tr>
-				  </thead>
-				  <tbody>
-					<% for (let i = 0; i < data.length; i++) { %>
-					<tr
-					  onclick="window.location='/dashboard/professor/avaliacao/<%= data[i].idUser %>/<%= data[i].idAtividade %>'"
-					>
-					  <td><%= data[i].idAtividade %></td>
-					  <td><%= data[i].turmaTitulo %></td>
-					  <td><%= data[i].idUser %></td>
-					  <td>Avaliar</td>
-					</tr>
-					<% } %>
-				  </tbody>
-				</table>
-			</div>
-            <%- include('partials/chat'); %>
-        </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <script src="assets/scritps/dashboard-professor/dashboard.js"></script>
-</body>
+
+    <div class="main">
+      <h2>Dashboard / Professor</h2>
+      <hr />
+      <div class="billboard">
+        <a href="#menu-toggle" class="close-bilboard btn-default"
+          ><i class="fas fa-times"></i
+        ></a>
+        <h3>Olá <%= nome %>! 😀</h3>
+        <p>
+          Aqui você tem acesso às atividades enviadas para correção por alunos
+          das turmas que você é professor.
+        </p>
+      </div>
+      <div class="tables">
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Atividade</th>
+              <th>Turma</th>
+              <th>Aluno</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (let i = 0; i < data.length; i++) { %>
+            <tr
+              onclick="window.location='/dashboard/professor/avaliacao/<%= data[i].idUser %>/<%= data[i].idAtividade %>'"
+            >
+              <td><%= data[i].idAtividade %></td>
+              <td><%= data[i].turmaTitulo %></td>
+              <td><%= data[i].idUser %></td>
+              <td>Avaliar</td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+      <%- include('partials/chat'); %>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="assets/scritps/dashboard-professor/dashboard.js"></script>
+  </body>
 </html>
